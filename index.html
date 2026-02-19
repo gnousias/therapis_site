@@ -157,10 +157,69 @@
         .review-container { max-width: 1100px; margin: 0 auto; position: relative; height: 200px; overflow: hidden; }
         .review-triplet { position: absolute; width: 100%; display: flex; justify-content: space-around; gap: 20px; opacity: 0; animation: tripletFade 12s infinite; }
         .review-triplet:nth-child(2) { animation-delay: 6s; }
-        .review-box { background: var(--white); padding: 25px; border-radius: var(--br-custom); flex: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
-        .review-box:hover { transform: translateY(-5px); }
 
-        @keyframes tripletFade { 0%, 5% { opacity: 0; transform: translateY(10px); } 10%, 45% { opacity: 1; transform: translateY(0); } 50%, 100% { opacity: 0; transform: translateY(-10px); } }
+        @keyframes tripletFade { 
+            0% { 
+                opacity: 0; 
+                transform: translateY(20px); 
+                pointer-events: none; 
+            }
+            10%, 40% { /* Stays fully visible and interactive for longer */
+                opacity: 1; 
+                transform: translateY(0); 
+                pointer-events: auto; 
+                z-index: 10;
+            }
+            50% { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+                pointer-events: none; 
+            }
+            100% { 
+                opacity: 0; 
+            }
+        }
+
+        /* 2. Adjust the timing slightly if needed */
+        .review-triplet {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            opacity: 0;
+            pointer-events: none;
+            /* 12s is fine, but the smoother keyframes above make it feel slower */
+            animation: tripletFade 12s infinite ease-in-out; 
+        }
+
+        /* 2. Pause and Blur Effect */
+        /* When any box is hovered, pause animation and blur all boxes... */
+        .review-container:has(.review-box:hover) .review-triplet {
+            animation-play-state: paused;
+        }
+
+        .review-container:has(.review-box:hover) .review-box {
+            filter: blur(0.6px);
+            opacity: 0.6;
+            transform: scale(0.95);
+        }
+
+        /* ...EXCEPT the one being hovered! */
+        .review-box:hover {
+            filter: blur(0) !important;
+            opacity: 1 !important;
+            transform: translateY(-12px) scale(1.05) !important; /* Slight lift and grow */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 1px solid var(--soft-rose);
+            z-index: 100;
+        }
+
+        /* Smooth transition for all effects */
+        .review-box {
+            background: var(--white); padding: 25px; border-radius: var(--br-custom); flex: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;
+        }
+
 
         /* --- FAQ RESTRUCTURED --- */
         .faq { background: var(--primary-dark); overflow: hidden; }
@@ -256,7 +315,7 @@
 <body>
 
     <header>
-        <div class="logo-container"><img src="SecLogo.svg" alt="Therapis Logo"></div>
+        <div class="logo-container"><a href="#"><img src="SecLogo.svg" alt="Therapis Logo"></a></div>
         <nav>
             <ul>
                 <li><a href="#" data-en="Main Page" data-el="Αρχική">Main Page</a></li>
@@ -415,14 +474,13 @@
                 </div>
             </div>
             <div class="footer-block">
-                <p>📍 <strong data-en="Location" data-el="Τοποθεσία">Location</strong></p>
-                <p>Κων. Πετράκη 21, Mires 704 00</p>
+                <p>📍 <strong data-en="Location: Kon. Petraki 21, Mires 704 00" data-el="Τοποθεσία: Κων. Πετράκη 21, Μοίρες 704 00">Location: Kon. Petraki 21, Mires 704 00</strong></p>
+                <p>📞 +30 6948772692</p>
+                <p>📧 info@therapis.gr</p>
                 <div class="map-snippet">
                     <iframe width="90%" height="90%" frameborder="0" style="border:0" 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.5624306464588!2d24.87317966964213!3d35.050495196190305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149b1f3542fbb0c3%3A0x564b942c73fc3b51!2zzprOrc69z4TPgc6_IM6mz4XPg865zrrOv864zrXPgc6xz4DOtc6vzrHPgiBUaGVyYXBpcyAtIFBoeXNpbyBDZW50ZXIgVGhlcmFwaXM!5e0!3m2!1sen!2sgr!4v1771498447259!5m2!1sen!2sgr" allowfullscreen></iframe>
                 </div>
-                <p>📞 +30 6948772692</p>
-                <p>📧 info@therapis.gr</p>
             </div>
             <div class="footer-block">
                 <p>📅 <strong data-en="Working Hours" data-el="Ωράριο Λειτουργίας">Working Hours</strong></p>
