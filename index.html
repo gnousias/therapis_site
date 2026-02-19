@@ -18,12 +18,10 @@
             --bg-light-rose: #F2E4E2;
             --white: #ffffff;
             --br-custom: 30px 0 30px 0;
+            --green-overlay: rgba(27, 81, 59, 0.4); 
         }
 
-        /* Smooth Transition to Top */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         * {
             margin: 0;
@@ -59,17 +57,9 @@
         }
 
         .logo-container img { height: 50px; vertical-align: middle; }
-
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav ul li a { 
-            text-decoration: none; 
-            color: var(--primary-dark); 
-            transition: 0.3s; 
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
+        nav ul li a { text-decoration: none; color: var(--primary-dark); transition: 0.3s; font-size: 1.1rem; font-weight: 400; }
         nav ul li a:hover { color: var(--soft-rose); }
-
         .header-right { display: flex; align-items: center; gap: 20px; }
         .lang-toggle { cursor: pointer; font-size: 0.85rem; border: 1px solid var(--mint-pale); padding: 4px 12px; border-radius: 15px; font-weight: 400; }
 
@@ -85,7 +75,7 @@
             font-weight: 400;
         }
 
-        /* --- Hero Carousel Section --- */
+        /* --- Hero --- */
         .hero {
             height: 100vh;
             position: relative;
@@ -93,99 +83,94 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: var(--primary-dark); /* Fallback */
+            background: var(--primary-dark);
         }
 
-        /* Background Slider Logic */
-        .hero-slider {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1;
-        }
+        .hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: heroCarousel 15s infinite; }
+        .slide:nth-child(1) { background-image: linear-gradient(var(--green-overlay), var(--green-overlay)), url('Therapis-2184.jpg'); animation-delay: 0s; }
+        .slide:nth-child(2) { background-image: linear-gradient(var(--green-overlay), var(--green-overlay)), url('Therapis-1984.jpg'); animation-delay: 5s; }
+        .slide:nth-child(3) { background-image: linear-gradient(var(--green-overlay), var(--green-overlay)), url('Therapis-2144.jpg'); animation-delay: 10s; }
 
-        .slide {
-            position: absolute;
-            width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            animation: heroCarousel 15s infinite;
-        }
+        @keyframes heroCarousel { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
 
-        /* INSERT YOUR PICTURES HERE */
-        .slide:nth-child(1) { 
-            background-image: linear-gradient(rgba(27, 81, 59, 0.3), rgba(27, 81, 59, 0.3)), url('Therapis-2184.jpg'); 
-            animation-delay: 0s;
-        }
-        .slide:nth-child(2) { 
-            background-image: linear-gradient(rgba(27, 81, 59, 0.3), rgba(27, 81, 59, 0.3)), url('Therapis-1984.jpg'); 
-            animation-delay: 5s;
-        }
-        .slide:nth-child(3) { 
-            background-image: linear-gradient(rgba(27, 81, 59, 0.3), rgba(27, 81, 59, 0.3)), url('Therapis-2144.jpg'); 
-            animation-delay: 10s;
-        }
-
-        @keyframes heroCarousel {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            33% { opacity: 1; }
-            43% { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        .hero-content { 
-            position: relative; 
-            z-index: 2; 
-            text-align: center; 
-            color: white; 
-        }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: white; }
         .hero-content img { max-width: 350px; margin-bottom: 20px; }
 
-        /* --- Callback Section --- */
+        /* --- Callback --- */
         .callback-section { padding: 80px 10%; background: var(--bg-light-green); }
         .callback-container { max-width: 900px; margin: 0 auto; background: var(--mint-pale); padding: 40px; border-radius: var(--br-custom); }
         .callback-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .callback-form input, .callback-form textarea {
-            padding: 18px;
-            border: 1px solid var(--sage-green);
-            border-radius: 10px 0 10px 0;
-            background: var(--bg-light-green);
-            font-size: 1rem;
-        }
+        .callback-form input, .callback-form textarea { padding: 18px; border: 1px solid var(--sage-green); border-radius: 10px 0 10px 0; background: var(--bg-light-green); font-size: 1rem; }
         .btn-call { background: var(--primary-dark); color: white; border: none; border-radius: 10px 0 10px 0; cursor: pointer; font-size: 1.1rem; transition: 0.3s; }
 
         /* --- Reviews --- */
         .reviews-section { background: var(--dusty-pink); padding: 100px 0; text-align: center; }
         .review-container { max-width: 1100px; margin: 0 auto; position: relative; height: 200px; overflow: hidden; }
-        .review-triplet {
-            position: absolute;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            opacity: 0;
-            animation: tripletFade 12s infinite;
-        }
+        .review-triplet { position: absolute; width: 100%; display: flex; justify-content: space-around; gap: 20px; opacity: 0; animation: tripletFade 12s infinite; }
         .review-triplet:nth-child(2) { animation-delay: 6s; }
         .review-box { background: var(--white); padding: 25px; border-radius: var(--br-custom); flex: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
-        @keyframes tripletFade {
-            0%, 5% { opacity: 0; transform: translateY(10px); }
-            10%, 45% { opacity: 1; transform: translateY(0); }
-            50%, 100% { opacity: 0; transform: translateY(-10px); }
+        @keyframes tripletFade { 0%, 5% { opacity: 0; transform: translateY(10px); } 10%, 45% { opacity: 1; transform: translateY(0); } 50%, 100% { opacity: 0; transform: translateY(-10px); } }
+
+        /* --- FAQ RESTRUCTURED --- */
+        .faq { 
+            padding: 0; /* Removed padding to allow image to hit edge */
+            background: var(--bg-light-rose); 
+            overflow: hidden;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Exact 50/50 split */
+            min-height: 600px;
+            align-items: stretch;
         }
 
-        /* --- FAQ & Floating --- */
-        .faq { padding: 100px 15%; background: var(--bg-light-rose); }
-        .faq h2 { margin-bottom: 50px; text-align: center; font-size: 2.5rem; }
-        .faq-item { background: var(--white); margin-bottom: 15px; border-radius: 15px 0 15px 0; border: 1px solid var(--mint-pale); }
-        .faq-question { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-list {
+            padding: 100px 10%; /* Padding for the text side */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .faq-list h2 { 
+            margin-bottom: 40px; 
+            text-align: left; /* Aligned with questions */
+            font-size: 2.5rem; 
+        }
+
+        .faq-image-side {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .faq-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .faq-image-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(27, 81, 59, 0.6);
+        }
+
+        .faq-item { background: var(--white); margin-bottom: 15px; border-radius: 15px 0 15px 0; border: 1px solid var(--mint-pale); overflow: hidden; transition: 0.3s; }
+        .faq-question { padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 400; font-size: 1.05rem; }
+        .faq-question i { transition: transform 0.3s ease; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; padding: 0 25px; color: #555; line-height: 1.6; }
+        .faq-item.active .faq-answer { max-height: 300px; padding-bottom: 25px; }
+        .faq-item.active .faq-question i { transform: rotate(45deg); }
+
+        /* --- Footer & Floats --- */
         .float-btn { position: fixed; bottom: 30px; z-index: 999; width: 55px; height: 55px; border-radius: 15px 0 15px 0; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .go-top { left: 30px; background: var(--mint-pale); color: var(--primary-dark); }
         .contact-float { right: 30px; background: var(--accent-terracotta); }
 
-        /* --- Footer --- */
         footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 1px solid var(--dusty-pink); }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 1.5fr 1fr 0.8fr; gap: 50px; }
         .footer-block { border-right: 1px solid var(--dusty-pink); padding-right: 30px; }
@@ -197,19 +182,20 @@
         .social-icons a { font-size: 1.8rem; color: var(--primary-dark); }
 
         @media (max-width: 1024px) {
+            .faq-grid { grid-template-columns: 1fr; }
+            .faq-image-side { height: 400px; order: -1; }
+            .faq-list { padding: 60px 5%; }
             .footer-grid, .callback-form { grid-template-columns: 1fr; }
-            .footer-block { border-right: none; padding-bottom: 30px; border-bottom: 1px solid var(--dusty-pink); }
             header nav { display: none; }
-            .review-triplet { flex-direction: column; position: static; animation: none; opacity: 1; }
+            .review-triplet { flex-direction: column; position: static; animation: none; opacity: 1; margin-bottom: 20px; }
+            .review-container { height: auto; overflow: visible; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="SecLogo.svg" alt="Therapis Logo">
-        </div>
+        <div class="logo-container"><img src="SecLogo.svg" alt="Therapis Logo"></div>
         <nav>
             <ul>
                 <li><a href="#" data-en="Main Page" data-el="Αρχική">Main Page</a></li>
@@ -231,7 +217,6 @@
             <div class="slide"></div>
             <div class="slide"></div>
         </div>
-
         <div class="hero-content">
             <img src="Logo.svg" alt="Therapis Center">
             <p style="font-size: 1.5rem; margin-bottom: 40px;" data-en="Professional Physiotherapy & Rehabilitation" data-el="Επαγγελματική Φυσικοθεραπεία & Αποκατάσταση">Professional Physiotherapy & Rehabilitation</p>
@@ -256,111 +241,104 @@
         <div class="review-container">
             <div class="review-triplet">
                 <div class="review-box">
-                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    
-                    <p data-en="A pain in my back is holding me back and my waist is bending, but Marilena rubbed me and the pain went away!" 
-                    data-el="Ένας πόνος στην πλάτη μου με ταλαιπωρεί και η μέση μου γέρνει, αλλά η Μαριλένα με έτριψε και ο πόνος έφυγε!">
-                    A pain in my back is holding me back and my waist is bending, but Marilena rubbed me and the pain went away!
-                    </p>
-                    
-                    <strong style="display: block; margin-top: 15px;" 
-                            data-en="- Ευάγγελος Σταματάκης" 
-                            data-el="- Ευάγγελος Σταματάκης">
-                            - Ευάγγελος Σ.
-                    </strong>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-en="A pain in my back is holding me back and my waist is bending, but Marilena rubbed me and the pain went away!" data-el="Ένας πόνος στην πλάτη μου με ταλαιπωρεί και η μέση μου γέρνει, αλλά η Μαριλένα με έτριψε και ο πόνος έφυγε!">A pain in my back is holding me back and my waist is bending, but Marilena rubbed me and the pain went away!</p>
+                    <strong style="display: block; margin-top: 15px;" data-en="- Ευάγγελος Σ." data-el="- Ευάγγελος Σ.">- Ευάγγελος Σ.</strong>
                 </div>
                 <div class="review-box">
-                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    
-                    <p data-en="The right place for physiotherapy. Friendly environment and excellent service!" 
-                    data-el="Το κατάλληλο μέρος για φυσικοθεραπεία. Φιλικό περιβάλλον και εξαιρετική εξυπηρέτηση!">
-                    The right place for physiotherapy. Friendly environment and excellent service!
-                    </p>
-                    
-                    <strong style="display: block; margin-top: 15px;" 
-                            data-en="- Niki A." 
-                            data-el="- Niki A.">
-                            - Niki A.
-                    </strong>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-en="The right place for physiotherapy. Friendly environment and excellent service!" data-el="Το κατάλληλο μέρος για φυσικοθεραπεία. Φιλικό περιβάλλον και εξαιρετική εξυπηρέτηση!">The right place for physiotherapy. Friendly environment and excellent service!</p>
+                    <strong style="display: block; margin-top: 15px;" data-en="- Niki A." data-el="- Niki A.">- Niki A.</strong>
                 </div>
                 <div class="review-box">
-                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    
-                    <p data-en="Excellent professionals with real interest. I highly recommend them!" 
-                    data-el="Εξαιρετικοί επαγγελματίες με πραγματικό ενδιαφέρον. Τους συστήνω ανεπιφύλακτα!">
-                    Excellent professionals with real interest. I highly recommend them!
-                    </p>
-                    
-                    <strong style="display: block; margin-top: 15px;" 
-                            data-en="- Δώρα Μ." 
-                            data-el="- Δώρα Μ.">
-                            - Δώρα Μ.
-                    </strong>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-en="Excellent professionals with real interest. I highly recommend them!" data-el="Εξαιρετικοί επαγγελματίες με πραγματικό ενδιαφέρον. Τους συστήνω ανεπιφύλακτα!">Excellent professionals with real interest. I highly recommend them!</p>
+                    <strong style="display: block; margin-top: 15px;" data-en="- Δώρα Μ." data-el="- Δώρα Μ.">- Δώρα Μ.</strong>
                 </div>
             </div>
             <div class="review-triplet">
                 <div class="review-box">
-                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    
-                    <p data-en="Excellent physiotherapy center with professionalism and care. The staff is highly trained and makes you feel comfortable from the first moment. I highly recommend it!" 
-                    data-el="Εξαιρετικό κέντρο φυσικοθεραπείας με επαγγελματισμό και φροντίδα. Το προσωπικό είναι άρτια εκπαιδευμένο και σε κάνει να νιώθεις άνετα από την πρώτη στιγμή. Το συνιστώ ανεπιφύλακτα!">
-                    Excellent physiotherapy center with professionalism and care. The staff is highly trained and makes you feel comfortable from the first moment. I highly recommend it!
-                    </p>
-                    
-                    <strong style="display: block; margin-top: 15px;" 
-                            data-en="- Φωτεινή Π." 
-                            data-el="- Φωτεινή Π.">
-                            - Φωτεινή Π.
-                    </strong>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-en="Excellent physiotherapy center with professionalism and care. I highly recommend it!" data-el="Εξαιρετικό κέντρο φυσικοθεραπείας με επαγγελματισμό και φροντίδα. Το συνιστώ ανεπιφύλακτα!">Excellent physiotherapy center with professionalism and care. I highly recommend it!</p>
+                    <strong style="display: block; margin-top: 15px;" data-en="- Φωτεινή Π." data-el="- Φωτεινή Π.">- Φωτεινή Π.</strong>
                 </div>
                 <div class="review-box">
-                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    
-                    <p data-en="European-level knowledge and professionalism in the most beautiful corner of Europe" 
-                    data-el="Γνώσεις και επαγγελματισμός ευρωπαϊκού επιπέδου στην πιο όμορφη γωνιά της Ευρώπης">
-                    European-level knowledge and professionalism in the most beautiful corner of Europe
-                    </p>
-                    
-                    <strong style="display: block; margin-top: 15px;" 
-                            data-en="- Lampros K." 
-                            data-el="- Lampros K.">
-                            - Lampros K.
-                    </strong>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-en="European-level knowledge and professionalism in the most beautiful corner of Europe" data-el="Γνώσεις και επαγγελματισμός ευρωπαϊκού επιπέδου στην πιο όμορφη γωνιά της Ευρώπης">European-level knowledge and professionalism in the most beautiful corner of Europe</p>
+                    <strong style="display: block; margin-top: 15px;" data-en="- Lampros K." data-el="- Lampros K.">- Lampros K.</strong>
                 </div>
                 <div class="review-box">
-                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    
-                    <p data-en="The best physiotherapists! Thank you very much for everything!!" 
-                    data-el="Οι καλύτεροι φυσικοθεραπευτές! Ευχαριστώ πολύ για όλα!">
-                    The best physiotherapists! Thank you very much for everything!!
-                    </p>
-                    
-                    <strong style="display: block; margin-top: 15px;" 
-                            data-en="- Joan C." 
-                            data-el="- Joan C.">
-                            - Joan C.
-                    </strong>
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-en="The best physiotherapists! Thank you very much for everything!!" data-el="Οι καλύτεροι φυσικοθεραπευτές! Ευχαριστώ πολύ για όλα!">The best physiotherapists! Thank you very much for everything!!</p>
+                    <strong style="display: block; margin-top: 15px;" data-en="- Joan C." data-el="- Joan C.">- Joan C.</strong>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="faq">
-        <h2 data-en="Frequently asked questions" data-el="Συχνές ερωτήσεις">Frequently Asked Questions</h2>
-        <div class="faq-item"><div class="faq-question">How long does each session last? <i class="fas fa-plus"></i></div></div>
-        <div class="faq-item"><div class="faq-question">What should I wear to my first visit? <i class="fas fa-plus"></i></div></div>
+        <div class="faq-grid">
+            <div class="faq-list">
+                <h2 data-en="Frequently Asked Questions" data-el="Συχνές Ερωτήσεις">Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-en="How long does each session last?" data-el="Πόσο διαρκεί κάθε συνεδρία;">How long does each session last?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-en="Typically, a session lasts between 45 to 60 minutes. This ensures enough time for both manual therapy and specialized exercises." 
+                           data-el="Συνήθως, μια συνεδρία διαρκεί από 45 έως 60 λεπτά. Αυτό εξασφαλίζει αρκετό χρόνο τόσο για τη χειροθεραπεία όσο και για ασκήσεις.">
+                           Typically, a session lasts between 45 to 60 minutes. This ensures enough time for both manual therapy and specialized exercises.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-en="What should I wear to my first visit?" data-el="Τι πρέπει να φοράω στην πρώτη μου επίσκεψη;">What should I wear to my first visit?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-en="We recommend wearing comfortable, loose-fitting clothing or athletic wear. This allows our therapists to easily access the area being treated." 
+                           data-el="Σας προτείνουμε να φοράτε άνετα, χαλαρά ρούχα ή αθλητική ενδυμασία. Αυτό επιτρέπει στους θεραπευτές μας να έχουν εύκολη πρόσβαση στην περιοχή.">
+                           We recommend wearing comfortable, loose-fitting clothing or athletic wear. This allows our therapists to easily access the area being treated.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-en="Do I need a doctor's referral?" data-el="Χρειάζομαι παραπεμπτικό γιατρού;">Do I need a doctor's referral?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-en="While a referral is helpful, you can book an assessment directly with us. We will evaluate your condition and coordinate with your physician if necessary." 
+                           data-el="Αν και ένα παραπεμπτικό είναι χρήσιμο, μπορείτε να κλείσετε μια αξιολόγηση απευθείας μαζί μας. Θα αξιολογήσουμε την κατάστασή σας.">
+                           While a referral is helpful, you can book an assessment directly with us. We will evaluate your condition and coordinate with your physician if necessary.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-en="How many sessions will I need?" data-el="Πόσες συνεδρίες θα χρειαστώ;">How many sessions will I need?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-en="The number of sessions depends on your specific condition and recovery goals. After the first evaluation, we will provide a personalized treatment plan." 
+                           data-el="Ο αριθμός των συνεδριών εξαρτάται από τη συγκεκριμένη πάθηση και τους στόχους σας. Μετά την πρώτη αξιολόγηση, θα σας δώσουμε ένα πλάνο.">
+                           The number of sessions depends on your specific condition and recovery goals. After the first evaluation, we will provide a personalized treatment plan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-image-side">
+                <img src="Therapis-2184.jpg" alt="Physiotherapy Session">
+                <div class="faq-image-overlay"></div>
+            </div>
+        </div>
     </section>
 
     <a href="#" class="float-btn go-top"><i class="fas fa-chevron-up"></i></a>
@@ -398,8 +376,8 @@
             <div class="footer-block">
                 <p><strong data-en="Follow Us" data-el="Ακολουθήστε Μας">Follow Us</strong></p>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.instagram.com/therapis.physiocenter/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/therapis.physiocenter/"><i class="fab fa-facebook-square"></i></a>
                 </div>
             </div>
         </div>
@@ -410,7 +388,6 @@
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'el' : 'en';
             document.querySelectorAll('[data-en]').forEach(el => {
-                // Ensure we only touch elements that actually have text content to change
                 if (el.childNodes[0] && el.childNodes[0].nodeType === 3) {
                     el.childNodes[0].textContent = el.getAttribute('data-' + currentLang);
                 }
@@ -419,6 +396,16 @@
                 el.placeholder = el.getAttribute('data-' + currentLang + '-ph');
             });
         }
+
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 </html>
