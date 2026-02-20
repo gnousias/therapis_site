@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Therapis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Contact Specific Styling */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            padding: 80px 10%;
+            background: var(--bg-light-green);
+        }
+
+        .contact-info-card {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 40px;
+            border-radius: var(--br-custom);
+            height: fit-content;
+        }
+
+        .contact-info-card h2 { margin-bottom: 25px; color: var(--mint-pale); }
+        .info-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
+        .info-item i { color: var(--soft-rose); margin-top: 5px; }
+
+        .appointment-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--br-custom);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group { display: flex; flex-direction: column; margin-bottom: 20px; }
+        .form-group.full { grid-column: span 2; }
+
+        .form-group label { margin-bottom: 8px; font-weight: 400; font-size: 0.9rem; }
+        
+        .form-group input, .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid var(--mint-pale);
+            border-radius: 10px 0 10px 0;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-terracotta);
+            background: var(--bg-light-green);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: var(--accent-terracotta);
+            color: white;
+            border-radius: var(--br-custom);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        @media (max-width: 900px) {
+            .contact-container { grid-template-columns: 1fr; padding: 40px 5%; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container"><a href="#"><img src="SecLogo.svg" alt="Therapis Logo"></a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-en="Main Page" data-el="Αρχική">Main Page</a></li>
+                <li class="has-dropdown">
+                    <a href="#" data-en="Services" data-el="Υπηρεσίες">Services</a>
+                    <ul class="dropdown">
+                        <li><a href="pelvic_index.html" data-en="Pelvic Floor" data-el="Πυελικό Έδαφος">Pelvic Floor</a></li>
+                        <li><a href="therapis_pro.html" data-en="Therapis pro (Prevention & physical wellness)" data-el="Therapis pro (Πρόληψη & σωματική Ευεξία)">Therapis pro (Prevention & physical wellness)</a></li>
+                        <li><a href="therap_massage.html" data-en="Therapeutic massage" data-el="Θεραπευτική μάλαξη">Therapeutic massage</a></li>
+                        <li><a href="musc_physio.html" data-en="Musculoskeletal physiotherapy" data-el="Μυοσκελετική φυσικοθεραπεία">Musculoskeletal physiotherapy</a></li>
+                        <li><a href="sport_injuries.html" data-en="Sports injuries" data-el="Αθλητικές κακώσεις">Sports injuries</a></li>
+                        <li><a href="neuro_rehab.html" data-en="Neurological rehabilitation" data-el="Νευρολογική αποκατάσταση">Neurological rehabilitation</a></li>
+                        <li><a href="geriatric.html" data-en="Geriatric physiotherapy" data-el="Γηριατρική φυσικοθεραπεία">Geriatric physiotherapy</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="#" data-en="Techniques" data-el="Τεχνικές">Techniques</a>
+                    <ul class="dropdown">
+                        <li><a href="manual-therapy.html" data-en="Manual Therapy" data-el="Manual Therapy">Manual Therapy</a></li>
+                        <li><a href="dry-needling.html" data-en="Dry Needling" data-el="Ξηρά Βελόνα">Dry Needling</a></li>
+                        <li><a href="tecar.html" data-en="Tecar Therapy" data-el="Θεραπεία Tecar">Tecar Therapy</a></li>
+                        <li><a href="kinesio.html" data-en="Kinesio Taping" data-el="Kinesio Taping">Kinesio Taping</a></li>
+                        <li><a href="cupping.html" data-en="Cupping Therapy" data-el="Βεντούζες">Cupping Therapy</a></li>
+                        <li><a href="acupuncture.html" data-en="Acupuncture" data-el="Βελονισμός">Acupuncture</a></li>
+                        <li><a href="shockwave.html" data-en="Shockwave Therapy" data-el="Κρουστικός Υπέρηχος">Shockwave Therapy</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="about.html" data-en="About Us" data-el="Ποιοί Είμαστε">About Us</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#center" data-en="Therapis Physiocenter" data-el="Therapis Physiocenter">Therapis Physiocenter</a></li>
+                        <li class="has-sub-menu">
+                            <a href="about.html#team" data-en="Scientific Leads ›" data-el="Επιστημονικά Υπεύθυνοι ›">Scientific Leads ›</a>
+                            <ul class="sub-menu">
+                                <li><a href="about.html#lead-1" data-en="Marilena Roukounaki" data-el="Μαριλένα Ρουκουνάκη">Marilena Roukounaki</a></li>
+                                <li><a href="about.html#lead-2" data-en="Chrysostomos Pazaridis" data-el="Χρυσόστομος Παζαρίδης">Chrysostomos Pazaridis</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="contact_us.html" data-en="Contact" data-el="Επικοινωνία">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="lang-toggle" onclick="toggleLanguage()">EN | EL</div>
+            <a href="#" class="btn-main" data-en="Make an appointment" data-el="Κλείστε Ραντεβού">Make an appointment</a>
+        </div>
+    </header>
+
+    <section class="sub-hero">
+        <h1 style="font-size: 3.5rem;" data-en="Contact Us" data-el="Επικοινωνία">Contact Us</h1>
+    </section>
+
+    <div class="contact-container">
+        <div class="contact-info-card">
+            <h2 data-en="Get in Touch" data-el="Επικοινωνήστε">Get in Touch</h2>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p data-en="Kon. Petraki 21, Mires 704 00" data-el="Κων. Πετράκη 21, Μοίρες 704 00">Kon. Petraki 21, Mires 704 00</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <p>+30 6948772692</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <p>therapis.physiocenter@gmail.com</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <p data-en="Mon - Fri: 09:00 - 21:00" data-el="Δευ - Παρ: 09:00 - 21:00">Mon - Fri: 09:00 - 21:00</p>
+            </div>
+        </div>
+
+        <div class="appointment-form">
+            <h2 style="margin-bottom: 20px; color: var(--primary-dark);" data-en="Book an Appointment" data-el="Κλείστε Ραντεβού">Book an Appointment</h2>
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label data-en="Full Name" data-el="Ονοματεπώνυμο">Full Name</label>
+                        <input type="text" name="name" required placeholder="Name Surname">
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Phone Number" data-el="Τηλέφωνο">Phone Number</label>
+                        <input type="tel" name="phone" required placeholder="+30...">
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Preferred Date" data-el="Επιθυμητή Ημερομηνία">Preferred Date</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Reason for Visit" data-el="Αιτία Επίσκεψης">Reason for Visit</label>
+                        <select name="service" style="padding: 12px; border: 1px solid var(--mint-pale); border-radius: 10px 0 10px 0;">
+                            <option value="General">General Consultation</option>
+                            <option value="Pelvic Floor">Pelvic Floor</option>
+                            <option value="Manual Therapy">Manual Therapy</option>
+                        </select>
+                    </div>
+                    <div class="form-group full">
+                        <label data-en="Symptoms / Information" data-el="Συμπτώματα / Πληροφορίες">Symptoms / Information</label>
+                        <textarea name="message" rows="4" placeholder="Describe your condition..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn" data-en="Send Request" data-el="Αποστολή Αιτήματος">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <section style="height: 400px; width: 100%;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.5624306464588!2d24.87317966964213!3d35.050495196190305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149b1f3542fbb0c3%3A0x564b942c73fc3b51!2zzprOrc69z4TPgc6_IM6mz4XPg865zrrOv864zrXPgc6xz4DOtc6vzrHPgiBUaGVyYXBpcyAtIFBoeXNpbyBDZW50ZXIgVGhlcmFwaXM!5e0!3m2!1sen!2sgr!4v1771498447259!5m2!1sen!2sgr" 
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <a href="#" class="float-btn go-top"><i class="fas fa-chevron-up"></i></a>
+    <a href="tel:+306948772692" class="contact-float float-btn"><i class="fas fa-phone-alt"></i></a>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-block">
+                <div class="footer-logo"><a href="#"><img src="Logo.svg" alt="Therapis"></a></div>
+                <div class="footer-links">
+                    <a href="#" data-en="Terms & Conditions" data-el="Όροι & Προϋποθέσεις">Terms & Conditions</a>
+                    <a href="#" data-en="Privacy Policy" data-el="Πολιτική Απορρήτου">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-block">
+                <p>📍 <strong data-en="Location: Kon. Petraki 21, Mires 704 00" data-el="Τοποθεσία: Κων. Πετράκη 21, Μοίρες 704 00">Location: Kon. Petraki 21, Mires 704 00</strong></p>
+                <p>📞 <a href="tel:+306948772692"></a>+30 6948772692</p>
+                <p>📧 therapis.physiocenter@gmail.com</p>
+                <div class="map-snippet">
+                    <iframe width="90%" height="90%" frameborder="0" style="border:0" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.5624306464588!2d24.87317966964213!3d35.050495196190305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149b1f3542fbb0c3%3A0x564b942c73fc3b51!2zzprOrc69z4TPgc6_IM6mz4XPg865zrrOv864zrXPgc6xz4DOtc6vzrHPgiBUaGVyYXBpcyAtIFBoeXNpbyBDZW50ZXIgVGhlcmFwaXM!5e0!3m2!1sen!2sgr!4v1771498447259!5m2!1sen!2sgr" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="footer-block">
+                <p>📅 <strong data-en="Working Hours" data-el="Ωράριο Λειτουργίας">Working Hours</strong></p>
+                <table style="width:100%; margin-top: 15px; border-collapse: collapse;">
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Monday" data-el="Δευτέρα">Monday</td><td>09:00 - 21:00</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Tuesday" data-el="Τρίτη">Tuesday</td><td>09:00 - 21:00</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Wednesday" data-el="Τετάρτη">Wednesday</td><td>09:00 - 21:00</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Thursday" data-el="Πέμπτη">Thursday</td><td>09:00 - 21:00</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Friday" data-el="Παρασκευή">Friday</td><td>09:00 - 21:00</td></tr>
+                </table>
+            </div>
+            <div class="footer-block">
+                <p><strong data-en="Follow Us" data-el="Ακολουθήστε Μας">Follow Us</strong></p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/therapis.physiocenter/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/therapis.physiocenter/"><i class="fab fa-facebook-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Initialize language from localStorage or default to 'en'
+        let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
+        // 2. Run once on page load to set the correct language immediately
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+        });
+
+        function toggleLanguage() {
+            // Switch language
+            currentLang = currentLang === 'en' ? 'el' : 'en';
+            
+            // Save the choice to the browser's memory
+            localStorage.setItem('selectedLanguage', currentLang);
+            
+            // Apply to the page
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            // Update all text elements with data-en/data-el
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (el.childNodes[0] && el.childNodes[0].nodeType === 3) {
+                    el.childNodes[0].textContent = el.getAttribute('data-' + lang);
+                } else if (el.tagName === 'A' || el.tagName === 'SPAN' || el.tagName === 'BUTTON') {
+                    // Fallback for elements where the text isn't a direct child node
+                    el.textContent = el.getAttribute('data-' + lang);
+                }
+            });
+
+            // Update all placeholders (form inputs)
+            document.querySelectorAll('[data-en-ph]').forEach(el => {
+                el.placeholder = el.getAttribute('data-' + lang + '-ph');
+            });
+
+            // Optional: Update the toggle button text itself if you want
+            // const toggleBtn = document.querySelector('.lang-toggle');
+            // if(toggleBtn) toggleBtn.textContent = lang === 'en' ? 'EN | EL' : 'EL | EN';
+        }
+
+        // FAQ Toggle Logic (Keeping this here so it stays functional)
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
