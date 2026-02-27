@@ -7,6 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your Public Key
+        })();
+    </script>
     <style>
         /* Contact Specific Styling */
         .contact-container {
@@ -114,6 +120,17 @@
                     </ul>
                 </li>
                 <li class="has-dropdown">
+                    <a href="#" data-en="Technological Equipment" data-el="Τεχνολογικός Εξοπλισμός">Technological Equipment</a>
+                    <ul class="dropdown">
+                        <li><a href="tecar-therapy.html" data-en="Tecar Therapy" data-el="Μαγνητικός Διεγέρτης (FMS)">Tecar Therapy</a></li>
+                        <li><a href="laser-therap.html" data-en="High Power Laser" data-el="Πρεσσοθεραπεία">High Power Laser</a></li>
+                        <li><a href="tecar-therapy.html" data-en="Tecar Therapy" data-el="Θεραπεία Tecar">Tecar Therapy</a></li>
+                        <li><a href="heat-ice.html" data-en="Heat Therapy and Ice Therapy" data-el="Θερμοθεραπεία & Παγοθεραπεία">Heat Therapy and Ice Therapy</a></li>
+                        <li><a href="electro-therap.html" data-en="Electrotherapy (TENS / Interference)" data-el="Ηλεκτροθεραπεία (TENS / Interferential)">Electrotherapy (TENS / Interference)</a></li>
+                        <li><a href="ultra-therap.html" data-en="Therapeutic Ultrasound" data-el="Θεραπευτικός Υπέρηχος">Therapeutic Ultrasound</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
                     <a href="about.html" data-en="About us" data-el="Ποιοί είμαστε">About us</a>
                     <ul class="dropdown">
                         <li><a href="about.html#center" data-en="Therapis Physiocenter" data-el="Therapis Physiocenter">Therapis Physiocenter</a></li>
@@ -144,7 +161,7 @@
             <h2 data-en="Get in Touch" data-el="Επικοινωνήστε">Get in Touch</h2>
             <div class="info-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <p data-en="Kon. Petraki 21, Mires 704 00" data-el="Κων. Πετράκη 21, Μοίρες 704 00">Kon. Petraki 21, Mires 704 00</p>
+                <p data-en="Kon. Petraki 21, Mires 704 00, Heraklion Crete" data-el="Κων. Πετράκη 21, Μοίρες 704 00, Ηράκλειο Κρήτη">Kon. Petraki 21, Mires 704 00, Heraklion Crete</p>
             </div>
             <div class="info-item">
                 <i class="fas fa-phone-alt"></i>
@@ -156,41 +173,30 @@
             </div>
             <div class="info-item">
                 <i class="fas fa-clock"></i>
-                <p data-en="Mon - Fri: 09:00 - 21:00" data-el="Δευ - Παρ: 09:00 - 21:00">Mon - Fri: 09:00 - 21:00</p>
+                <p data-en="Mon - Fri: 08:00 - 21:30" data-el="Δευ - Παρ: 08:00 - 21:30">Mon - Fri: 08:00 - 21:30</p>
             </div>
         </div>
 
         <div class="appointment-form">
             <h2 style="margin-bottom: 20px; color: var(--primary-dark);" data-en="Book an Appointment" data-el="Κλείστε Ραντεβού">Book an Appointment</h2>
-            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label data-en="Full Name" data-el="Ονοματεπώνυμο">Full Name</label>
-                        <input type="text" name="name" required placeholder="Name Surname">
+                <form action="send_appointment.php" method="POST" id="appointmentForm">
+                    <div class="form-grid">
+                        <input type="hidden" name="language" id="langInput" value="en"> 
+                        <div class="form-group">
+                            <label data-en="Full Name" data-el="Ονοματεπώνυμο">Full Name</label>
+                            <input type="text" name="name" required data-en-ph="Full Name" data-el-ph="Ονοματεπώνυμο">
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Phone Number" data-el="Τηλέφωνο">Phone Number</label>
+                            <input type="tel" name="phone" required data-en-ph="Phone Number" data-el-ph="Τηλέφωνο Επικοινωνίας">
+                        </div>
+                        <div class="form-group full">
+                            <label data-en="Symptoms / Information" data-el="Συμπτώματα / Πληροφορίες">Symptoms / Information</label>
+                            <textarea name="condition" rows="4" required data-en-ph="Describe your condition" data-el-ph="Περιγράψτε την πάθησή σας"></textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label data-en="Phone Number" data-el="Τηλέφωνο">Phone Number</label>
-                        <input type="tel" name="phone" required placeholder="+30...">
-                    </div>
-                    <div class="form-group">
-                        <label data-en="Preferred Date" data-el="Επιθυμητή Ημερομηνία">Preferred Date</label>
-                        <input type="date" name="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label data-en="Reason for Visit" data-el="Αιτία Επίσκεψης">Reason for Visit</label>
-                        <select name="service" style="padding: 12px; border: 1px solid var(--mint-pale); border-radius: 10px 0 10px 0;">
-                            <option value="General">General Consultation</option>
-                            <option value="Pelvic Floor">Pelvic Floor</option>
-                            <option value="Manual Therapy">Manual Therapy</option>
-                        </select>
-                    </div>
-                    <div class="form-group full">
-                        <label data-en="Symptoms / Information" data-el="Συμπτώματα / Πληροφορίες">Symptoms / Information</label>
-                        <textarea name="message" rows="4" placeholder="Describe your condition..."></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn" data-en="Send Request" data-el="Αποστολή Αιτήματος">Send Request</button>
-            </form>
+                    <button type="submit" class="submit-btn" data-en="Send Request" data-el="Αποστολή Αιτήματος">Send Request</button>
+                </form>
         </div>
     </div>
 
@@ -235,6 +241,7 @@
                 <div class="social-icons">
                     <a href="https://www.instagram.com/therapis.physiocenter/"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/therapis.physiocenter/"><i class="fab fa-facebook-square"></i></a>
+                    <a href="viber://contact?number=%2B306948772692"><i class="fab fa-viber"></i> </a>
                 </div>
             </div>
         </div>
@@ -271,6 +278,8 @@
                 }
             });
 
+            document.getElementById('langInput').value = lang;
+
             // Update all placeholders (form inputs)
             document.querySelectorAll('[data-en-ph]').forEach(el => {
                 el.placeholder = el.getAttribute('data-' + lang + '-ph');
@@ -292,5 +301,40 @@
             });
         });
     </script>
+
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevents page reload
+
+        // Change button text to show it's working
+        const btn = this.querySelector('button');
+        const originalBtnText = btn.innerHTML;
+        btn.innerHTML = currentLang === 'en' ? 'Sending...' : 'Αποστολή...';
+
+        // Collect data for your Template
+        const templateParams = {
+            name: this.name.value,
+            phone: this.phone.value,
+            condition: this.condition.value,
+            language: document.getElementById('langInput').value
+        };
+
+        // Send via EmailJS
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            .then(function() {
+                // SUCCESS
+                alert(currentLang === 'en' ? 'Thank you! Your request has been sent.' : 'Ευχαριστούμε! Το αίτημά σας στάλθηκε.');
+                document.getElementById('appointmentForm').reset();
+                btn.innerHTML = originalBtnText;
+            }, function(error) {
+                // ERROR
+                alert(currentLang === 'en' ? 'Oops! Something went wrong.' : 'Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά.');
+                console.log('FAILED...', error);
+                btn.innerHTML = originalBtnText;
+            });
+        });     
+    </script>
+
 </body>
 </html>
+

@@ -32,7 +32,7 @@ body {
 /* --- Header --- */
 header {
     position: fixed;
-    top: 20px;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
@@ -191,27 +191,156 @@ nav ul li:hover .dropdown {
     box-shadow: 0 5px 15px rgba(121, 50, 31, 0.3);
 }
 
-/* --- Hero --- */
+/* --- Hero Section Restored --- */
 .hero {
-    height: 100vh;
-    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 80vh; 
+    min-height: 550px; 
+    background: var(--bg-light-green);
     overflow: hidden;
-    background: var(--primary-dark);
+    position: relative;
+    padding: 0;
 }
 
-.hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-.slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: heroCarousel 15s infinite; }
-.slide:nth-child(1) { background-image: linear-gradient(var(--green-overlay), var(--green-overlay)), url('Therapis-2184.jpg'); animation-delay: 0s; }
-.slide:nth-child(2) { background-image: linear-gradient(var(--green-overlay), var(--green-overlay)), url('Therapis-1984.jpg'); animation-delay: 5s; }
-.slide:nth-child(3) { background-image: linear-gradient(var(--green-overlay), var(--green-overlay)), url('Therapis-2144.jpg'); animation-delay: 10s; }
+/* Left Side: Content with Fade-In from Bottom */
+.hero-content {
+    flex: 0.8; 
+    z-index: 10;
+    padding: 0 5% 0 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Restore Fade-In Animation */
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out forwards;
+}
 
-@keyframes heroCarousel { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
+.content-wrapper {
+    max-width: 450px;
+}
 
-.hero-content { position: relative; z-index: 2; text-align: center; color: white; }
-.hero-content img { max-width: 350px; margin-bottom: 20px; }
+/* Scaled Down Logo */
+.hero-logo-main {
+    width: 190px; /* Compact size */
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.05rem;
+    color: var(--text-grey);
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* Right Side: Edge-to-Edge Slider */
+.hero-slider {
+    flex: 1.2;
+    height: 100%;
+    position: relative;
+    background-color: var(--bg-light-green);
+    
+    /* Apply rounding only to the top-left and bottom-left corners */
+    /* Syntax: top-left top-right bottom-right bottom-left */
+    border-radius: 0 0 30px 70px; 
+    
+    /* This is CRITICAL: it clips the images to the border of the container */
+    overflow: hidden; 
+    
+    /* Optional: add a slight margin to make the curve visible against the background */
+    margin-left: 20px; 
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 2;
+    animation: heroCarousel 15s infinite;
+    
+    /* Ensure the slides also follow the curve to prevent sharp edges during fades */
+    border-radius: 50px 0 0 50px;
+}
+
+/* Image Paths */
+.slide-3 { 
+    background-image: url('carousel_main_photos/Therapis-2478.jpg'); 
+    animation-delay: 10s;
+    background-position: center 35%; /* Focus on the top of the image */
+}
+
+.slide-2 { 
+    background-image: url('carousel_main_photos/Therapis-2525.jpg'); 
+    animation-delay: 5s; 
+    background-position: center 38%;
+}
+
+/* Head crop adjustment */
+.slide-1 { 
+    background-image: url('carousel_main_photos/Therapis-2624.jpg'); 
+    background-position: center top; /* Moves the image down slightly to show the head */
+}
+
+/* --- Restored Animations --- */
+
+/* Content Fade-in from Bottom */
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(40px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Carousel Logic (No Blending) */
+@keyframes heroCarousel {
+    0% { opacity: 0; }
+    /* Image stays invisible slightly longer to ensure the previous one is gone */
+    2% { opacity: 0; } 
+    /* Fade in faster */
+    7% { opacity: 1; }   
+    /* Stay visible longer */
+    30% { opacity: 1; }  
+    /* Fade out slightly slower */
+    35% { opacity: 0; }  
+    100% { opacity: 0; } 
+}
+
+/* Mobile Fix */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column-reverse;
+        height: auto;
+        padding-top: 100px;
+    }
+    .hero-content {
+        width: 100%;
+        padding: 40px 10%;
+        text-align: left;
+    }
+    .hero-slider {
+        width: 100%;
+        height: 400px;
+    }
+}
 
 /* --- Callback --- */
 .callback-section { padding: 80px 10%; background: var(--bg-light-green); }
