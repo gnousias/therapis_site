@@ -10,7 +10,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your Public Key
+            emailjs.init("guIynBSjLAhUJgMLc"); // Replace with your Public Key
         })();
     </script>
     <style>
@@ -320,7 +320,7 @@
         };
 
         // Send via EmailJS
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        emailjs.send("contact_service","template_u9ar3nh", templateParams)
             .then(function() {
                 // SUCCESS
                 alert(currentLang === 'en' ? 'Thank you! Your request has been sent.' : 'Ευχαριστούμε! Το αίτημά σας στάλθηκε.');
