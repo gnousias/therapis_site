@@ -7,6 +7,66 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // A reusable function for the modern "Therapis-style" alert
+        function showTherapisAlert(isSuccess) {
+            Swal.fire({
+                title: isSuccess ? 
+                    (currentLang === 'en' ? 'Sent!' : 'Εστάλη!') : 
+                    (currentLang === 'en' ? 'Error' : 'Σφάλμα'),
+                text: isSuccess ? 
+                    (currentLang === 'en' ? 'Thank you! Your request has been sent.' : 'Ευχαριστούμε! Το αίτημά σας στάλθηκε.') : 
+                    (currentLang === 'en' ? 'Something went wrong. Please try again.' : 'Κάτι πήγε στραβά. Δοκιμάστε ξανά.'),
+                icon: isSuccess ? 'success' : 'error',
+                confirmButtonColor: '#2c5f50', // Your brand green
+                background: '#fdfdfd'
+            });
+        }
+
+        // The core sending function
+        function sendTherapisEmail(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button');
+            const originalBtnText = btn.innerHTML;
+
+            // Visual feedback
+            btn.innerHTML = currentLang === 'en' ? 'Sending...' : 'Αποστολή...';
+            btn.disabled = true;
+
+            // Mapping fields - Using 'name' attributes from your HTML
+            const templateParams = {
+                name: form.elements['name'] ? form.elements['name'].value : form.elements[0].value,
+                phone: form.elements['phone'] ? form.elements['phone'].value : form.elements[1].value,
+                condition: form.elements['condition'] ? form.elements['condition'].value : form.elements[2].value,
+                language: typeof currentLang !== 'undefined' ? currentLang : 'el'
+            };
+
+            emailjs.send("contact_service", "template_u9ar3nh", templateParams)
+                .then(function() {
+                    showTherapisAlert(true);
+                    form.reset();
+                })
+                .catch(function(error) {
+                    showTherapisAlert(false);
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(function() {
+                    btn.innerHTML = originalBtnText;
+                    btn.disabled = false;
+                });
+        }
+
+        // Auto-attach to any form with these IDs
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('appointmentForm');
+            const mainPageForm = document.getElementById('callback-form');
+
+            if (contactForm) contactForm.addEventListener('submit', sendTherapisEmail);
+            if (mainPageForm) mainPageForm.addEventListener('submit', sendTherapisEmail);
+        });
+    </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
@@ -302,7 +362,7 @@
         });
     </script>
 
-    <script>
+    <!-- <script>
         document.getElementById('appointmentForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevents page reload
 
@@ -332,8 +392,9 @@
                 console.log('FAILED...', error);
                 btn.innerHTML = originalBtnText;
             });
-        });     
-    </script>
+        }); 
+        
+    </script> -->
 
 </body>
 </html>
