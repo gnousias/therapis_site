@@ -546,3 +546,93 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
     background: transparent !important;
     text-decoration: underline;
 }
+
+
+/* Services Section Styling */
+/* --- Services Section Styling --- */
+.services-preview {
+    padding: 80px 20px;
+    background-color: var(--primary-dark);
+}
+
+.section-title {
+    text-align: center;
+    color: var(--bg-light-green);
+    margin-bottom: 50px;
+    font-size: 2rem;
+}
+
+.services-grid {
+    display: grid;
+    /* Use 'auto-fit' with a fixed width, or flexbox, but keep them square */
+    grid-template-columns: repeat(auto-fit, 320px); 
+    gap: 40px;
+    justify-content: center; /* Centers the whole row of circles */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: var(--bg-light-green);
+    width: 320px;       /* Fixed width */
+    height: 320px;      /* Fixed height makes it a circle */
+    border-radius: 50%; /* This makes it a circle */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;      /* Added padding so text doesn't touch the edges */
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* Hover Effect: Minor scale */
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+}
+
+.service-img {
+    width: 80px;      /* Fixed size for the icon area */
+    height: 80px;     /* Fixed size */
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* Ensures the whole SVG is visible */
+    margin-bottom: 15px; /* Spacing between icon and title */
+}
+
+.service-content {
+    padding: 0; /* Content is handled by the flexbox in service-card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-content h3 {
+    color: #2c5f50;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.service-content p {
+    color: #777;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    max-width: 250px; /* Limits width so text doesn't hit circle edges */
+}
+
+.details-link {
+    margin-top: auto;
+    text-decoration: none;
+    color: #2c5f50;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+}
