@@ -846,3 +846,42 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         padding: 0 20px;
     }
 }
+
+/* Style for the Viber link to look like plain text in the contact card */
+.viber-link {
+    text-decoration: none; /* Removes the underline */
+    color: inherit;        /* Takes the color from the <p> or parent card */
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+/* Optional: Add a subtle color change on hover so users know it's a link */
+.viber-link:hover {
+    color: #7360f2; /* A soft Viber-purple or use var(--accent-terracotta) */
+    text-decoration: underline;
+}
+
+/* Removes blue color and underline from ALL contact links */
+.contact-link {
+    text-decoration: none;
+    color: inherit; /* Inherits the text color of the paragraph it's in */
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Optional: A subtle hover effect so users know it's a link */
+.contact-link:hover {
+    color: var(--bg-light-green); /* Or your brand green */
+    opacity: 0.8;
+    text-decoration: none; /* Keeps it clean even on hover */
+}
+
+/* Special fix for the Footer: ensures the footer links aren't forced to a weird color */
+footer .contact-link {
+    color: inherit; /* Or whatever your footer text color is */
+    margin-top: 2%;
+}
+
+footer .contact-link:hover {
+    color: var(--accent-terracotta); /* A lighter highlight for the dark footer */
+}
