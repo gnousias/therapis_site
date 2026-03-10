@@ -77,8 +77,11 @@
 <body>
 
     <header>
-        <div class="logo-container"><a href="#"><img src="SecLogo.svg" alt="Therapis Logo"></a></div>
-        <nav>
+        <div class="logo-container"><a href="index.html"><img src="SecLogo.svg" alt="Therapis Logo"></a></div>
+        <div class="menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="mainNav">
             <ul>
                 <li><a href="index.html" data-en="Main Page" data-el="Αρχική">Main Page</a></li>
                 <li class="has-dropdown">
@@ -98,10 +101,10 @@
                     <ul class="dropdown">
                         <li><a href="manual-therapy.html" data-en="Manual therapy" data-el="Χειροθεραπεία">Manual therapy</a></li>
                         <li><a href="therap_massage.html" data-en="Therapeutic massage" data-el="Θεραπευτική μάλαξη">Therapeutic massage</a></li>
-                        <li><a href="therap_massage.html" data-en="Cupping therapy" data-el="Βεντούζες">Cupping therapy</a></li>
+                        <li><a href="cupping.html" data-en="Cupping therapy" data-el="Βεντούζες">Cupping therapy</a></li>
                         <li><a href="dry-needling.html" data-en="Dry needling" data-el="Βελονισμός">Dry needling</a></li>
-                        <li><a href="dry-needling.html" data-en="Ergon technique" data-el="Τεχνική Ergon">Ergon technique</a></li>
-                        <li><a href="kinesio.html" data-en="Therapeutic exercise" data-el="Θεραπευτική άσκηση">Therapeutic exercise</a></li>
+                        <li><a href="ergon.html" data-en="Ergon technique" data-el="Τεχνική Ergon">Ergon technique</a></li>
+                        <li><a href="therap_exercise.html" data-en="Therapeutic exercise" data-el="Θεραπευτική άσκηση">Therapeutic exercise</a></li>
                         <li><a href="kinesio.html" data-en="Kinesio Taping" data-el="Kinesio Taping">Kinesio Taping</a></li>
                     </ul>
                 </li>
@@ -121,7 +124,7 @@
                     <ul class="dropdown">
                         <li><a href="about.html#center" data-en="Therapis Physiocenter" data-el="Therapis Physiocenter">Therapis Physiocenter</a></li>
                         <li class="has-sub-menu">
-                            <a href="about.html#team" data-en="Scientific Leads ›" data-el="Επιστημονικά Υπεύθυνοι ›">Scientific Leads ›</a>
+                            <a href="about.html#team" data-en="Physiotherapists ›" data-el="Φυσικοθεραπευτές ›">Physiotherapists ›</a>
                             <ul class="sub-menu">
                                 <li><a href="about.html#lead-1" data-en="Marilena Roukounaki" data-el="Μαριλένα Ρουκουνάκη">Marilena Roukounaki</a></li>
                                 <li><a href="about.html#lead-2" data-en="Chrysostomos Pazaridis" data-el="Χρυσόστομος Παζαρίδης">Chrysostomos Pazaridis</a></li>
@@ -202,6 +205,62 @@
                         Evidence-based treatment for spinal, joint...
                         </p>
                         <a href="musc_physio.html" class="details-link">
+                            <span data-en="More details" data-el="Περισσότερα">More details</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('assets/Leg_brown.svg');"></div>
+                    <div class="service-content">
+                        <h3 data-en="Therapis pro (Prevention & physical wellness)" data-el="Therapis pro (Πρόληψη και σωματική ευεξία)">Therapis pro (Prevention & physical wellness)</h3>
+                        <p data-en="Specialized rehabilitation for pelvic health and functional restoration." 
+                        data-el="Εξειδικευμένη αποκατάσταση για την υγεία της πυέλου και τη λειτουργική επαναφορά.">
+                        Specialized rehabilitation for pelvic health...
+                        </p>
+                        <a href="pelvic_index.html" class="details-link">
+                            <span data-en="More details" data-el="Περισσότερα">More details</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('assets/Runner_brown.svg');"></div>
+                    <div class="service-content">
+                        <h3 data-en="Sports injuries" data-el="Αθλητικές κακώσεις">Sports injuries</h3>
+                        <p data-en="Specialized rehabilitation for pelvic health and functional restoration." 
+                        data-el="Εξειδικευμένη αποκατάσταση για την υγεία της πυέλου και τη λειτουργική επαναφορά.">
+                        Specialized rehabilitation for pelvic health...
+                        </p>
+                        <a href="pelvic_index.html" class="details-link">
+                            <span data-en="More details" data-el="Περισσότερα">More details</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('assets/Wheelchair_brown.svg');"></div>
+                    <div class="service-content">
+                        <h3 data-en="Neurological rehabilitation" data-el="Νευρολογική αποκατάσταση">Neurological rehabilitation</h3>
+                        <p data-en="Specialized rehabilitation for pelvic health and functional restoration." 
+                        data-el="Εξειδικευμένη αποκατάσταση για την υγεία της πυέλου και τη λειτουργική επαναφορά.">
+                        Specialized rehabilitation for pelvic health...
+                        </p>
+                        <a href="pelvic_index.html" class="details-link">
+                            <span data-en="More details" data-el="Περισσότερα">More details</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('assets/Old_brown.svg');"></div>
+                    <div class="service-content">
+                        <h3 data-en="Geriatric physiotherapy" data-el="Γηριατρική φυσικοθεραπεία">Geriatric physiotherapy</h3>
+                        <p data-en="Specialized rehabilitation for pelvic health and functional restoration." 
+                        data-el="Εξειδικευμένη αποκατάσταση για την υγεία της πυέλου και τη λειτουργική επαναφορά.">
+                        Specialized rehabilitation for pelvic health...
+                        </p>
+                        <a href="pelvic_index.html" class="details-link">
                             <span data-en="More details" data-el="Περισσότερα">More details</span> <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -341,16 +400,14 @@
                 </div>
             </div>
             <div class="footer-block">
-                <p>📍 <strong data-en="Location: Kon. Petraki 21, Mires 704 00, Heraklion Crete" data-el="Τοποθεσία: Κων. Πετράκη 21, Μοίρες 704 00, Ηράκλειο Κρήτη">Location: Kon. Petraki 21, Mires 704 00, Heraklion Crete</strong></p>
-                <p>📞 <a href="tel:+306948772692"></a>+30 6948772692</p>
-                <p>📧 therapis.physiocenter@gmail.com</p>
+                <p><strong data-en="Location: Kon. Petraki 21, Mires 704 00, Heraklion Crete" data-el="Τοποθεσία: Κων. Πετράκη 21, Μοίρες 704 00, Ηράκλειο Κρήτη">Location: Kon. Petraki 21, Mires 704 00, Heraklion Crete</strong></p>
                 <div class="map-snippet">
                     <iframe width="90%" height="90%" frameborder="0" style="border:0" 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.5624306464588!2d24.87317966964213!3d35.050495196190305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149b1f3542fbb0c3%3A0x564b942c73fc3b51!2zzprOrc69z4TPgc6_IM6mz4XPg865zrrOv864zrXPgc6xz4DOtc6vzrHPgiBUaGVyYXBpcyAtIFBoeXNpbyBDZW50ZXIgVGhlcmFwaXM!5e0!3m2!1sen!2sgr!4v1771498447259!5m2!1sen!2sgr" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="footer-block">
-                <p>📅 <strong data-en="Working Hours (by appointment)" data-el="Ωράριο Λειτουργίας (κατόπιν ραντεβού)">Working Hours (by appointment)</strong></p>
+                <p><strong data-en="Working Hours (by appointment)" data-el="Ωράριο Λειτουργίας (κατόπιν ραντεβού)">Working Hours (by appointment)</strong></p>
                 <table style="width:100%; margin-top: 15px; border-collapse: collapse;">
                     <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Monday" data-el="Δευτέρα">Monday</td><td>08:00 - 21:30</td></tr>
                     <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Tuesday" data-el="Τρίτη">Tuesday</td><td>08:00 - 21:30</td></tr>
@@ -366,6 +423,9 @@
                     <a href="https://www.facebook.com/therapis.physiocenter/"><i class="fab fa-facebook-square"></i></a>
                     <a href="viber://contact?number=%2B306948772692"><i class="fab fa-viber"></i> </a>
                 </div>
+                <p></p>
+                <a data-en="Phone: +30 6948772692" data-el="Τηλέφωνο: +30 6948772692">Phone: +30 6948772692</a>
+                <p>therapis.physiocenter@gmail.com</p>
             </div>
         </div>
     </footer>
@@ -421,6 +481,13 @@
                 item.classList.toggle('active');
             });
         });
+    </script>
+
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        }
     </script>
 </body>
 </html>

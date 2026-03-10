@@ -3,42 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Therapis</title>
+    <title>Therapis Pro | Therapis</title>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .about-section { padding: 80px 10%; background: var(--white); }
-        .center-description { text-align: center; max-width: 800px; margin: 0 auto 100px auto; line-height: 1.8; }
-        
-        /* Bio Layout */
-        .bio-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 80px;
-            gap: 50px;
-        }
-        .bio-row.reverse { flex-direction: row-reverse; }
-        
-        .bio-image { flex: 1; }
-        .bio-image img {
-            width: 100%;
-            border-radius: 20px 0 20px 0;
-            box-shadow: 15px 15px 0px var(--mint-pale);
-            object-fit: cover;
-        }
-        
-        .bio-text { flex: 1; padding: 20px; font-size: 1.3rem;}
-        .bio-text h3 { color: var(--accent-terracotta); font-size: 2rem; margin-bottom: 15px; }
-        .bio-text h4 { color: var(--primary-dark); margin-bottom: 20px; font-weight: 300; }
-
-        @media (max-width: 850px) {
-            .bio-row, .bio-row.reverse { flex-direction: column; text-align: center; }
-            .bio-image img { box-shadow: none; }
-        }
-    </style>
 </head>
 <body>
+
     <header>
         <div class="logo-container"><a href="index.html"><img src="SecLogo.svg" alt="Therapis Logo"></a></div>
         <nav>
@@ -80,7 +51,7 @@
                     </ul>
                 </li>
                 <li class="has-dropdown">
-                    <a href="about.html" data-en="About us" data-el="Ποιοί είμαστε">About us</a>
+                    <a href="about.html" data-en="About Us" data-el="Ποιοί Είμαστε">About Us</a>
                     <ul class="dropdown">
                         <li><a href="about.html#center" data-en="Therapis Physiocenter" data-el="Therapis Physiocenter">Therapis Physiocenter</a></li>
                         <li class="has-sub-menu">
@@ -101,49 +72,46 @@
         </div>
     </header>
 
-    <section class="sub-hero">
-        <h1 style="font-size: 3.5rem;" data-en="About Our Center" data-el="Για το Κέντρο μας">About Our Center</h1>
+    <section class="sub-hero service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('service_photos/Therapis-9936_therap_massage.jpg');">
+        <h1 style="font-size: 3rem;" data-en="Therapeutic massage" data-el="Θεραπευτική μάλαξη">Therapeutic massage</h1>
     </section>
 
-    <section id="center" class="about-section">
-        <div class="center-description">
-            <h2 style="color: var(--primary-dark); margin-bottom: 30px; font-size: 2.5rem;" data-en="Our Vision" data-el="Το Όραμά μας">Our Vision</h2>
-            <p style="font-size: 1.3rem;" data-en="Having completed our first year of operation, Therapis Physiocenter has already established itself as a sanctuary for recovery in the heart of Mires. Founded with a vision to merge clinical excellence with a patient-centered approach, we treat every individual as a unique case, not just a symptom. In our first 12 months, we have helped hundreds of patients regain their mobility through evidence-based techniques and state-of-the-art equipment. Our journey has just begun, and our commitment to your health remains stronger than ever."
-               data-el="Συμπληρώνοντας τον πρώτο χρόνο λειτουργίας μας, το Therapis Physiocenter έχει ήδη καθιερωθεί ως ένας χώρος αποκατάστασης στην καρδιά των Μοιρών. Ιδρύθηκε με το όραμα να συνδυάσει την κλινική αριστεία με μια ανθρωποκεντρική προσέγγιση, αντιμετωπίζοντας κάθε άτομο ως μοναδική περίπτωση και όχι απλά ως ένα σύμπτωμα. Στους πρώτους 12 μήνες μας, βοηθήσαμε εκατοντάδες ασθενείς να ανακτήσουν την κινητικότητά τους μέσα από τεκμηριωμένες τεχνικές και εξοπλισμό τελευταίας τεχνολογίας. Το ταξίδι μας μόλις ξεκίνησε και η δέσμευσή μας για την υγεία σας παραμένει ισχυρότερη από ποτέ.">
-               Having completed our first year of operation, Therapis Physiocenter has already established itself as a sanctuary for recovery in the heart of Mires. Founded with a vision to merge clinical excellence with a patient-centered approach, we treat every individual as a unique case, not just a symptom. In our first 12 months, we have helped hundreds of patients regain their mobility through evidence-based techniques and state-of-the-art equipment. Our journey has just begun, and our commitment to your health remains stronger than ever.
-            </p>
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid var(--mint-pale); margin-bottom: 100px;">
-
-        <div id="team">
-            <h2 style="text-align: center; margin-bottom: 60px; font-size: 2.5rem;" data-en="Physiotherapists" data-el="Φυσικοθεραπευτές">Physiotherapists</h2>
-            
-            <div id="lead-1" class="bio-row">
-                <div class="bio-image">
-                    <img src="photo_bio/Maril_photo.jpg" alt="Scientific Lead 1">
-                </div>
-                <div class="bio-text">
-                    <h3 data-en="Marilena Roukounaki" data-el="Μαριλένα Ρουκουνάκη">Marilena Roukounaki</h3>
-                    <h4 data-en="Physiotherapist | Co-founder Therapis" data-el="Φυσικοθεραπεύτρια | Συνιδρύτρια Therapis">Physiotherapist | Co-founder Therapis</h4>
-                    <p data-en="Marilena Roukounaki is a graduate of the Department of Physiotherapy of the University of Patras. She works with athletes (football, cycling, runners, dancers, etc.). She has training in Ergon I (Basic) and II (Advanced) techniques, as well as in modern rehabilitation and strengthening methods through Blood Flow Restriction (BFR) with Kinetic Flossing, safely offering faster results in muscle injuries. She is specialized in the use of the painless dry needle technique (Dry Needling). Her special interest in Geriatric Physiotherapy was sealed with her scientific research on physical activity, mental health and functionality of the elderly, which is part of the international bibliography in PubMed. Finally, she holds official certification from KEDIVIM of the University of Patras in the rehabilitation of Pelvic Floor Dysfunctions (Levels I & II). At Therapis, like all our sessions, pelvic floor therapy takes place in a specially designed, private space, ensuring the absolute privacy and comfort required by the nature of this specific rehabilitation."
-                       data-el="Η Μαριλένα Ρουκουνάκη είναι απόφοιτη του Τμήματος Φυσικοθεραπείας του Πανεπιστημίου Πατρών. Ασχολείται με αθλητές (ποδοσφαιρου, ποδηλασίας, δρομείς, χορευτές κλπ). Διαθέτει εκπαίδευση στις τεχνικές Ergon I (Basic) και II (Advanced), καθώς και σε στις σύγχρονες μεθόδους αποκατάστασης και ενδυνάμωσης μέσω Blood Flow Restriction (BFR) με Kinetic Flossing, προσφέροντας με ασφάλεια ταχύτερα αποτελέσματα σε μυϊκές κακώσεις. Είναι εξειδικευμένη στην χρηση της ανώδυνης τεχνική με ξηρά βελόνα (Dry Needling). Το ιδιαίτερο ενδιαφέρον της για τη Γηριατρική Φυσικοθεραπεία επισφραγίστηκε με την επιστημονική της έρευνα πάνω στη φυσική δραστηριότητα, την ψυχική υγεία και  λειτουργικότητα των ηλικιωμένων, η οποία αποτελεί μέρος της διεθνούς βιβλιογραφίας στο PubMed. Τέλος, κατέχει επίσημη πιστοποίηση από το ΚΕΔΙΒΙΜ του Πανεπιστημίου Πατρών στην αποκατάσταση Δυσλειτουργιών Πυελικού Εδάφους (Επίπεδα Ι & ΙΙ). Στο Therapis,οπως όλες οι συνεδρίες μας ετσι και η θεραπεία του πυελικού εδάφους πραγματοποιείται σε ειδικά διαμορφωμένο, ιδιωτικό χώρο, διασφαλίζοντας την απόλυτη ιδιωτικότητα και την άνεση που απαιτεί η φύση της συγκεκριμένης αποκατάστασης.">
-                       Marilena Roukounaki is a graduate of the Department of Physiotherapy of the University of Patras. She works with athletes (football, cycling, runners, dancers, etc.). She has training in Ergon I (Basic) and II (Advanced) techniques, as well as in modern rehabilitation and strengthening methods through Blood Flow Restriction (BFR) with Kinetic Flossing, safely offering faster results in muscle injuries. She is specialized in the use of the painless dry needle technique (Dry Needling). Her special interest in Geriatric Physiotherapy was sealed with her scientific research on physical activity, mental health and functionality of the elderly, which is part of the international bibliography in PubMed. Finally, she holds official certification from KEDIVIM of the University of Patras in the rehabilitation of Pelvic Floor Dysfunctions (Levels I & II). At Therapis, like all our sessions, pelvic floor therapy takes place in a specially designed, private space, ensuring the absolute privacy and comfort required by the nature of this specific rehabilitation.
-                    </p>
-                </div>
+    <section class="service-details-section">
+        <div class="container service-flex-container">
+            <div class="service-main-image">
+                <img src="service_photos/Therapis-2499_therap_massage.jpg" alt="Therapeutic massage" class="responsive-img">
             </div>
-
-            <div id="lead-2" class="bio-row reverse">
-                <div class="bio-image">
-                    <img src="photo_bio/chris_photo.jpg" style="height: 5%;" alt="Scientific Lead 2">
-                </div>
-                <div class="bio-text">
-                    <h3 data-en="Chrysostomos Pazaridis" data-el="Χρυσόστομος Παζαρίδης">Chrysostomos Pazaridis</h3>
-                    <h4 data-en="Physiotherapist, MSc | Co-founder Therapis" data-el="Φυσικοθεραπευτής, MSc | Συνιδρυτής Therapis">Physiotherapist, MSc | Co-founder Therapis</h4>
-                    <p data-en="Chrysostomos Pazaridis is a graduate of the University of Patras and holds an MSc from the University of Birmingham, UK, one of the world's leading institutions in rehabilitation. He specializes in the Schroth method, the most recognized approach to the treatment of scoliosis and spinal deformities. With an emphasis on Manual Therapy and clinical assessment, he applies personalized protocols that combine international expertise with the advanced equipment of the Therapis center."
-                       data-el="Ο Χρυσόστομος Παζαρίδης είναι απόφοιτος του Πανεπιστημίου Πατρών και κάτοχος μεταπτυχιακού τίτλου σπουδών (MSc) από το University of Birmingham της Μεγάλης Βρετανίας, ένα από τα κορυφαία ιδρύματα παγκοσμίως στην αποκατάσταση. Έχει εξειδικευτεί στη μέθοδο Schroth, την πλέον αναγνωρισμένη προσέγγιση για τη θεραπεία της σκολίωσης και των παραμορφώσεων της σπονδυλικής στήλης. Με έμφαση στο Manual Therapy και την κλινική αξιολόγηση, εφαρμόζει εξατομικευμένα πρωτόκολλα που συνδυάζουν τη διεθνή τεχνογνωσία με τον προηγμένο εξοπλισμό του κέντρου Therapis.">
-                       Chrysostomos Pazaridis is a graduate of the University of Patras and holds an MSc from the University of Birmingham, UK, one of the world's leading institutions in rehabilitation. He specializes in the Schroth method, the most recognized approach to the treatment of scoliosis and spinal deformities. With an emphasis on Manual Therapy and clinical assessment, he applies personalized protocols that combine international expertise with the advanced equipment of the Therapis center.
+            <div class="service-text-content">
+                <h2 data-en="What is therapeutic massage?" data-el="Τι είναι η θεραπευτική μάλαξη;">What is therapeutic massage?</h2>
+                <p style="margin-bottom: 20px; font-size: large;" data-en="We begin with a detailed and careful medical history to record possible concerns, musculoskeletal or other health issues, identify any contraindications, and understand your needs.
+                        Through massage and targeted manual techniques, we aim to relieve muscle tension, improve blood circulation, and enhance tissue elasticity. You may choose a full-body massage or focus on a specific area (e.g., back only, legs only). Any technique selected by the therapist (see techniques and technological equipment) is applied at no extra cost.
+                        Therapeutic massage contributes to faster tissue recovery and immediate reduction of muscle fatigue."
+                data-el="Ξεκινώντας με ένα εκτενές και προσεκτικό ιστορικό καταγράφουμε τις πιθανές ανησυχίες, μυοσκελετικά ή άλλα προβλήματα υγείας, για να εντοπίσουμε πιθανές αντενδείξεις και να κατανοήσουμε τι χρειάζεστε. Με μάλαξη και την εφαρμογή στοχευμένων χειρισμών στοχεύουμε στην ανακούφιση από μυϊκές εντάσεις και τη βελτίωση της κυκλοφορίας του αίματος καθώς και της ελαστικότητας των ιστών. Μπορείτε να επιλέξετε μασάζ σε όλο το σώμα ή σε ένα συγκεκριμένο μέρος (π.χ. μόνο πλάτη, μόνο πόδια ) στο οποίο εφαρμόζεται οποιαδήποτε τεχνική κρίνει ο/η θεραπευτής/τρια, (δες τεχνικές και τεχνολογικός εξοπλισμός) χωρίς έξτρα κόστος.  Συμβάλλει στην ταχύτερη αποκατάσταση των ιστών και στην άμεση μείωση του μυϊκού κάματου.">
+                        We begin with a detailed and careful medical history to record possible concerns, musculoskeletal or other health issues, identify any contraindications, and understand your needs.
+                        Through massage and targeted manual techniques, we aim to relieve muscle tension, improve blood circulation, and enhance tissue elasticity. You may choose a full-body massage or focus on a specific area (e.g., back only, legs only). Any technique selected by the therapist (see techniques and technological equipment) is applied at no extra cost.
+                        Therapeutic massage contributes to faster tissue recovery and immediate reduction of muscle fatigue.
+                </p>
+                <div class="service-options">
+                    <p style="margin-bottom: 15px; font-size: 1.1rem; font-weight: 500;" 
+                    data-en="It is recommended both as a rehabilitation method and as a preventive measure for everyone — a top gift card choice. Options:" 
+                    data-el="Προτείνεται ως ένα από τα μέσα αποκατάστασης και τονιζεται ως μέσο πρόληψης για όλους - top επιλογή για δωροκάρτα! Επιλογές:">
+                    It is recommended both as a rehabilitation method and as a preventive measure for everyone — a top gift card choice. Options:
                     </p>
+
+                    <ul class="options-list">
+                        <li data-en="Full Body (1 hour)" 
+                            data-el="Full body (1h')">
+                            Full Body (1 hour)
+                        </li>
+                        <li data-en="Full Body + Pressotherapy (1.5 hours) – BEST-SELLING GIFT OPTION" 
+                            data-el="Full body + πρεσσοθεραπεία (1:30 h) BEST SELLER ΔΩΡΟ">
+                            Full Body + Pressotherapy (1.5 hours) – BEST-SELLING GIFT OPTION
+                        </li>
+                        <li data-en="Specific Body Area (30 min / 1 hour)" 
+                            data-el="Συγκεκριμένη περιοχή σώματος (30’/1h’)">
+                            Specific Body Area (30 min / 1 hour)
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
