@@ -885,3 +885,32 @@ footer .contact-link {
 footer .contact-link:hover {
     color: var(--accent-terracotta); /* A lighter highlight for the dark footer */
 }
+
+/* ---------- Gallery Row Adjustment like the one in pelvic ----------------- */
+.image-gallery-row {
+    gap: 30px; /* Adjust the space between the two images */
+}
+
+.image-gallery-row .service-main-image {
+    flex: 1; /* Forces both containers to grow equally */
+    width: 100%;
+}
+
+.image-gallery-row .service-main-image img {
+    width: 80%;
+    height: 400px; /* Optional: Set a fixed height for symmetry */
+    object-fit: cover; /* Ensures images fill the area without stretching */
+    border-radius: 15px; /* Keeps consistent with your medical theme */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Responsive: Stack them on mobile */
+@media (max-width: 768px) {
+    .image-gallery-row {
+        flex-direction: column;
+    }
+    
+    .image-gallery-row .service-main-image img {
+        height: 300px; /* Slightly shorter on mobile */
+    }
+}
