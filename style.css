@@ -78,9 +78,9 @@ nav ul li {
     padding: 10px 0;
 }
 
-.dropdown {
+/* .dropdown {
     position: absolute;
-    top: 100%; /* Sits exactly below the parent link */
+    top: 100%;  Sits exactly below the parent link 
     left: 0;
     background: rgba(236, 243, 234, 0.95);
     backdrop-filter: blur(15px);
@@ -96,7 +96,7 @@ nav ul li {
     display: flex;
     flex-direction: column;
     z-index: 1100;
-}
+} */
 
 /* --- Compact Dropdown Styles --- */
 .dropdown {
@@ -132,7 +132,7 @@ nav ul li:hover .dropdown {
 }
 
 .dropdown li a {
-    padding: 5px 18px;   /* Significantly reduced vertical padding (from 10px to 6px) */
+    padding: 2px 18px;   /* Significantly reduced vertical padding (from 10px to 6px) */
     display: block;
     font-size: 0.9rem;   /* Slightly smaller font for a compact look */
     white-space: nowrap; 
@@ -146,6 +146,114 @@ nav ul li:hover .dropdown {
 .dropdown li a:hover {
     background: var(--mint-pale);
     color: var(--accent-terracotta);
+}
+
+/* New sub hero */
+/* --- Sub-Hero Enhancements --- */
+.sub-hero {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 0 20px;
+}
+
+/* --- Service Detail Section --- */
+.service-details-section {
+    padding: 80px 10%;
+    background: var(--white);
+}
+
+.service-flex-container {
+    display: flex;
+    align-items: center;
+    gap: 60px; /* Space between image and text */
+}
+
+.service-main-image {
+    flex: 1; /* Takes 50% width */
+}
+
+.service-main-image img {
+    width: 80%;
+    height: auto;
+    border-radius: 20px; /* Rounded corners for a modern look */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.service-text-content {
+    flex: 1; /* Takes 50% width */
+    line-height: 1.8;
+}
+
+.service-text-content h2 {
+    color: var(--accent-terracotta);
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+}
+
+.service-tags {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.service-tags span {
+    background: var(--bg-light-green);
+    color: var(--primary-dark);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.options-list {
+    list-style: none; /* Remove default dots */
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
+.options-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* Custom Medical-style Bullet (Green Circle) */
+.options-list li::before {
+    content: "\f058"; /* FontAwesome check-circle icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #2c5f50; /* Your brand green */
+    font-size: 1.1rem;
+}
+
+/* Highlight the "Best Seller" text if you want */
+.options-list li:nth-child(2) {
+    font-weight: 500;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .service-flex-container {
+        flex-direction: column; /* Stacks image on top of text on tablets/phones */
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .service-details-section {
+        padding: 50px 20px;
+    }
 }
 
 /* Page Hero (Specific for Sub-pages) */
@@ -325,7 +433,7 @@ nav ul li:hover .dropdown {
 }
 
 /* Mobile Fix */
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
     .hero {
         flex-direction: column-reverse;
         height: auto;
@@ -340,7 +448,7 @@ nav ul li:hover .dropdown {
         width: 100%;
         height: 400px;
     }
-}
+} */
 
 /* --- Callback --- */
 .callback-section { padding: 80px 10%; background: var(--bg-light-green); }
@@ -522,33 +630,55 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
 
 /* --- Nested Dropdown Logic --- */
 /* Hide the sub-menu names by default */
+/* 1. Make the parent a reference point */
+.has-sub-menu {
+    position: relative; /* Essential so the sub-menu aligns to this item */
+}
+
+/* 2. Position the sub-menu sideways */
 .sub-menu {
     display: none;
     list-style: none;
-    padding-left: 15px; /* Indent the names */
-    background: rgba(0, 0, 0, 0.03);
+    position: absolute;
+    
+    /* Position it to the right of the parent */
+    top: 0;
+    left: 100%; 
+    
+    /* Look & Feel */
+    min-width: 200px;
+    background: rgba(236, 243, 234, 0.98);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    /* background: #ffffff;  Use a solid color so it's readable */
+    border-left: 3px solid var(--accent-terracotta); /* Subtle brand accent */
+    z-index: 100;
+    padding: 10px 0;
 }
 
-/* Show the sub-menu names only when hovering the parent 'Scientific Leads' li */
-.has-sub-menu:hover .sub-menu {
+/* 3. Show on hover */
+.has-sub-menu:hover > .sub-menu {
     display: block;
 }
 
-/* Style for the names to look distinct */
+/* 4. Refined Link Styles */
 .sub-menu li a {
     font-size: 0.85rem !important;
     color: var(--primary-dark);
-    padding: 5px 20px !important;
+    padding: 10px 10px !important;
+    display: block; /* Makes the whole area clickable */
+    white-space: nowrap; /* Prevents names from wrapping to a second line */
+    transition: all 0.3s ease;
 }
 
 .sub-menu li a:hover {
     color: var(--accent-terracotta) !important;
-    background: transparent !important;
-    text-decoration: underline;
+    background: rgba(0, 0, 0, 0.02) !important;
+    text-decoration: none !important;
+    padding-left: 25px !important; /* Slight "nudge" effect on hover */
 }
 
 
-/* Services Section Styling */
 /* --- Services Section Styling --- */
 .services-preview {
     padding: 80px 20px;
@@ -563,20 +693,21 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
 }
 
 .services-grid {
-    display: grid;
-    /* Use 'auto-fit' with a fixed width, or flexbox, but keep them square */
-    grid-template-columns: repeat(auto-fit, 320px); 
+    display: flex;         /* Change grid to flex */
+    flex-wrap: wrap;       /* Allows cards to move to the next row */
     gap: 40px;
-    justify-content: center; /* Centers the whole row of circles */
-    max-width: 1200px;
+    justify-content: center; /* This centers the 3 cards in the bottom row */
+    max-width: 1400px;      /* Increased to fit 4 cards across (4 x 320px + gaps) */
     margin: 0 auto;
 }
 
+/* Optional: Ensure circles don't shrink if the screen gets slightly smaller */
 .service-card {
+    flex: 0 0 320px;       /* Do not grow, do not shrink, stay 320px */
     background: var(--bg-light-green);
-    width: 320px;       /* Fixed width */
-    height: 320px;      /* Fixed height makes it a circle */
-    border-radius: 50%; /* This makes it a circle */
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -585,7 +716,7 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;      /* Added padding so text doesn't touch the edges */
+    padding: 20px;
     border: 1px solid rgba(0,0,0,0.03);
 }
 
@@ -635,4 +766,83 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
     font-size: 0.85rem;
     display: inline-flex;
     align-items: center;
+}
+
+
+/* Toggle to mobile view */
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablet & Small Desktop (Below 1100px) */
+@media (max-width: 1100px) {
+    .services-grid {
+        max-width: 800px; /* Only fits 2-3 cards across */
+    }
+}
+
+/* Mobile Devices (Below 768px) */
+@media (max-width: 768px) {
+    /* 1. Header & Nav */
+    .menu-toggle {
+        display: block; /* Show the hamburger icon */
+        font-size: 1.5rem;
+        color: #2c5f50;
+        cursor: pointer;
+    }
+
+    nav {
+        display: none; /* Hide original nav */
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    nav.active {
+        display: block; /* Show when toggled */
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .hide-mobile {
+        display: none; /* Hide the big button on mobile header to save space */
+    }
+
+    /* 2. Hero Section */
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding-top: 100px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    /* 3. Circular Service Cards */
+    .service-card {
+        width: 280px;  /* Slightly smaller circles for mobile */
+        height: 280px;
+        flex: 0 0 280px;
+    }
+
+    /* 4. FAQ & Footer */
+    .faq-grid, .footer-grid {
+        grid-template-columns: 1fr; /* Stack everything in 1 column */
+        gap: 30px;
+    }
+
+    .faq-image-side {
+        display: none; /* Hide side image on mobile for faster loading */
+    }
+
+    /* 5. Callback Form */
+    .callback-form {
+        flex-direction: column;
+        padding: 0 20px;
+    }
 }
