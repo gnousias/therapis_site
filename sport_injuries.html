@@ -3,150 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Therapis</title>
+    <title>Therapis Pro | Therapis</title>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        // A reusable function for the modern "Therapis-style" alert
-        function showTherapisAlert(isSuccess) {
-            Swal.fire({
-                title: isSuccess ? 
-                    (currentLang === 'en' ? 'Sent!' : 'Εστάλη!') : 
-                    (currentLang === 'en' ? 'Error' : 'Σφάλμα'),
-                text: isSuccess ? 
-                    (currentLang === 'en' ? 'Thank you! Your request has been sent.' : 'Ευχαριστούμε! Το αίτημά σας στάλθηκε.') : 
-                    (currentLang === 'en' ? 'Something went wrong. Please try again.' : 'Κάτι πήγε στραβά. Δοκιμάστε ξανά.'),
-                icon: isSuccess ? 'success' : 'error',
-                confirmButtonColor: '#2c5f50', // Your brand green
-                background: '#fdfdfd'
-            });
-        }
-
-        // The core sending function
-        function sendTherapisEmail(e) {
-            e.preventDefault();
-            const form = e.target;
-            const btn = form.querySelector('button');
-            const originalBtnText = btn.innerHTML;
-
-            // Visual feedback
-            btn.innerHTML = currentLang === 'en' ? 'Sending...' : 'Αποστολή...';
-            btn.disabled = true;
-
-            // Mapping fields - Using 'name' attributes from your HTML
-            const templateParams = {
-                name: form.elements['name'] ? form.elements['name'].value : form.elements[0].value,
-                phone: form.elements['phone'] ? form.elements['phone'].value : form.elements[1].value,
-                condition: form.elements['condition'] ? form.elements['condition'].value : form.elements[2].value,
-                language: typeof currentLang !== 'undefined' ? currentLang : 'el'
-            };
-
-            emailjs.send("contact_service", "template_u9ar3nh", templateParams)
-                .then(function() {
-                    showTherapisAlert(true);
-                    form.reset();
-                })
-                .catch(function(error) {
-                    showTherapisAlert(false);
-                    console.error('EmailJS Error:', error);
-                })
-                .finally(function() {
-                    btn.innerHTML = originalBtnText;
-                    btn.disabled = false;
-                });
-        }
-
-        // Auto-attach to any form with these IDs
-        document.addEventListener('DOMContentLoaded', () => {
-            const contactForm = document.getElementById('appointmentForm');
-            const mainPageForm = document.getElementById('callback-form');
-
-            if (contactForm) contactForm.addEventListener('submit', sendTherapisEmail);
-            if (mainPageForm) mainPageForm.addEventListener('submit', sendTherapisEmail);
-        });
-    </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("guIynBSjLAhUJgMLc"); // Replace with your Public Key
-        })();
-    </script>
-    <style>
-        /* Contact Specific Styling */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
-            padding: 80px 10%;
-            background: var(--bg-light-green);
-        }
-
-        .contact-info-card {
-            background: var(--primary-dark);
-            color: var(--white);
-            padding: 40px;
-            border-radius: var(--br-custom);
-            height: fit-content;
-        }
-
-        .contact-info-card h2 { margin-bottom: 25px; color: var(--mint-pale); }
-        .info-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
-        .info-item i { color: var(--soft-rose); margin-top: 5px; }
-
-        .appointment-form {
-            background: var(--white);
-            padding: 40px;
-            border-radius: var(--br-custom);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .form-group { display: flex; flex-direction: column; margin-bottom: 20px; }
-        .form-group.full { grid-column: span 2; }
-
-        .form-group label { margin-bottom: 8px; font-weight: 400; font-size: 0.9rem; }
-        
-        .form-group input, .form-group textarea {
-            padding: 12px 15px;
-            border: 1px solid var(--mint-pale);
-            border-radius: 10px 0 10px 0;
-            font-size: 1rem;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--accent-terracotta);
-            background: var(--bg-light-green);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            background: var(--accent-terracotta);
-            color: white;
-            border-radius: var(--br-custom);
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
-        .submit-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
-
-        @media (max-width: 900px) {
-            .contact-container { grid-template-columns: 1fr; padding: 40px 5%; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full { grid-column: span 1; }
-        }
-    </style>
 </head>
 <body>
 
@@ -191,7 +51,7 @@
                     </ul>
                 </li>
                 <li class="has-dropdown">
-                    <a href="about.html" data-en="About us" data-el="Ποιοί είμαστε">About us</a>
+                    <a href="about.html" data-en="About Us" data-el="Ποιοί Είμαστε">About Us</a>
                     <ul class="dropdown">
                         <li><a href="about.html#center" data-en="Therapis Physiocenter" data-el="Therapis Physiocenter">Therapis Physiocenter</a></li>
                         <li class="has-sub-menu">
@@ -212,68 +72,47 @@
         </div>
     </header>
 
-    <section class="sub-hero">
-        <h1 style="font-size: 3.5rem;" data-en="Contact Us" data-el="Επικοινωνία">Contact Us</h1>
+    <section class="sub-hero service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('service_photos/Therapis-2586_sports_injuries.jpg'); background-position: center 75%">
+        <h1 style="font-size: 3rem;" data-en="Sports injuries rehabilitation" data-el="Αποκατάσταση αθλητικών κακώσεων">Sports injuries rehabilitation</h1>
     </section>
 
-    <div class="contact-container">
-        <div class="contact-info-card">
-            <h2 data-en="Get in Touch" data-el="Επικοινωνήστε">Get in Touch</h2>
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <p data-en="Kon. Petraki 21, Mires 704 00, Heraklion Crete" data-el="Κων. Πετράκη 21, Μοίρες 704 00, Ηράκλειο Κρήτη">Kon. Petraki 21, Mires 704 00, Heraklion Crete</p>
+    <section class="service-details-section">
+        <div class="container service-flex-container">
+            <div class="service-main-image">
+                <img src="service_photos/Therapis-2391_sports_injuries.jpg" alt="Sports injuries" class="responsive-img">
             </div>
-            <div class="info-item">
-                <i class="fab fa-viber"></i>
-                <p>
-                    <a href="viber://contact?number=%2B306948772692" 
-                    class="viber-link"
-                    data-en="Send us on Viber" 
-                    data-el="Στείλτε μας στο Viber">
-                    Send us on Viber
-                    </a>
+            <div class="service-text-content">
+                <h2 data-en="What is sports injuries rehabilitation?" data-el="Τι είναι η αποκατάσταση αθλητικών κακώσεων;">What is sports injuries rehabilitation?</h2>
+                <p style="margin-bottom: 20px; font-size: large;" data-en="Specialized rehabilitation protocols for athletes of all levels. We focus on a safe and rapid return to sports activities.
+                        We support the athlete from the acute stage of injury through return to training and competition, with continuous re-evaluations. Comprehensive rehabilitation is provided using evidence-based protocols, including post-operative recovery."
+                data-el="Εξειδικευμένα πρωτόκολλα αποκατάστασης για αθλητές κάθε επιπέδου. Εστιάζουμε στην ασφαλή και ταχεία επιστροφή στις αθλητικές δραστηριότητες. Δίπλα στον αθλητή από το οξυ σταδιο ενός τραυματισμο έως και την επιστροφή στην προπόνηση και τον αγώνα με συνεχείς επαναξιολογησεις. Ολοκληρωμένη αποκατάσταση με evidence based πρωτόκολλα για την μετεγχειρητική φάση.">
+                        Specialized rehabilitation protocols for athletes of all levels. We focus on a safe and rapid return to sports activities.
+                        We support the athlete from the acute stage of injury through return to training and competition, with continuous re-evaluations. Comprehensive rehabilitation is provided using evidence-based protocols, including post-operative recovery.
                 </p>
             </div>
-            <div class="info-item">
-                <i class="fas fa-phone-alt"></i>
-                <p><a href="tel:+306948772692" class="contact-link">+30 6948772692</a></p>
+        </div>
+    </section>
+
+    <section class="service-details-section">
+        <div class="container service-flex-container">
+            <div class="service-text-content">
+                <h2 data-en="Activforce 2 Digital Dynamometer & Inclinometer" data-el="Ψηφιακό Δυναμόμετρο & Γωνιόμετρο Activforce 2">Activforce 2 Digital Dynamometer & Inclinometer</h2>
+
+                <p style="margin-bottom: 20px; font-size: large;" 
+                data-en="Designed for objective assessment of muscle strength and range of motion in clinical practice, we measure the muscle strength and mobility of the targeted anatomical area.
+                    It provides graphical data related to muscle power, strength symmetry, maximum and average force values, allowing accurate monitoring of patient progress.
+                    Athletes may also use it for injury prevention (e.g., asymmetry screening), goal setting, and tracking rehabilitation progress." 
+                data-el="Σχεδιασμένο για την αντικειμενική αξιολόγηση μυϊκής δύναμης και εύρους κίνησης στην κλινική πράξη, εξετάζουμε την μυϊκή δύναμη και το εύρος κίνησης του ανατομικού σημείου που μας ενδιαφέρει. Παρουσιάζει γραφήματα που σχετίζονται με την ισχύ των μυών, την συμμετρία μυϊκής δύναμης, την μέγιστη και μέση τιμή της δύναμης, ώστε να παρακολουθείται η πρόοδος του θεραπευόμενου. Μπορεί να το κάνει ο αθλητής για πρόληψη τραυματισμών (έλεγχος ασυμμετρίας κλπ), να θέσει στόχους, ακόμη και για την καταγραφή της προόδου της αποκαταστασης.">
+                    Designed for objective assessment of muscle strength and range of motion in clinical practice, we measure the muscle strength and mobility of the targeted anatomical area.
+                    It provides graphical data related to muscle power, strength symmetry, maximum and average force values, allowing accurate monitoring of patient progress.
+                    Athletes may also use it for injury prevention (e.g., asymmetry screening), goal setting, and tracking rehabilitation progress.
+                </p>
             </div>
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <p><a href="mailto:therapis.physiocenter@gmail.com" class="contact-link">therapis.physiocenter@gmail.com</a></p>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-clock"></i>
-                <p data-en="Mon - Fri: 08:00 - 21:30" data-el="Δευ - Παρ: 08:00 - 21:30">Mon - Fri: 08:00 - 21:30</p>
+
+            <div class="service-main-image">
+                <img src="service_photos/Therapis-2455_sports_injuries.jpg" alt="Activforce 2 Digital Dynamometer" class="responsive-img">
             </div>
         </div>
-
-        <div class="appointment-form">
-            <h2 style="margin-bottom: 20px; color: var(--primary-dark);" data-en="Book an Appointment" data-el="Κλείστε Ραντεβού">Book an Appointment</h2>
-                <form id="appointmentForm">
-                    <div class="form-grid">
-                        <input type="hidden" name="language" id="langInput" value="en"> 
-                        <div class="form-group">
-                            <label data-en="Full Name" data-el="Ονοματεπώνυμο">Full Name</label>
-                            <input type="text" name="name" required data-en-ph="Full Name" data-el-ph="Ονοματεπώνυμο">
-                        </div>
-                        <div class="form-group">
-                            <label data-en="Phone Number" data-el="Τηλέφωνο">Phone Number</label>
-                            <input type="tel" name="phone" required data-en-ph="Phone Number" data-el-ph="Τηλέφωνο Επικοινωνίας">
-                        </div>
-                        <div class="form-group full">
-                            <label data-en="Symptoms / Information" data-el="Συμπτώματα / Πληροφορίες">Symptoms / Information</label>
-                            <textarea name="condition" rows="4" required data-en-ph="Describe your condition" data-el-ph="Περιγράψτε την πάθησή σας"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="submit-btn" data-en="Send Request" data-el="Αποστολή Αιτήματος">Send Request</button>
-                </form>
-        </div>
-    </div>
-
-    <section style="height: 400px; width: 100%;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.5624306464588!2d24.87317966964213!3d35.050495196190305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149b1f3542fbb0c3%3A0x564b942c73fc3b51!2zzprOrc69z4TPgc6_IM6mz4XPg865zrrOv864zrXPgc6xz4DOtc6vzrHPgiBUaGVyYXBpcyAtIFBoeXNpbyBDZW50ZXIgVGhlcmFwaXM!5e0!3m2!1sen!2sgr!4v1771498447259!5m2!1sen!2sgr" 
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </section>
 
     <a href="#" class="float-btn go-top"><i class="fas fa-chevron-up"></i></a>
@@ -352,8 +191,6 @@
                 }
             });
 
-            document.getElementById('langInput').value = lang;
-
             // Update all placeholders (form inputs)
             document.querySelectorAll('[data-en-ph]').forEach(el => {
                 el.placeholder = el.getAttribute('data-' + lang + '-ph');
@@ -375,41 +212,5 @@
             });
         });
     </script>
-
-    <!-- <script>
-        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevents page reload
-
-        // Change button text to show it's working
-        const btn = this.querySelector('button');
-        const originalBtnText = btn.innerHTML;
-        btn.innerHTML = currentLang === 'en' ? 'Sending...' : 'Αποστολή...';
-
-        // Collect data for your Template
-        const templateParams = {
-            name: this.name.value,
-            phone: this.phone.value,
-            condition: this.condition.value,
-            language: document.getElementById('langInput').value
-        };
-
-        // Send via EmailJS
-        emailjs.send("contact_service","template_u9ar3nh", templateParams)
-            .then(function() {
-                // SUCCESS
-                alert(currentLang === 'en' ? 'Thank you! Your request has been sent.' : 'Ευχαριστούμε! Το αίτημά σας στάλθηκε.');
-                document.getElementById('appointmentForm').reset();
-                btn.innerHTML = originalBtnText;
-            }, function(error) {
-                // ERROR
-                alert(currentLang === 'en' ? 'Oops! Something went wrong.' : 'Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά.');
-                console.log('FAILED...', error);
-                btn.innerHTML = originalBtnText;
-            });
-        }); 
-        
-    </script> -->
-
 </body>
 </html>
-
