@@ -13,6 +13,11 @@
     --green-overlay: rgba(27, 81, 59, 0.4); 
 }
 
+::selection {
+    background-color: var(--mint-pale); /* The background of the highlight */
+    color: var(--primary-dark);        /* The color of the text when highlighted */
+}
+
 html { scroll-behavior: smooth; }
 
 * {
@@ -306,7 +311,14 @@ nav ul li:hover .dropdown {
     justify-content: space-between;
     height: 80vh; 
     min-height: 550px; 
-    background: var(--bg-light-green);
+    /* background: var(--bg-light-green); */
+    background: linear-gradient(
+        to bottom, 
+        #ECF3EA 0%,   /* Your pale mint color starts at the top */
+        #ECF3EA 75%,  /* It stays pale until 90% of the height */
+        #1B513B 75%,  /* It switches to Dark Green at exactly 90% */
+        #1B513B 100%  /* It stays Dark Green until the very bottom */
+    );
     overflow: hidden;
     position: relative;
     padding: 0;
@@ -912,5 +924,59 @@ footer .contact-link:hover {
     
     .image-gallery-row .service-main-image img {
         height: 300px; /* Slightly shorter on mobile */
+    }
+}
+
+/* ---------------------- Parallax effect in pelvic section --------------------------- */
+.parallax-window {
+    /* The "Window" height */
+    height: 50vh; 
+    
+    /* Background Image Setup */
+    background-image: url('service_photos/Therapis part 2-41227_pelvic.jpg');
+    background-attachment: fixed; /* This creates the parallax effect */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The Light Filter (Overlay) */
+.parallax-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Using a soft brand color filter (dark green/teal with 40% opacity) */
+    background-color: var(--primary-dark); 
+    opacity: 0.65;
+    z-index: 1;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+}
+
+.parallax-content h2 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+/* ⚠️ MOBILE FIX: Parallax usually breaks on mobile devices */
+@media (max-width: 1024px) {
+    .parallax-window {
+        background-attachment: scroll; /* Disables parallax for smoother mobile scrolling */
+        height: 30vh;
     }
 }
