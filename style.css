@@ -186,8 +186,8 @@ nav ul li:hover .dropdown {
 .service-main-image img {
     width: 80%;
     height: auto;
-    border-radius: 20px; /* Rounded corners for a modern look */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-radius: 15px 50px 30px 15px; /* Rounded corners for a modern look */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 .service-text-content {
@@ -610,7 +610,7 @@ nav ul li:hover .dropdown {
 
 footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 1px solid var(--dusty-pink); }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1.5fr 1fr 0.8fr; gap: 50px; }
-.footer-block { border-right: 1px solid var(--dusty-pink); padding-right: 30px; }
+.footer-block { border-right: 1px solid var(--dusty-pink); padding-right: 30px; font-size:large;}
 .footer-block:last-child { border-right: none; }
 .footer-links a { display: block; color: var(--primary-dark); text-decoration: none; margin-bottom: 12px; font-size: 0.9rem; transition: 0.2s; }
 .footer-links a:hover { color: var(--accent-terracotta); padding-left: 5px; }
@@ -1208,4 +1208,72 @@ footer .contact-link:hover {
     display: inline-block; 
     width: 1em;
     margin-left: -1em;
+}
+
+/* -------------------------- Infinite loop of logos -------------------------- */
+.logo-carousel-section {
+    padding: 60px 0;
+    background-color: white; /* Or var(--white) */
+    overflow: hidden; /* Important: hides the logos off-screen */
+}
+
+.carousel-title {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.logo-slider {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+/* The moving track */
+.logo-track {
+    display: flex;
+    width: calc(250px * 18); /* Width of one logo * total logos (including repeats) */
+    animation: scrollInfinite 40s linear infinite;
+}
+
+/* Individual logo container */
+.logo-item {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+.logo-item img {
+    max-width: 150px;
+    max-height: 80px;
+    filter: grayscale(100%); /* Makes logos look uniform and professional */
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect: Color comes back */
+.logo-item img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Infinite Animation Logic */
+@keyframes scrollInfinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 9)); /* Move by exactly half the track width */
+    }
+}
+
+/* Pause on hover so people can read the logos */
+.logo-slider:hover .logo-track {
+    animation-play-state: paused;
 }
