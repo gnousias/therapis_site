@@ -19,24 +19,6 @@ async function loadComponent(id, file) {
     }
 }
 
-// --- 3. LANGUAGE LOGIC ---
-// function applyLanguage(lang) {
-//     // Update text elements
-//     document.querySelectorAll('[data-en]').forEach(el => {
-//         const translation = el.getAttribute('data-' + lang);
-//         if (el.childNodes[0] && el.childNodes[0].nodeType === 3) {
-//             el.childNodes[0].textContent = translation;
-//         } else {
-//             el.textContent = translation;
-//         }
-//     });
-
-//     // Update form placeholders
-//     document.querySelectorAll('[data-en-ph]').forEach(el => {
-//         el.placeholder = el.getAttribute('data-' + lang + '-ph');
-//     });
-// }
-
 function applyLanguage(lang) {
     // 1. Update text elements and handle HTML (links, icons)
     document.querySelectorAll('[data-en]').forEach(el => {
@@ -104,11 +86,59 @@ window.scrollToBio = function(targetId) {
     }
 };
 
-// Mobile Menu Toggle (Must be global for the onclick="" in the header)
-window.toggleMobileMenu = function() {
-    const nav = document.getElementById('mainNav');
-    if (nav) nav.classList.toggle('active');
-};
+// Mobile view start
+function initMobileMenu() {
+    const menuToggle = document.getElementById('mobile-menu');
+    const mainNav = document.getElementById('mainNav');
+    if (!menuToggle || !mainNav) return;
+
+    // 1. Manage Mobile Contact Button
+    function handleMobileButton() {
+        let wrapper = mainNav.querySelector('.mobile-contact-wrapper');
+        
+        if (window.innerWidth <= 768) {
+            if (!wrapper) {
+                wrapper = document.createElement('div');
+                wrapper.className = 'mobile-contact-wrapper';
+                wrapper.innerHTML = `<a href="contact_us.html" class="btn-mobile-contact">${(currentLang === 'en') ? 'Contact us' : 'Επικοινωνία'}</a>`;
+                mainNav.appendChild(wrapper);
+            }
+        } else {
+            // Remove it if we return to desktop view to prevent "ghost" links
+            if (wrapper) wrapper.remove();
+        }
+    }
+
+    // 2. Hamburger Toggle
+    menuToggle.onclick = function(e) {
+        e.stopPropagation();
+        this.classList.toggle('is-active');
+        mainNav.classList.toggle('active');
+        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    };
+
+    // 3. Accordion Logic
+    const dropdownLinks = mainNav.querySelectorAll('.has-dropdown > a');
+    dropdownLinks.forEach(link => {
+        link.onclick = function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                // Close others
+                dropdownLinks.forEach(other => {
+                    if (other.parentElement !== parent) other.parentElement.classList.remove('open');
+                });
+                parent.classList.toggle('open');
+            }
+        };
+    });
+
+    // Initial check and resize listener
+    handleMobileButton();
+    window.addEventListener('resize', handleMobileButton);
+}
+
+// Mobile view end
 
 window.toggleBio = function(button) {
     const card = button.closest('.bio-card');
@@ -146,4 +176,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Step C: Initialize FAQ/Button listeners
     initInteractions();
+    initMobileMenu();
 });
