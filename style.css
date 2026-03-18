@@ -83,26 +83,6 @@ nav ul li {
     padding: 10px 0;
 }
 
-/* .dropdown {
-    position: absolute;
-    top: 100%;  Sits exactly below the parent link 
-    left: 0;
-    background: rgba(236, 243, 234, 0.95);
-    backdrop-filter: blur(15px);
-    min-width: 220px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-radius: 15px;
-    padding: 15px 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    z-index: 1100;
-} */
-
 /* --- Compact Dropdown Styles --- */
 .dropdown {
     position: absolute;
@@ -444,24 +424,6 @@ nav ul li:hover .dropdown {
     100% { opacity: 0; } 
 }
 
-/* Mobile Fix */
-/* @media (max-width: 992px) {
-    .hero {
-        flex-direction: column-reverse;
-        height: auto;
-        padding-top: 100px;
-    }
-    .hero-content {
-        width: 100%;
-        padding: 40px 10%;
-        text-align: left;
-    }
-    .hero-slider {
-        width: 100%;
-        height: 400px;
-    }
-} */
-
 /* --- Callback --- */
 .callback-section { padding: 80px 10%; background: var(--bg-light-green); }
 .callback-container { max-width: 900px; margin: 0 auto; background: var(--mint-pale); padding: 40px; border-radius: var(--br-custom); }
@@ -780,84 +742,268 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
     align-items: center;
 }
 
+/* --------------------- Mobile View CSS for the main page -------------------------- */
 
-/* Toggle to mobile view */
-/* --- RESPONSIVE BREAKPOINTS --- */
-
-/* Tablet & Small Desktop (Below 1100px) */
-@media (max-width: 1100px) {
-    .services-grid {
-        max-width: 800px; /* Only fits 2-3 cards across */
-    }
+/* --- Hamburger Icon Styling --- */
+.menu-toggle {
+    display: none; /* Hidden on Desktop */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 2100;
 }
 
-/* Mobile Devices (Below 768px) */
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #1b513b; /* Primary Green */
+    transition: 0.3s ease;
+    border-radius: 2px;
+}
+
+/* --- Desktop Reset for Mobile-Generated Elements --- */
+.mobile-contact-wrapper { display: none; }
+
+/* --- MOBILE RESPONSIVENESS (Below 768px) --- */
 @media (max-width: 768px) {
-    /* 1. Header & Nav */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        width: 95%;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 10001;
+    }
+
     .menu-toggle {
-        display: block; /* Show the hamburger icon */
-        font-size: 1.5rem;
-        color: #2c5f50;
-        cursor: pointer;
+        display: flex;
+        z-index: 10002;
     }
 
-    nav {
-        display: none; /* Hide original nav */
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: white;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-    }
-
-    nav.active {
-        display: block; /* Show when toggled */
-    }
-
-    nav ul {
+    /* --- Side Drawer (mainNav) --- */
+    #mainNav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: #f4f9f3 !important;
+        z-index: 9999;
+        display: flex !important;
         flex-direction: column;
-        padding: 20px;
+        padding: 100px 25px 40px 25px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto !important;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
     }
 
-    .hide-mobile {
-        display: none; /* Hide the big button on mobile header to save space */
+    #mainNav.active { right: 0 !important; }
+
+    #mainNav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left !important;
+        display: flex;
+        flex-direction: column;
     }
 
-    /* 2. Hero Section */
+    #mainNav ul li {
+        margin-bottom: 5px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    #mainNav ul li a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        font-size: 1.2rem;
+        color: #1b513b !important;
+        text-decoration: none !important;
+        line-height: 1.3;
+    }
+
+    /* --- Accordion +/- Logic --- 
+    .has-dropdown > a::after {
+        content: '+';
+        font-family: monospace;
+        font-size: 1.4rem;
+        color: #1b513b;
+    }
+
+    li.has-dropdown.open > a::after { content: '-'; } */
+
+    .dropdown {
+        display: none !important;
+        padding: 15px !important;
+        list-style: none;
+        background: #fdfdfd !important; /* Solid background to prevent overlap */
+        border-radius: 8px;
+    }
+
+    li.has-dropdown.open > .dropdown { display: block !important; }
+
+    /* --- Mobile Contact Button (Terracotta) --- */
+    .mobile-contact-wrapper {
+        display: block; /* Show only on mobile */
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+    }
+
+    .btn-mobile-contact {
+        display: inline-block;
+        padding: 12px 20px;
+        background-color: var(--accent-terracotta); /* Terracotta */
+        color: white !important;
+        text-decoration: none !important;
+        border-radius: 50px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .header-right .btn-main { display: none !important; }
+
+    /* --- Hamburger Animation --- */
+    .menu-toggle.is-active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.is-active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* 2. Hero Section Fix */
     .hero {
-        flex-direction: column;
+        flex-direction: column-reverse; /* Put image on top of text for mobile */
         height: auto;
+        min-height: unset;
+        background: var(--bg-light-green); /* Remove the split gradient on mobile */
         padding-top: 100px;
+    }
+
+    .hero-slider {
+        width: 100%;
+        height: 300px; /* Fixed height for image on mobile */
+        margin-left: 0;
+        border-radius: 0 0 50px 50px;
+        flex: none;
+    }
+
+    .hero-content {
+        flex: none;
+        padding: 40px 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
     }
 
     .hero-content h1 {
         font-size: 1.8rem;
     }
 
-    /* 3. Circular Service Cards */
-    .service-card {
-        width: 280px;  /* Slightly smaller circles for mobile */
-        height: 280px;
-        flex: 0 0 280px;
+    /* 3. Services Grid */
+    .services-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+        padding: 0 10px;
     }
 
-    /* 4. FAQ & Footer */
-    .faq-grid, .footer-grid {
-        grid-template-columns: 1fr; /* Stack everything in 1 column */
-        gap: 30px;
+    /* 4. Callback Form Fix (The "Pressed" look) */
+    .callback-container {
+        width: 90% !important;
+        padding: 30px 20px !important;
+    }
+
+    .callback-form {
+        flex-direction: column; /* Stack inputs vertically */
+        gap: 15px;
+    }
+
+    .callback-form input, 
+    .callback-form textarea {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 15px !important;
+        font-size: 1rem !important;
+        border-radius: 10px !important;
+    }
+
+    .btn-call {
+        width: 100%;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    /* 5. Reviews Section (Horizontal Scroll/Stack) */
+    .review-container {
+        display: flex;
+        overflow-x: auto; /* Allow side-swiping on mobile */
+        gap: 15px;
+        padding-bottom: 20px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .review-triplet {
+        display: flex;
+        flex-direction: column;
+        min-width: 85%; /* Shows a peek of the next review */
+        scroll-snap-align: center;
+    }
+
+    .review-box {
+        margin-bottom: 10px;
+        min-height: 180px;
+    }
+
+    /* 6. FAQ Section Fix */
+    .faq-grid {
+        grid-template-columns: 1fr; /* Stack image and text */
     }
 
     .faq-image-side {
-        display: none; /* Hide side image on mobile for faster loading */
+        display: none; /* Hide side image on mobile to save space */
     }
 
-    /* 5. Callback Form */
-    .callback-form {
-        flex-direction: column;
-        padding: 0 20px;
+    .faq-list {
+        padding-right: 0;
+    }
+
+    /* 7. Floating Buttons */
+    /* --- Stacked Floating Buttons --- */
+    .go-top {
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        left: auto !important;
+        z-index: 10003;
+    }
+
+    /* Position the 'Call/Viber' button directly ABOVE 'Go Top' */
+    .contact-float {
+        position: fixed !important;
+        bottom: 80px !important; /* Adjust based on button height + gap */
+        right: 20px !important;
+        left: auto !important;
+        z-index: 10003;
     }
 }
+
+/* --- SMALL TABLET FIX (Between 769px and 1024px) --- */
+@media (max-width: 1024px) and (min-width: 769px) {
+    header { width: 92%; }
+    .hero-content h1 { font-size: 2rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* --------------------- Mobile view end -------------------------------------------- */
 
 /* Style for the Viber link to look like plain text in the contact card */
 .viber-link {
@@ -896,35 +1042,6 @@ footer .contact-link {
 
 footer .contact-link:hover {
     color: var(--accent-terracotta); /* A lighter highlight for the dark footer */
-}
-
-/* ---------- Gallery Row Adjustment like the one in pelvic ----------------- */
-.image-gallery-row {
-    gap: 30px; /* Adjust the space between the two images */
-}
-
-.image-gallery-row .service-main-image {
-    flex: 1; /* Forces both containers to grow equally */
-    width: 100%;
-}
-
-.image-gallery-row .service-main-image img {
-    width: 80%;
-    height: 400px; /* Optional: Set a fixed height for symmetry */
-    object-fit: cover; /* Ensures images fill the area without stretching */
-    border-radius: 15px; /* Keeps consistent with your medical theme */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-/* Responsive: Stack them on mobile */
-@media (max-width: 768px) {
-    .image-gallery-row {
-        flex-direction: column;
-    }
-    
-    .image-gallery-row .service-main-image img {
-        height: 300px; /* Slightly shorter on mobile */
-    }
 }
 
 /* ---------------------- Parallax effect in pelvic section --------------------------- */
