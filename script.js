@@ -94,18 +94,52 @@ function initMobileMenu() {
 
     // 1. Manage Mobile Contact Button
     function handleMobileButton() {
-        let wrapper = mainNav.querySelector('.mobile-contact-wrapper');
+        let wrapper = mainNav.querySelector('.mobile-wrapper');
         
         if (window.innerWidth <= 768) {
             if (!wrapper) {
                 wrapper = document.createElement('div');
-                wrapper.className = 'mobile-contact-wrapper';
-                wrapper.innerHTML = `<a href="contact_us.html" class="btn-mobile-contact">${(currentLang === 'en') ? 'Contact us' : 'Επικοινωνία'}</a>`;
+                wrapper.className = 'mobile-wrapper';
+                
+                // 1. Create Language Toggle for Mobile
+                const langNode = document.createElement('div');
+                langNode.className = 'mobile-lang-toggle';
+                langNode.innerHTML = 'EN | GR';
+                langNode.onclick = () => { 
+                    if(typeof toggleLanguage === 'function') {
+                        toggleLanguage(); 
+                        // Force update the text of the injected button immediately
+                        updateMobileButtonText();
+                    }
+                };
+
+                // 2. Create Contact Button with translation attributes
+                const contactBtn = document.createElement('a');
+                contactBtn.href = "contact_us.html";
+                contactBtn.className = 'btn-mobile-contact';
+                // Set initial text
+                contactBtn.textContent = (typeof currentLang !== 'undefined' && currentLang === 'en') ? 'Contact us' : 'Επικοινωνία';
+                // Add attributes so applyLanguage() can find it later
+                contactBtn.setAttribute('data-en', 'Contact us');
+                contactBtn.setAttribute('data-el', 'Επικοινωνία');
+                
+                wrapper.appendChild(langNode);
+                wrapper.appendChild(contactBtn);
                 mainNav.appendChild(wrapper);
             }
         } else {
-            // Remove it if we return to desktop view to prevent "ghost" links
+            // DESKTOP CLEANUP: Remove mobile clones so they don't appear in desktop menu
             if (wrapper) wrapper.remove();
+            // Ensure body scroll is restored if window is resized while menu open
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Helper to refresh the button text specifically
+    function updateMobileButtonText() {
+        const btn = mainNav.querySelector('.btn-mobile-contact');
+        if (btn && typeof currentLang !== 'undefined') {
+            btn.textContent = (currentLang === 'en') ? btn.getAttribute('data-en') : btn.getAttribute('data-el');
         }
     }
 

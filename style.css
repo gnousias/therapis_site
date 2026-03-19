@@ -771,7 +771,7 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         justify-content: space-between;
         align-items: center;
         padding: 10px 15px;
-        width: 95%;
+        width: 100%;
     }
 
     .header-right {
@@ -822,12 +822,15 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
     #mainNav ul li a {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 15px 0;
-        font-size: 1.2rem;
+        align-items: flex-start; /* Changed from center to align icon with the first line */
+        padding: 12px 0;
+        font-size: 1.15rem;
         color: #1b513b !important;
         text-decoration: none !important;
-        line-height: 1.3;
+        
+        /* --- CRITICAL WRAPPING PROPERTIES --- */
+        white-space: normal !important; /* Allows text to wrap */
+        line-height: 1.3;               /* Adds breathing room between wrapped lines */
     }
 
     /* --- Accordion +/- Logic --- 
@@ -850,9 +853,11 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
 
     li.has-dropdown.open > .dropdown { display: block !important; }
 
-    /* --- Mobile Contact Button (Terracotta) --- */
-    .mobile-contact-wrapper {
-        display: block; /* Show only on mobile */
+    /* --- Mobile-Only Menu Elements --- */
+    .mobile-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
         margin-top: 30px;
         padding-top: 20px;
         border-top: 1px solid #ddd;
@@ -869,7 +874,15 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         text-align: center;
     }
 
-    .header-right .btn-main { display: none !important; }
+    .mobile-lang-toggle {
+        font-size: 1.1rem;
+        color: #1b513b;
+        cursor: pointer;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .header-right { display: none !important; }
 
     /* --- Hamburger Animation --- */
     .menu-toggle.is-active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -994,6 +1007,7 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         left: auto !important;
         z-index: 10003;
     }
+
 }
 
 /* --- SMALL TABLET FIX (Between 769px and 1024px) --- */
@@ -1115,6 +1129,14 @@ footer .contact-link:hover {
     transition: transform 0.3s ease;
 }
 
+/* -------------- Bio grid images mobile ----------------- */
+.bio-text { flex: 1; padding: 20px; font-size: 1.3rem;}
+.bio-text h3 { color: var(--accent-terracotta); font-size: 2rem; margin-bottom: 15px; }
+.bio-text h4 { color: var(--primary-dark); margin-bottom: 20px; font-weight: 300; }
+
+.about-section { padding: 80px 10%; background: var(--white); }
+.center-description { text-align: center; max-width: 800px; margin: 0 auto 100px auto; line-height: 1.8; }
+
 /* --- THE HOVER EFFECT --- */
 .bio-avatar-wrapper {
     position: relative;
@@ -1184,13 +1206,6 @@ footer .contact-link:hover {
 .btn-read-more:hover {
     color: var(--accent-terracotta);
     text-decoration: underline;
-}
-
-/* Mobile View */
-@media (max-width: 768px) {
-    .team-grid {
-        grid-template-columns: 1fr; /* Stack on mobile */
-    }
 }
 
 /* Keep the large circles from before */
@@ -1325,6 +1340,76 @@ footer .contact-link:hover {
     display: inline-block; 
     width: 1em;
     margin-left: -1em;
+}
+
+/* --- MOBILE BIO & TEAM GRID FIX --- */
+@media (max-width: 768px) {
+    /* 1. Reset General Sections */
+    .about-section {
+        padding: 40px 15px; /* Reduce large desktop padding */
+    }
+
+    .center-description {
+        margin-bottom: 50px;
+        padding: 0 10px;
+    }
+
+    /* 2. Fix Team Selection (The large circles) */
+    .team-selection-grid {
+        flex-direction: column !important; /* Stack circles vertically */
+        align-items: center;
+        gap: 40px; /* Reduce massive desktop gap */
+        margin-bottom: 60px;
+    }
+
+    .avatar-card {
+        width: 100% !important; /* Allow card to fit screen */
+        max-width: 300px;
+    }
+
+    .bio-avatar-wrapper.large {
+        width: 250px; /* Shrink fixed 300px width for small screens */
+        height: 250px;
+    }
+
+    /* 3. Fix Bio Cards Grid (The smaller cards) */
+    .team-grid {
+        grid-template-columns: 1fr !important; /* Force single column */
+        gap: 30px;
+        padding: 0 10px;
+    }
+
+    .bio-card {
+        padding: 20px;
+    }
+
+    .bio-avatar-wrapper {
+        width: 180px; /* Shrink fixed 220px width */
+        height: 180px;
+    }
+
+    /* 4. Fix Individual Bio Rows (The text sections) */
+    .individual-bio-row {
+        padding: 30px 15px;
+        width: 100%;
+    }
+
+    .bio-header {
+        padding-left: 15px;
+    }
+
+    .bio-header h2 {
+        font-size: 1.6rem; /* Smaller titles for mobile */
+    }
+
+    .bio-text {
+        font-size: 1.1rem;
+        padding: 10px 0;
+    }
+
+    .bio-text h3 {
+        font-size: 1.5rem;
+    }
 }
 
 /* -------------------------- Infinite loop of logos -------------------------- */

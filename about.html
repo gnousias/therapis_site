@@ -10,11 +10,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <style>
-        .about-section { padding: 80px 10%; background: var(--white); }
-        .center-description { text-align: center; max-width: 800px; margin: 0 auto 100px auto; line-height: 1.8; }
-        
         /* Bio Layout */
-        .bio-row {
+        /* .bio-row {
             display: flex;
             align-items: center;
             margin-bottom: 80px;
@@ -29,15 +26,8 @@
             box-shadow: 15px 15px 0px var(--mint-pale);
             object-fit: cover;
         }
+         */
         
-        .bio-text { flex: 1; padding: 20px; font-size: 1.3rem;}
-        .bio-text h3 { color: var(--accent-terracotta); font-size: 2rem; margin-bottom: 15px; }
-        .bio-text h4 { color: var(--primary-dark); margin-bottom: 20px; font-weight: 300; }
-
-        @media (max-width: 850px) {
-            .bio-row, .bio-row.reverse { flex-direction: column; text-align: center; }
-            .bio-image img { box-shadow: none; }
-        }
     </style>
 </head>
 <body>
@@ -61,16 +51,6 @@
         <h2 style="text-align: center; margin-bottom: 60px; font-size: 2.5rem;" data-en="Physiotherapists" data-el="Φυσικοθεραπευτές">Physiotherapists</h2>
 
         <div class="team-selection-grid">
-            <div class="avatar-card" onclick="scrollToBio('bio-chrysostomos')">
-                <div class="bio-avatar-wrapper large">
-                    <img src="photo_bio/chris_photo.jpg" alt="Chrysostomos" class="bio-avatar">
-                    <div class="bio-overlay">
-                        <h3 data-en="Read Bio" data-el="Βιογραφικό">Read Bio</h3>
-                    </div>
-                </div>
-                <h3 class="team-name" data-en="Chrysostomos Pazaridis" data-el="Χρυσόστομος Παζαρίδης">Chrysostomos Pazaridis</h3>
-            </div>
-
             <div class="avatar-card" onclick="scrollToBio('bio-marilena')">
                 <div class="bio-avatar-wrapper large">
                     <img src="photo_bio/Maril_photo.jpg" alt="Marilena" class="bio-avatar">
@@ -79,6 +59,16 @@
                     </div>
                 </div>
                 <h3 class="team-name" data-en="Marilena Roukounaki" data-el="Μαριλένα Ρουκουνάκη">Marilena Roukounaki</h3>
+            </div>
+            
+            <div class="avatar-card" onclick="scrollToBio('bio-chrysostomos')">
+                <div class="bio-avatar-wrapper large">
+                    <img src="photo_bio/chris_photo.jpg" alt="Chrysostomos" class="bio-avatar">
+                    <div class="bio-overlay">
+                        <h3 data-en="Read Bio" data-el="Βιογραφικό">Read Bio</h3>
+                    </div>
+                </div>
+                <h3 class="team-name" data-en="Chrysostomos Pazaridis" data-el="Χρυσόστομος Παζαρίδης">Chrysostomos Pazaridis</h3>
             </div>
         </div>
 
