@@ -2,5 +2,73 @@
   <url>
     <loc>https://www.physiotherapis.gr/</loc>
     <lastmod>2026-03-17</lastmod>
+    <priority>1.0</priority>
   </url>
+
+  <url>
+    <loc>https://www.physiotherapis.gr/about.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.physiotherapis.gr/contact_us.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://physiotherapis.gr/therap_massage.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://physiotherapis.gr/musc_physio.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://physiotherapis.gr/techniques.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://physiotherapis.gr/pelvic_index.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://physiotherapis.gr/pressotherapy.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://physiotherapis.gr/fms.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://physiotherapis.gr/electro-therap.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://physiotherapis.gr/heat-ice.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://physiotherapis.gr/therapis_pro.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+  
 </urlset>
