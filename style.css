@@ -105,6 +105,27 @@ nav ul li {
     border: 1px solid rgba(27, 81, 59, 0.1); /* Soft border for definition */
 }
 
+.dropdown-about{
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background: rgba(236, 243, 234, 0.98); /* Slightly more opaque for readability */
+    backdrop-filter: blur(15px);
+    min-width: 200px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-radius: 12px; /* Slightly tighter radius */
+    padding: 8px 0;      /* Reduced from 15px */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    z-index: 1100;
+    border: 1px solid rgba(27, 81, 59, 0.1); /* Soft border for definition */
+}
+
 /* Show dropdown on hover */
 nav ul li:hover .dropdown {
     opacity: 0.9;
@@ -112,7 +133,17 @@ nav ul li:hover .dropdown {
     transform: translateY(0);
 }
 
+nav ul li:hover .dropdown-about {
+    opacity: 0.9;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 .dropdown li {
+    padding: 0;
+}
+
+.dropdown-about li {
     padding: 0;
 }
 
@@ -124,11 +155,28 @@ nav ul li:hover .dropdown {
     transition: background 0.2s ease;
 }
 
+.dropdown-about li a {
+    padding: 2px 18px;   /* Significantly reduced vertical padding (from 10px to 6px) */
+    display: block;
+    font-size: 0.9rem;   /* Slightly smaller font for a compact look */
+    white-space: nowrap; 
+    transition: background 0.2s ease;
+}
+
 .dropdown li a::after {
     display: none; 
 }
 
+.dropdown-about li a::after {
+    display: none; 
+}
+
 .dropdown li a:hover {
+    background: var(--mint-pale);
+    color: var(--accent-terracotta);
+}
+
+.dropdown-about li a:hover {
     background: var(--mint-pale);
     color: var(--accent-terracotta);
 }
@@ -849,6 +897,15 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         list-style: none;
         background: #fdfdfd !important; /* Solid background to prevent overlap */
         border-radius: 8px;
+    }
+
+    .dropdown-about{
+        display: none !important;
+    }
+
+    /* Ensure the "About us" link looks like the other main links */
+    #mainNav ul li a[href="about.html"]::after {
+        content: none !important; /* Removes the '+' icon since there's no menu to open */
     }
 
     li.has-dropdown.open > .dropdown { display: block !important; }
