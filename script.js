@@ -8,16 +8,16 @@ let currentLang = localStorage.getItem('selectedLanguage') || 'en';
 
 // --- 2. COMPONENT LOADER ---
 // Fetches HTML files and injects them into placeholders
-async function loadComponent(id, file) {
-    try {
-        const response = await fetch(file);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.text();
-        document.getElementById(id).innerHTML = data;
-    } catch (error) {
-        console.error('Error loading ' + file, error);
-    }
-}
+// async function loadComponent(id, file) {
+//     try {
+//         const response = await fetch(file);
+//         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+//         const data = await response.text();
+//         document.getElementById(id).innerHTML = data;
+//     } catch (error) {
+//         console.error('Error loading ' + file, error);
+//     }
+// }
 
 function applyLanguage(lang) {
     // 1. Update text elements and handle HTML (links, icons)
