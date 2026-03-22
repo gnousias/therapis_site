@@ -354,13 +354,13 @@ nav ul li:hover .dropdown-about {
 
 /* Left Side: Content with Fade-In from Bottom */
 .hero-content {
-    flex: 0.8; 
+    flex: 1; /* Allow it to take equal space */
+    min-width: 150px; /* Adjust this based on your logo width + padding */
     z-index: 10;
-    padding: 0 5% 0 10%;
+    padding: 2% 5% 0 10%; /* Reduced padding slightly to save space */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Restore Fade-In Animation */
     opacity: 0;
     animation: fadeInUp 1.2s ease-out forwards;
 }
@@ -371,9 +371,9 @@ nav ul li:hover .dropdown-about {
 
 /* Scaled Down Logo */
 .hero-logo-main {
-    width: 190px; /* Compact size */
+    width: 150px; /* Compact size */
     height: auto;
-    margin-bottom: 25px;
+    margin-bottom: 3%;
 }
 
 .hero-content h1 {
