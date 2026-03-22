@@ -200,10 +200,10 @@ window.toggleBio = function(button) {
 // This runs once the page shell is ready
 document.addEventListener('DOMContentLoaded', async () => {
     // Step A: Load external components
-    await Promise.all([
-        loadComponent("header-placeholder", "header.html"),
-        loadComponent("footer-placeholder", "footer.html")
-    ]);
+    // await Promise.all([
+    //     loadComponent("header-placeholder", "header.html"),
+    //     loadComponent("footer-placeholder", "footer.html")
+    // ]);
 
     // Step B: Apply language to everything (including the header/footer)
     applyLanguage(currentLang);
