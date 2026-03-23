@@ -211,4 +211,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Step C: Initialize FAQ/Button listeners
     initInteractions();
     initMobileMenu();
+    highlightBrandName("Therapis");
 });
+
+function highlightBrandName(word) {
+    // 1. Find all text nodes in the document body
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    const textNodes = [];
+
+    // 2. Filter out scripts, styles, and existing brand-word spans to avoid loops
+    while (node = walker.nextNode()) {
+        const parentTag = node.parentElement.tagName;
+        if (node.nodeValue.includes(word) && 
+            parentTag !== 'SCRIPT' && 
+            parentTag !== 'STYLE' && 
+            !node.parentElement.classList.contains('brand-word')) {
+            textNodes.push(node);
+        }
+    }
+
+    // 3. Replace text with styled spans
+    textNodes.forEach(textNode => {
+        const parent = textNode.parentElement;
+        const regex = new RegExp(`(${word})`, 'gi'); 
+        const parts = textNode.nodeValue.split(regex);
+        const fragment = document.createDocumentFragment();
+        
+        parts.forEach(part => {
+            if (part.toLowerCase() === word.toLowerCase()) {
+                const span = document.createElement('span');
+                span.className = 'brand-word'; // The new class
+                span.textContent = part;
+                fragment.appendChild(span);
+            } else if (part !== "") {
+                fragment.appendChild(document.createTextNode(part));
+            }
+        });
+
+        parent.replaceChild(fragment, textNode);
+    });
+}

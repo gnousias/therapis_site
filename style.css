@@ -332,6 +332,26 @@ nav ul li:hover .dropdown-about {
     box-shadow: 0 5px 15px rgba(121, 50, 31, 0.3);
 }
 
+strong {
+    /* If you only want the word Therapis to have this color, 
+       you could add a class in the JS above like bold.className = 'brand-word'; */
+    color: var(--primary-dark); 
+    font-weight: 550;
+}
+
+.brand-word {
+    font-weight: 600;           /* Makes it Bold */
+    color: var(--primary-dark);             /* Your Brand Dark Green */
+    /* Optional: color: #a34b37; (Terracotta) if you want it to stand out more */
+    display: inline-block;      /* Ensures no weird line-break issues */
+    transition: color 0.3s ease;
+}
+
+/* Optional: Subtle hover effect for the brand name */
+.brand-word:hover {
+    color: var(--primary-dark);
+}
+
 /* --- Hero Section Restored --- */
 .hero {
     display: flex;
@@ -1385,15 +1405,15 @@ footer .contact-link:hover {
 .bio-list li {
     position: relative;
     padding-bottom: 5px;
-    font-size: 0.95rem;
-    color: #555;
+    font-size: 1.1rem;
+    font-weight: bolder;
 }
 
 /* Custom brand-colored bullet points */
 .bio-list li::before {
     content: "•";
     color: var(--accent-terracotta);
-    font-weight: bold;
+    font-size: 1rem;
     display: inline-block; 
     width: 1em;
     margin-left: -1em;
