@@ -336,7 +336,7 @@ strong {
     /* If you only want the word Therapis to have this color, 
        you could add a class in the JS above like bold.className = 'brand-word'; */
     color: var(--primary-dark); 
-    font-weight: 550;
+    font-weight: 600;
 }
 
 .brand-word {
@@ -1527,6 +1527,7 @@ footer .contact-link:hover {
     padding: 60px 0;
     background-color: var(--white); /* Or var(--white) */
     overflow: hidden; /* Important: hides the logos off-screen */
+    /* border-top: 1px solid var(--sage-green); */
 }
 
 .carousel-title {
