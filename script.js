@@ -52,6 +52,7 @@ function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'el' : 'en';
     localStorage.setItem('selectedLanguage', currentLang);
     applyLanguage(currentLang);
+    highlightBrandName("Therapis");
 }
 
 // --- 4. UI INTERACTIVITY ---
@@ -222,11 +223,16 @@ function highlightBrandName(word) {
 
     // 2. Filter out scripts, styles, and existing brand-word spans to avoid loops
     while (node = walker.nextNode()) {
+        const parent = node.parentElement;
         const parentTag = node.parentElement.tagName;
         if (node.nodeValue.includes(word) && 
             parentTag !== 'SCRIPT' && 
             parentTag !== 'STYLE' && 
-            !node.parentElement.classList.contains('brand-word')) {
+            !parentTag.startsWith('H') && 
+            parentTag !== 'NAV' && 
+            !parent.closest('nav') && 
+            !parent.closest('#mainNav') && 
+            !parent.classList.contains('brand-word')) {
             textNodes.push(node);
         }
     }
