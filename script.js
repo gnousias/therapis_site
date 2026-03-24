@@ -240,7 +240,7 @@ function highlightBrandName(word) {
     // 3. Replace text with styled spans
     textNodes.forEach(textNode => {
         const parent = textNode.parentElement;
-        const regex = new RegExp(`(${word})`, 'gi'); 
+        const regex = new RegExp(`\\b(${word})\\b`, 'gi'); 
         const parts = textNode.nodeValue.split(regex);
         const fragment = document.createDocumentFragment();
         
