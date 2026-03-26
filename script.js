@@ -173,6 +173,41 @@ function initMobileMenu() {
     window.addEventListener('resize', handleMobileButton);
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    // ... your existing menu init ...
+    // ... your highlightBrandName("Therapis") call ...
+
+    // REVIEW SLIDER LOGIC
+    const reviewContainer = document.querySelector('.review-container');
+    const dots = document.querySelectorAll('.dot');
+
+    if (reviewContainer && dots.length > 0) {
+        // Update dots on scroll
+        reviewContainer.addEventListener('scroll', () => {
+            // We use the container width to calculate which "page" we are on
+            let index = Math.round(reviewContainer.scrollLeft / reviewContainer.offsetWidth);
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        });
+    }
+});
+
+// Keep this function outside so the HTML 'onclick' can find it
+function scrollToTriplet(index) {
+    const reviewContainer = document.querySelector('.review-container');
+    const triplets = document.querySelectorAll('.review-triplet');
+    
+    if (reviewContainer && triplets[index]) {
+        const target = triplets[index];
+        reviewContainer.scrollTo({
+            left: target.offsetLeft - 20, 
+            behavior: 'smooth'
+        });
+    }
+}
+
 // Mobile view end
 
 window.toggleBio = function(button) {
