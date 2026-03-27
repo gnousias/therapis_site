@@ -194,6 +194,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.addEventListener('click', (event) => {
+    const mainNav = document.getElementById('mainNav');
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    // 1. Check if the menu is currently open (has the .active class)
+    if (mainNav.classList.contains('active')) {
+        
+        // 2. Check if the click happened OUTSIDE the menu AND OUTSIDE the toggle button
+        // .contains(event.target) checks if the clicked element is inside that div
+        const clickedInsideMenu = mainNav.contains(event.target);
+        const clickedToggle = menuToggle.contains(event.target);
+
+        if (!clickedInsideMenu && !clickedToggle) {
+            // 3. If the click was in the "empty space", close the menu
+            mainNav.classList.remove('active');
+            
+            // If your hamburger has an 'is-active' animation class, remove it too:
+            if (menuToggle.classList.contains('is-active')) {
+                menuToggle.classList.remove('is-active');
+            }
+
+            // Restore scrolling to the body
+            document.body.style.overflow = '';
+        }
+    }
+});
+
 // Keep this function outside so the HTML 'onclick' can find it
 function scrollToTriplet(index) {
     const reviewContainer = document.querySelector('.review-container');
