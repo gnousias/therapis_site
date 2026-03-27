@@ -128,13 +128,13 @@ nav ul li {
 
 /* Show dropdown on hover */
 nav ul li:hover .dropdown {
-    opacity: 0.9;
+    opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
 nav ul li:hover .dropdown-about {
-    opacity: 0.9;
+    opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
@@ -871,6 +871,7 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         width: 80%;
         height: 100vh;
         background-color: #f4f9f3 !important;
+        opacity: 1;
         z-index: 9999;
         display: flex !important;
         flex-direction: column;
@@ -901,8 +902,9 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         justify-content: space-between;
         align-items: flex-start; /* Changed from center to align icon with the first line */
         padding: 12px 0;
+        opacity: 1;
         font-size: 1.15rem;
-        color: #1b513b !important;
+        color: var(--primary-dark) !important;
         text-decoration: none !important;
         
         /* --- CRITICAL WRAPPING PROPERTIES --- */
@@ -924,12 +926,14 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         display: none !important;
         padding: 15px !important;
         list-style: none;
+        opacity: 1;
         background: #fdfdfd !important; /* Solid background to prevent overlap */
         border-radius: 8px;
     }
 
     .dropdown-about{
         display: none !important;
+        opacity: 1;
     }
 
     /* Ensure the "About us" link looks like the other main links */
@@ -1584,6 +1588,7 @@ footer .contact-link:hover {
         max-height: 45px;
         filter: grayscale(0%); 
         opacity: 0.9;
+        transition: all 0.1s ease;
     }
 
     /* CRITICAL: Update calculations to match the 110px width */
