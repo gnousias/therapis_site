@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://www.physiotherapis.gr/Logo.svg">
+    <link rel="canonical" href="https://www.physiotherapis.gr/">
+    <link rel="alternate" href="https://www.physiotherapis.gr/" hreflang="el" />
+    <meta name="google-site-verification" content="xNO0iOCAF3ugb_BubTZxUAlIDZHmcjpUBZdCi7mY5yI" />
+    <meta name="description" content="Εξειδικευμένες υπηρεσίες φυσικοθεραπείας στις Μοίρες, Ήρακλειο Κρήτης. Εξειδικευμένη αποκατάσταση, χειροπρακτική και εξατομικευμένες θεραπείες στο κέντρο Therapis. Αθλητικές κακώσεις, βελονισμός, νευρολογική αποκατάσταση, γηριατρική. Πρεσσοθεραπεία, φυσικοθεραπεία πυελικού εδάφους">
+    <title data-en="Therapis | Physiotherapy Moires" data-el="Therapis | Φυσικοθεραπευτήριο Μοίρες Κρήτη">Therapis | Φυσικοθεραπευτήριο Μοίρες Κρήτη</title>
+    <link rel="icon" href="/Logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/Logo.svg">
+    <link rel="shortcut icon" href="/Logo.svg">
+    <link rel="alternate icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // A reusable function for the modern "Therapis-style" alert
+        function showTherapisAlert(isSuccess) {
+            Swal.fire({
+                title: isSuccess ? 
+                    (currentLang === 'en' ? 'Sent!' : 'Εστάλη!') : 
+                    (currentLang === 'en' ? 'Error' : 'Σφάλμα'),
+                text: isSuccess ? 
+                    (currentLang === 'en' ? 'Thank you! Your request has been sent.' : 'Ευχαριστούμε! Το αίτημά σας στάλθηκε.') : 
+                    (currentLang === 'en' ? 'Something went wrong. Please try again.' : 'Κάτι πήγε στραβά. Δοκιμάστε ξανά.'),
+                icon: isSuccess ? 'success' : 'error',
+                confirmButtonColor: '#2c5f50', // Your brand green
+                background: '#fdfdfd'
+            });
+        }
+
+        // The core sending function
+        function sendTherapisEmail(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button');
+            const originalBtnText = btn.innerHTML;
+
+            // Visual feedback
+            btn.innerHTML = currentLang === 'en' ? 'Sending...' : 'Αποστολή...';
+            btn.disabled = true;
+
+            // Mapping fields - Using 'name' attributes from your HTML
+            const templateParams = {
+                name: form.elements['name'] ? form.elements['name'].value : form.elements[0].value,
+                phone: form.elements['phone'] ? form.elements['phone'].value : form.elements[1].value,
+                condition: form.elements['condition'] ? form.elements['condition'].value : form.elements[2].value,
+                language: typeof currentLang !== 'undefined' ? currentLang : 'el'
+            };
+
+            emailjs.send("contact_service", "template_u9ar3nh", templateParams)
+                .then(function() {
+                    showTherapisAlert(true);
+                    form.reset();
+                })
+                .catch(function(error) {
+                    showTherapisAlert(false);
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(function() {
+                    btn.innerHTML = originalBtnText;
+                    btn.disabled = false;
+                });
+        }
+
+        // Auto-attach to any form with these IDs
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('appointmentForm');
+            const mainPageForm = document.getElementById('mainPageForm');
+
+            if (contactForm) contactForm.addEventListener('submit', sendTherapisEmail);
+            if (mainPageForm) mainPageForm.addEventListener('submit', sendTherapisEmail);
+        });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("guIynBSjLAhUJgMLc");
+        })();
+    </script>
+
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "PhysiotherapyClinic",
+        "@id": "https://www.physiotherapis.gr/#clinic",
+        "name": "Therapis Physiotherapy Moires",
+        "alternateName": "Φυσικοθεραπεία Μοίρες",
+        "url": "https://www.physiotherapis.gr",
+        "logo": "https://www.physiotherapis.gr/Logo.svg",
+        "image": "https://www.physiotherapis.gr/Logo.svg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Konstantinou Petraki 21",
+            "addressLocality": "Moires, Heraklion",
+            "postalCode": "70400",
+            "addressCountry": "GR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "35.0500", 
+            "longitude": "24.8700"
+        }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+
+        <div class="logo-container"><a href="index.html"><img src="/SecLogo.svg" alt="Therapis Logo"></a></div>
+
+        <nav id="mainNav">
+        <ul>
+            <li class="has-dropdown">
+                <a href="#" data-en="Services & Techniques" data-el="Υπηρεσίες & Τεχνικές">Services & Techniques</a>
+                <ul class="dropdown">
+                    <li><a href="/pelvic_index.html" data-en="Pelvic floor physiotherapy" data-el="Φυσικοθεραπεία πυελικού εδάφους">Pelvic floor physiotherapy</a></li>
+                    <li><a href="/manual_therapy.html" data-en="Manual therapy" data-el="Χειροπρακτική / Manual therapy">Manual therapy</a></li>
+                    <li><a href="/musc_physio.html" data-en="Musculoskeletal physiotherapy" data-el="Μυοσκελετική φυσικοθεραπεία">Musculoskeletal physiotherapy</a></li>
+                    <li><a href="/sport_injuries.html" data-en="Sports injuries" data-el="Αθλητικές κακώσεις">Sports injuries</a></li>
+                    <li><a href="/neuro_rehab.html" data-en="Neurological rehabilitation" data-el="Νευρολογική αποκατάσταση">Neurological rehabilitation</a></li>
+                    <li><a href="/geriatric.html" data-en="Geriatric physiotherapy" data-el="Γηριατρική φυσικοθεραπεία">Geriatric physiotherapy</a></li>
+                    <li><a href="/therapis_pro.html" data-en="Therapis pro (Prevention & physical wellness)" data-el="Therapis pro (Πρόληψη & σωματική Ευεξία)">Therapis pro (Prevention & physical wellness)</a></li>
+                    <li><a href="/therap_massage.html" data-en="Therapeutic massage" data-el="Θεραπευτική μάλαξη">Therapeutic massage</a></li>
+                    <li><a href="/techniques.html" data-en="Techniques" data-el="Τεχνικές">Techniques</a></li>
+                </ul>
+            </li>
+
+            <li class="has-dropdown">
+                <a href="#" data-en="Technological Equipment" data-el="Τεχνολογικός Εξοπλισμός">Technological Equipment</a>
+                <ul class="dropdown">
+                    <li><a href="/fms.html" data-en="Magnetic Stimulator" data-el="Μαγνητικός Διεγέρτης (Magnetotherapy)">Magnetic Stimulator</a></li>
+                    <li><a href="/pressotherapy.html" data-en="Pressotherapy" data-el="Πρεσσοθεραπεία">Pressotherapy</a></li>
+                    <li><a href="/tecar-therapy.html" data-en="Tecar Therapy" data-el="Θεραπεία Tecar">Tecar Therapy</a></li>
+                    <li><a href="/heat-ice.html" data-en="Heat Therapy and Ice Therapy" data-el="Θερμοθεραπεία & Παγοθεραπεία">Heat Therapy and Ice Therapy</a></li>
+                    <li><a href="/electro-therap.html" data-en="Electrotherapy (TENS / Interference)" data-el="Ηλεκτροθεραπεία (TENS / Interferential)">Electrotherapy (TENS / Interference)</a></li>
+                    <li><a href="/ultra-therap.html" data-en="Therapeutic Ultrasound" data-el="Θεραπευτικός Υπέρηχος">Therapeutic Ultrasound</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/about.html" data-en="About us" data-el="Ποιοί είμαστε">About us</a>
+                <ul class="dropdown-about">
+                    <li><a href="about.html#center" data-en="Therapis Physiocenter" data-el="Therapis Physiocenter">Therapis Physiocenter</a></li>
+                    <li class="has-sub-menu">
+                        <a href="about.html#team" data-en="Physiotherapists ›" data-el="Φυσικοθεραπευτές ›">Physiotherapists ›</a>
+                        <ul class="sub-menu">
+                            <li><a href="about.html#bio-marilena" data-en="Marilena Roukounaki" data-el="Μαριλένα Ρουκουνάκη">Marilena Roukounaki</a></li>
+                            <li><a href="about.html#bio-chrysostomos" data-en="Chrysostomos Pazaridis" data-el="Χρυσόστομος Παζαρίδης">Chrysostomos Pazaridis</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li><a href="contact_us.html" data-en="Blog" data-el="Άρθρα">Blog</a></li> -->
+        </ul>
+        </nav>
+
+        <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
+
+        <div class="header-right">
+        <div class="lang-toggle" onclick="toggleLanguage()">EN | GR</div>
+        <a href="/contact_us.html" class="btn-main" data-en="Contact us" data-el="Επικοινωνία">Contact us</a>
+        </div>
+
+    </header>
+
+    <section class="legal-section">
+        <div class="legal-container">
+            <h1 data-en="Terms & Conditions" data-el="Όροι & Προϋποθέσεις">Terms & Conditions</h1>
+            
+            <p class="last-updated">
+                <span data-en="Last Updated: 29/03/2026" data-el="Τελευταία Ενημέρωση: 29/03/2026">Last Updated: 29/03/2026</span>
+            </p>
+
+            <div class="legal-content">
+                <p data-en="Welcome to the Therapis Physio Center website. By using this website or our services, you agree to the following terms:" 
+                data-el="Καλώς ήρθατε στην ιστοσελίδα του Therapis Physio Center. Χρησιμοποιώντας αυτόν τον ιστότοπο ή τις υπηρεσίες μας, συμφωνείτε με τους ακόλουθους όρους:">
+                Welcome to the Therapis Physio Center website. By using this website or our services, you agree to the following terms:
+                </p>
+
+                <h2 data-en="1. Medical Disclaimer" data-el="1. Ιατρική Αποποίηση Ευθύνης">1. Medical Disclaimer</h2>
+                <p data-en="The content of this website (descriptions of pain, manual therapy, etc.) is for informational purposes only. It does not constitute medical advice or diagnosis. A professional physical assessment at our center is required before starting any treatment." 
+                data-el="Το περιεχόμενο αυτού του ιστότοπου (περιγραφές πόνου, manual therapy κ.λπ.) προορίζεται αποκλειστικά για ενημερωτικούς σκοπούς. Δεν αποτελεί ιατρική συμβουλή ή διάγνωση. Απαιτείται επαγγελματική φυσική αξιολόγηση στο κέντρο μας πριν από την έναρξη οποιασδήποτε θεραπείας.">
+                The content of this website (descriptions of pain, manual therapy, etc.) is for informational purposes only. It does not constitute medical advice or diagnosis. A professional physical assessment at our center is required before starting any treatment.
+                </p>
+
+                <h2 data-en="2. Accuracy of Provided Information" data-el="2. Ακρίβεια των Παρεχόμενων Πληροφοριών">2. Accuracy of Provided Information</h2>
+                <p data-en="When using our contact forms, you agree to provide accurate and truthful information regarding your name, phone number, and symptoms. Providing false information may lead to ineffective or unsafe treatment recommendations." 
+                data-el="Όταν χρησιμοποιείτε τις φόρμες επικοινωνίας μας, συμφωνείτε να παρέχετε ακριβείς και αληθείς πληροφορίες σχετικά με το όνομα, το τηλέφωνο και τα συμπτώματά σας. Η παροχή ψευδών πληροφοριών μπορεί να οδηγήσει σε αναποτελεσματικές ή μη ασφαλείς συστάσεις θεραπείας.">
+                When using our contact forms, you agree to provide accurate and truthful information regarding your name, phone number, and symptoms. Providing false information may lead to ineffective or unsafe treatment recommendations.
+                </p>
+
+                <h2 data-en="3. Appointments & Communication" data-el="3. Ραντεβού & Επικοινωνία">3. Appointments & Communication</h2>
+                <p data-en="By providing your phone number, you consent to Therapis Physio Center contacting you via call or message to discuss your symptoms and finalize your appointment." 
+                data-el="Παρέχοντας τον αριθμό τηλεφώνου σας, συγκατατίθεστε ώστε το Therapis Physio Center να επικοινωνήσει μαζί σας μέσω κλήσης ή μηνύματος για να συζητήσετε τα συμπτώματά σας και να οριστικοποιήσετε το ραντεβού σας.">
+                By providing your phone number, you consent to Therapis Physio Center contacting you via call or message to discuss your symptoms and finalize your appointment.
+                </p>
+
+                <h2 data-en="4. Cancellation & No-Show Policy" data-el="4. Πολιτική Ακύρωσης & Μη Εμφάνισης">4. Cancellation & No-Show Policy</h2>
+                <p data-en="We maintain a strict schedule to effectively serve all patients." 
+                data-el="Διατηρούμε ένα αυστηρό πρόγραμμα για την αποτελεσματική εξυπηρέτηση όλων των ασθενών.">
+                We maintain a strict schedule to effectively serve all patients.
+                </p>
+                <ul class="legal-list">
+                    <li data-en="Cancellations must be made at least 24 hours in advance." 
+                        data-el="Οι ακυρώσεις πρέπει να γίνονται τουλάχιστον 24 ώρες νωρίτερα.">
+                        Cancellations must be made at least 24 hours in advance.
+                    </li>
+                    <li data-en="Last-minute cancellations or no-shows may incur a cancellation fee." 
+                        data-el="Ακυρώσεις της τελευταίας στιγμής ή μη εμφάνιση (no-show) ενδέχεται να επιφέρουν χρέωση ακύρωσης.">
+                        Last-minute cancellations or no-shows may incur a cancellation fee.
+                    </li>
+                </ul>
+
+                <h2 data-en="5. Patient Responsibility" data-el="5. Ευθύνη Ασθενούς">5. Patient Responsibility</h2>
+                <p data-en="It is the patient's responsibility to disclose all known medical conditions, past surgeries, and current medications. Therapis Physio Center is not liable for complications arising from undisclosed medical information." 
+                data-el="Είναι ευθύνη του ασθενούς να γνωστοποιεί όλες τις γνωστές ιατρικές παθήσεις, προηγούμενες χειρουργικές επεμβάσεις και τρέχουσα φαρμακευτική αγωγή. Το Therapis Physio Center δεν φέρει ευθύνη για επιπλοκές που προκύπτουν από απόκρυψη ιατρικών πληροφοριών.">
+                It is the patient's responsibility to disclose all known medical conditions, past surgeries, and current medications. Therapis Physio Center is not liable for complications arising from undisclosed medical information.
+                </p>
+
+                <h2 data-en="6. Intellectual Property" data-el="6. Πνευματική Ιδιοκτησία">6. Intellectual Property</h2>
+                <p data-en="The name 'Therapis', the logo, and all original website content are the intellectual property of Therapis Physio Center. Any unauthorized reproduction is prohibited." 
+                data-el="Το όνομα 'Therapis', το λογότυπο και όλο το πρωτότυπο περιεχόμενο της ιστοσελίδας αποτελούν πνευματική ιδιοκτησία του Therapis Physio Center. Απαγορεύεται οποιαδήποτε μη εξουσιοδοτημένη αναπαραγωγή.">
+                The name "Therapis", the logo, and all original website content are the intellectual property of Therapis Physio Center. Any unauthorized reproduction is prohibited.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="float-btn go-top"><i class="fas fa-chevron-up"></i></a>
+    <a href="tel:+306948772692" class="contact-float float-btn"><i class="fas fa-phone-alt"></i></a>
+    <!-- <a href="viber://contact?number=%2B306948772692" class="contact-float float-btn"><i class="fab fa-viber"></i></a> -->
+
+    <!-- <div id="footer-placeholder"></div> -->
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-block">
+                <div class="footer-logo"><a href="index.html"><img src="/Logo.svg" alt="Therapis"></a></div>
+                <div class="footer-links">
+                    <a href="terms_conditions.html" data-en="Terms & Conditions" data-el="Όροι & Προϋποθέσεις">Terms & Conditions</a>
+                    <a href="privacy_policy.html" data-en="Privacy Policy" data-el="Πολιτική Απορρήτου">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-block">
+                <p><strong data-en="Location:" data-el="Τοποθεσία:">Location:</strong><span data-en=" Kon. Petraki 21, Mires 704 00" data-el=" Κων. Πετράκη 21, Μοίρες 704 00"> Kon. Petraki 21, Mires 704 00</span></p>
+                <p style="padding-bottom: 4%;" data-en="Heraklion Crete" data-el="Ηράκλειο Κρήτης">Heraklion Crete</p>
+                <div class="map-snippet">
+                    <iframe width="95%" height="100%" frameborder="0" style="border:0" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.5624306464588!2d24.87317966964213!3d35.050495196190305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149b1f3542fbb0c3%3A0x564b942c73fc3b51!2zzprOrc69z4TPgc6_IM6mz4XPg865zrrOv864zrXPgc6xz4DOtc6vzrHPgiBUaGVyYXBpcyAtIFBoeXNpbyBDZW50ZXIgVGhlcmFwaXM!5e0!3m2!1sen!2sgr!4v1771498447259!5m2!1sen!2sgr" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="footer-block">
+                <p><strong data-en="Working Hours" data-el="Ωράριο Λειτουργίας">Working Hours</strong></p>
+                <p><strong data-en="(by appointment)" data-el="(κατόπιν ραντεβού)">(by appointment)</strong></p>
+                <table style="width:100%; margin-top: 15px; border-collapse: collapse;">
+                    <tr><td data-en="Monday-Friday " data-el="Δευτέρα-Παρασκευή ">Monday-Friday </td></tr>
+                    <tr><td>08:00 - 21:30</td></tr>
+                    <!-- <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Tuesday" data-el="Τρίτη">Tuesday</td><td>08:00 - 21:30</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Wednesday" data-el="Τετάρτη">Wednesday</td><td>08:00 - 21:30</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Thursday" data-el="Πέμπτη">Thursday</td><td>08:00 - 21:30</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Friday" data-el="Παρασκευή">Friday</td><td>08:00 - 21:30</td></tr> -->
+                </table>
+                <p style="margin-top: 10%;"><a href="tel:+306948772692" class="contact-link" data-en="Mobile Phone: +30 6948772692" data-el="Τηλέφωνο: +30 6948772692"> Phone: +30 6948772692</a></p>
+                <p><a href="tel:+302892025363" class="contact-link" data-en="Phone: +30 28920 25363" data-el="Σταθερό: +30 28920 25363">Phone: +30 28920 25363</a></p>
+                <p><a href="mailto:therapis.physiocenter@gmail.com" class="contact-link">therapis.physiocenter@gmail.com</a></p>
+            </div>
+            <div class="footer-block">
+                <p><strong data-en="Follow Us" data-el="Ακολουθήστε Μας">Follow Us</strong></p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/therapis.physiocenter/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/therapis.physiocenter/"><i class="fab fa-facebook-square"></i></a>
+                    <a href="viber://contact?number=%2B306948772692"><i class="fab fa-viber"></i> </a>
+                </div>
+                <p></p>
+                
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
