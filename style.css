@@ -1676,3 +1676,77 @@ footer .contact-link:hover {
 .logo-slider:hover .logo-track {
     animation-play-state: paused;
 }
+
+/* Container for the whole page privacy policy */
+.legal-section {
+    padding: 120px 20px 80px 20px; /* Top padding allows for fixed header */
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+.legal-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.legal-container h1 {
+    font-size: 2.5rem;
+    color: #1B513B; /* Your Dark Green */
+    margin-bottom: 10px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.last-updated {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.legal-content h2 {
+    color: #a34b37; /* Your Terracotta color */
+    font-size: 1.5rem;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.legal-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.legal-list {
+    margin-bottom: 25px;
+    padding-left: 20px;
+}
+
+.legal-list li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 10px;
+    list-style-type: disc;
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+    .legal-section {
+        padding: 100px 15px 60px 15px;
+    }
+
+    .legal-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .legal-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .legal-content p, .legal-list li {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
