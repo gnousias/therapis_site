@@ -849,7 +849,7 @@ footer { background: var(--bg-light-green); padding: 80px 10% 40px; border-top: 
         width: 100%;
     }
 
-    .logo-container img { width: 72%; height: auto; vertical-align: middle; }
+    .logo-container img { width: auto; height: 40px; vertical-align: middle; }
 
     .header-right {
         display: flex;
