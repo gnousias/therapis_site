@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapis | Modern Physiotherapy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1B513B;
+            --accent-terracotta: #79321F;
+            --sage-green: #6E8C65;
+            --soft-rose: #AA6D5F;
+            --mint-pale: #C2D1BE;
+            --dusty-pink: #D3AFA7;
+            --bg-light-green: #ECF3EA;
+            --bg-light-rose: #F2E4E2;
+            --white: #ffffff;
+            --br-custom: 30px 0 30px 0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        * {
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 300;
+        }
+
+        body {
+            background-color: var(--bg-light-green);
+            color: var(--primary-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed; top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 90%; z-index: 1000;
+            background: rgba(236, 243, 234, 0.9);
+            backdrop-filter: blur(15px);
+            border-radius: 50px;
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 8px 25px;
+            box-shadow: 0 10px 30px rgba(27, 81, 59, 0.1);
+        }
+
+        .logo-container img { height: 40px; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul li a { text-decoration: none; color: var(--primary-dark); font-weight: 400; transition: 0.3s; }
+        .btn-main {
+            background: var(--accent-terracotta); color: var(--white);
+            padding: 10px 20px; border-radius: var(--br-custom);
+            text-decoration: none; transition: 0.4s; font-weight: 400;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            height: 100vh; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--primary-dark); overflow: hidden;
+        }
+        .hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .slide {
+            position: absolute; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; animation: heroCarousel 15s infinite;
+        }
+        .slide:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Therapis-2184.jpg'); animation-delay: 0s; }
+        .slide:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Therapis-1984.jpg'); animation-delay: 5s; }
+        .slide:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Therapis-2144.jpg'); animation-delay: 10s; }
+
+        @keyframes heroCarousel {
+            0%, 10% { opacity: 0; }
+            15%, 33% { opacity: 1; }
+            38%, 100% { opacity: 0; }
+        }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; color: white; padding: 0 20px; }
+        .hero-content img { max-width: 280px; margin-bottom: 20px; }
+
+        /* --- Callback --- */
+        .callback-section { padding: 60px 5%; background: var(--bg-light-green); }
+        .callback-container { max-width: 900px; margin: 0 auto; background: var(--mint-pale); padding: 30px; border-radius: var(--br-custom); }
+        .callback-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .callback-form input, .callback-form textarea {
+            padding: 15px; border: 1px solid var(--sage-green);
+            border-radius: 10px 0 10px 0; background: var(--bg-light-green);
+        }
+        .btn-call { background: var(--primary-dark); color: white; border: none; border-radius: 10px 0 10px 0; cursor: pointer; padding: 15px; }
+
+        /* --- Reviews --- */
+        .reviews-section { background: var(--dusty-pink); padding: 80px 5%; text-align: center; }
+        .review-container { max-width: 1100px; margin: 0 auto; position: relative; min-height: 250px; }
+        .review-triplet {
+            display: flex; justify-content: space-around; gap: 20px;
+            opacity: 0; position: absolute; width: 100%; transition: 1s;
+            animation: tripletFade 12s infinite;
+        }
+        .review-triplet:nth-child(2) { animation-delay: 6s; }
+        .review-box { background: var(--white); padding: 20px; border-radius: var(--br-custom); flex: 1; }
+
+        @keyframes tripletFade {
+            0%, 5% { opacity: 0; transform: translateY(10px); }
+            10%, 45% { opacity: 1; transform: translateY(0); }
+            50%, 100% { opacity: 0; transform: translateY(-10px); }
+        }
+
+        /* --- FAQ --- */
+        .faq { padding: 80px 10%; background: var(--bg-light-rose); }
+        .faq h2 { text-align: center; margin-bottom: 40px; }
+        .faq-item { background: var(--white); margin-bottom: 15px; border-radius: 15px 0 15px 0; border: 1px solid var(--mint-pale); overflow: hidden; }
+        .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 400; }
+        .faq-answer { 
+            padding: 0 20px; 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        .faq-item.active .faq-answer { max-height: 200px; padding: 0 20px 20px 20px; }
+        .faq-item.active .fa-plus { transform: rotate(45deg); }
+        .fa-plus { transition: 0.3s; }
+
+        /* --- Footer --- */
+        footer { background: var(--bg-light-green); padding: 60px 10% 30px; border-top: 1px solid var(--dusty-pink); }
+        .footer-grid { display: grid; grid-template-columns: 1.2fr 1.5fr 1fr 0.8fr; gap: 40px; }
+        .footer-block { border-right: 1px solid var(--dusty-pink); padding-right: 20px; }
+        .footer-block:last-child { border-right: none; }
+        .footer-logo img { height: 50px; margin-bottom: 15px; }
+        .footer-links a { display: block; color: var(--primary-dark); text-decoration: none; margin-bottom: 8px; font-size: 0.85rem; }
+        .social-icons { display: flex; gap: 15px; margin-top: 15px; }
+        .social-icons a { font-size: 1.5rem; color: var(--primary-dark); }
+
+        /* --- Floating --- */
+        .float-btn { position: fixed; bottom: 20px; z-index: 999; width: 50px; height: 50px; border-radius: 12px 0 12px 0; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
+        .go-top { left: 20px; background: var(--mint-pale); color: var(--primary-dark); }
+        .contact-float { right: 20px; background: var(--accent-terracotta); }
+
+        /* --- Responsive Logic --- */
+        @media (max-width: 1024px) {
+            header nav { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-block { border-right: none; border-bottom: 1px solid var(--dusty-pink); padding-bottom: 20px; }
+            .callback-form { grid-template-columns: 1fr; }
+            .review-triplet { position: relative; flex-direction: column; animation: none; opacity: 1; margin-bottom: 20px; }
+            .review-container { height: auto; }
+            .faq { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container"><img src="SecLogo.svg" alt="Logo"></div>
+        <nav>
+            <ul>
+                <li><a href="#" data-en="Main" data-el="Αρχική">Main</a></li>
+                <li><a href="#" data-en="Services" data-el="Υπηρεσίες">Services</a></li>
+                <li><a href="#" data-en="Contact" data-el="Επικοινωνία">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="lang-toggle" onclick="toggleLanguage()" style="cursor:pointer; font-weight:400;">EN | EL</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide"></div><div class="slide"></div><div class="slide"></div>
+        </div>
+        <div class="hero-content">
+            <img src="Logo.svg" alt="Therapis">
+            <p style="font-size: 1.2rem; margin-bottom: 30px;" data-en="Professional Physiotherapy" data-el="Επαγγελματική Φυσικοθεραπεία">Professional Physiotherapy</p>
+            <a href="#" class="btn-main" data-en="Book Now" data-el="Κλείστε Ραντεβού">Book Now</a>
+        </div>
+    </section>
+
+    <section class="callback-section">
+        <div class="callback-container">
+            <h2 style="margin-bottom: 20px; text-align: center;" data-en="Contact Us" data-el="Επικοινωνήστε μαζί μας">Contact Us</h2>
+            <form class="callback-form">
+                <input type="text" placeholder="Name" data-en-ph="Name" data-el-ph="Όνομα">
+                <input type="tel" placeholder="Phone" data-en-ph="Phone" data-el-ph="Τηλέφωνο">
+                <textarea placeholder="Notes" rows="2" data-en-ph="Notes" data-el-ph="Σημειώσεις"></textarea>
+                <button type="submit" class="btn-call" data-en="Send" data-el="Αποστολή">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <h2 style="margin-bottom: 30px;" data-en="What Our Patients Say" data-el="Τι λένε οι ασθενείς μας">What our patients say</h2>
+        <div class="review-container">
+            <div class="review-triplet">
+                <div class="review-box">
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p data-en="A pain in my back is holding me back and my waist is bending, but Marilena rubbed me and the pain went away!" 
+                    data-el="Ένας πόνος στην πλάτη μου με ταλαιπωρεί και η μέση μου γέρνει, αλλά η Μαριλένα με έτριψε και ο πόνος έφυγε!">
+                    A pain in my back is holding me back and my waist is bending, but Marilena rubbed me and the pain went away!
+                    </p>
+                    
+                    <strong style="display: block; margin-top: 15px;" 
+                            data-en="- Ευάγγελος Σταματάκης" 
+                            data-el="- Ευάγγελος Σταματάκης">
+                            - Ευάγγελος Σ.
+                    </strong>
+                </div>
+                <div class="review-box">
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p data-en="The right place for physiotherapy. Friendly environment and excellent service!" 
+                    data-el="Το κατάλληλο μέρος για φυσικοθεραπεία. Φιλικό περιβάλλον και εξαιρετική εξυπηρέτηση!">
+                    The right place for physiotherapy. Friendly environment and excellent service!
+                    </p>
+                    
+                    <strong style="display: block; margin-top: 15px;" 
+                            data-en="- Niki A." 
+                            data-el="- Niki A.">
+                            - Niki A.
+                    </strong>
+                </div>
+                <div class="review-box">
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p data-en="Excellent professionals with real interest. I highly recommend them!" 
+                    data-el="Εξαιρετικοί επαγγελματίες με πραγματικό ενδιαφέρον. Τους συστήνω ανεπιφύλακτα!">
+                    Excellent professionals with real interest. I highly recommend them!
+                    </p>
+                    
+                    <strong style="display: block; margin-top: 15px;" 
+                            data-en="- Δώρα Μ." 
+                            data-el="- Δώρα Μ.">
+                            - Δώρα Μ.
+                    </strong>
+                </div>
+            </div>
+            <div class="review-triplet">
+                <div class="review-box">
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p data-en="Excellent physiotherapy center with professionalism and care. The staff is highly trained and makes you feel comfortable from the first moment. I highly recommend it!" 
+                    data-el="Εξαιρετικό κέντρο φυσικοθεραπείας με επαγγελματισμό και φροντίδα. Το προσωπικό είναι άρτια εκπαιδευμένο και σε κάνει να νιώθεις άνετα από την πρώτη στιγμή. Το συνιστώ ανεπιφύλακτα!">
+                    Excellent physiotherapy center with professionalism and care. The staff is highly trained and makes you feel comfortable from the first moment. I highly recommend it!
+                    </p>
+                    
+                    <strong style="display: block; margin-top: 15px;" 
+                            data-en="- Φωτεινή Π." 
+                            data-el="- Φωτεινή Π.">
+                            - Φωτεινή Π.
+                    </strong>
+                </div>
+                <div class="review-box">
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p data-en="European-level knowledge and professionalism in the most beautiful corner of Europe" 
+                    data-el="Γνώσεις και επαγγελματισμός ευρωπαϊκού επιπέδου στην πιο όμορφη γωνιά της Ευρώπης">
+                    European-level knowledge and professionalism in the most beautiful corner of Europe
+                    </p>
+                    
+                    <strong style="display: block; margin-top: 15px;" 
+                            data-en="- Lampros K." 
+                            data-el="- Lampros K.">
+                            - Lampros K.
+                    </strong>
+                </div>
+                <div class="review-box">
+                    <div style="color: #fbbc04; margin-bottom: 12px; font-size: 0.8rem;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    
+                    <p data-en="The best physiotherapists! Thank you very much for everything!!" 
+                    data-el="Οι καλύτεροι φυσικοθεραπευτές! Ευχαριστώ πολύ για όλα!">
+                    The best physiotherapists! Thank you very much for everything!!
+                    </p>
+                    
+                    <strong style="display: block; margin-top: 15px;" 
+                            data-en="- Joan C." 
+                            data-el="- Joan C.">
+                            - Joan C.
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2 data-en="Frequently Asked Questions" data-el="Συχνές Ερωτήσεις">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span data-en="How long does each session last?" data-el="Πόσο διαρκεί κάθε συνεδρία;">How long does each session last?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p data-en="Typically, a session lasts between 45 to 60 minutes depending on the condition. We ensure enough time is given to address your specific needs effectively." 
+                   data-el="Συνήθως, μια συνεδρία διαρκεί από 45 έως 60 λεπτά ανάλογα με την πάθηση. Διασφαλίζουμε ότι παρέχεται επαρκής χρόνος για την αποτελεσματική αντιμετώπιση των αναγκών σας.">
+                   Typically, a session lasts between 45 to 60 minutes.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span data-en="What should I wear to my first visit?" data-el="Τι πρέπει να φοράω στην πρώτη επίσκεψη;">What should I wear to my first visit?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p data-en="We recommend wearing comfortable, loose-fitting clothing or athletic gear. This allows our therapists to easily access the area of injury and perform a full assessment." 
+                   data-el="Σας προτείνουμε να φοράτε άνετα, χαλαρά ρούχα ή αθλητική περιβολή. Αυτό επιτρέπει στους θεραπευτές μας να έχουν εύκολη πρόσβαση στην περιοχή του τραυματισμού.">
+                   We recommend wearing comfortable, loose-fitting clothing.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-block">
+                <div class="footer-logo"><img src="Logo.svg" alt="Therapis"></div>
+                <div class="footer-links">
+                    <a href="#" data-en="Terms & Conditions" data-el="Όροι & Προϋποθέσεις">Terms & Conditions</a>
+                    <a href="#" data-en="Privacy Policy" data-el="Πολιτική Απορρήτου">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-block">
+                <p>📍 <strong data-en="Location" data-el="Τοποθεσία">Location</strong></p>
+                <p>Κων. Πετράκη 21, Mires 704 00</p>
+                <div class="map-snippet">
+                    <iframe width="100%" height="100%" frameborder="0" style="border:0" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.5624306464588!2d24.87317966964213!3d35.050495196190305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149b1f3542fbb0c3%3A0x564b942c73fc3b51!2zzprOrc69z4TPgc6_IM6mz4XPg865zrrOv864zrXPgc6xz4DOtc6vzrHPgiBUaGVyYXBpcyAtIFBoeXNpbyBDZW50ZXIgVGhlcmFwaXM!5e0!3m2!1sen!2sgr!4v1771498447259!5m2!1sen!2sgr" allowfullscreen></iframe>
+                </div>
+                <p>📞 +30 6948772692</p>
+                <p>📧 info@therapis.gr</p>
+            </div>
+            <div class="footer-block">
+                <p>📅 <strong data-en="Working Hours" data-el="Ωράριο Λειτουργίας">Working Hours</strong></p>
+                <table style="width:100%; margin-top: 15px; border-collapse: collapse;">
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Monday" data-el="Δευτέρα">Monday</td><td>09:00 - 21:00</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Tuesday" data-el="Τρίτη">Tuesday</td><td>09:00 - 21:00</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Wednesday" data-el="Τετάρτη">Wednesday</td><td>09:00 - 21:00</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Thursday" data-el="Πέμπτη">Thursday</td><td>09:00 - 21:00</td></tr>
+                    <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Friday" data-el="Παρασκευή">Friday</td><td>09:00 - 21:00</td></tr>
+                </table>
+            </div>
+            <div class="footer-block">
+                <p><strong data-en="Follow Us" data-el="Ακολουθήστε Μας">Follow Us</strong></p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="float-btn go-top"><i class="fas fa-chevron-up"></i></a>
+    <a href="tel:+306948772692" class="contact-float float-btn"><i class="fas fa-phone-alt"></i></a>
+
+    <script>
+        // Language Toggle
+        let currentLang = 'en';
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'el' : 'en';
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (el.childNodes[0] && el.childNodes[0].nodeType === 3) {
+                    el.childNodes[0].textContent = el.getAttribute('data-' + currentLang);
+                }
+            });
+            document.querySelectorAll('[data-en-ph]').forEach(el => {
+                el.placeholder = el.getAttribute('data-' + currentLang + '-ph');
+            });
+        }
+
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

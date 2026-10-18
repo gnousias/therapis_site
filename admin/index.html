@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Therapis Admin</title>
+    <link rel="icon" href="/Logo.svg" type="image/svg+xml">
+    <style>
+        :root { --primary-dark:#1B513B; --accent:#79321F; --sage:#6E8C65; --rose:#AA6D5F; --mint:#C2D1BE; --pink:#D3AFA7; --bg:#ECF3EA; --bg-rose:#F2E4E2; }
+        * { box-sizing: border-box; }
+        body { margin:0; font-family:'Ubuntu',system-ui,sans-serif; background:var(--bg); color:var(--primary-dark); line-height:1.5; }
+        header { background:var(--primary-dark); color:#fff; padding:14px 20px; display:flex; justify-content:space-between; align-items:center; }
+        header h1 { margin:0; font-size:1.2rem; font-weight:400; }
+        main { max-width:900px; margin:0 auto; padding:24px 16px 80px; }
+        .card { background:#fff; border-radius:30px 0 30px 0; padding:26px; margin-bottom:22px; box-shadow:0 8px 20px rgba(0,0,0,.06); }
+        h2 { margin:0 0 14px; font-size:1.15rem; color:var(--accent); font-weight:400; }
+        label { display:block; font-size:.85rem; margin:12px 0 4px; }
+        input[type=text], input[type=date], input[type=password], textarea, select { width:100%; padding:10px 12px; border:1px solid var(--mint); border-radius:10px; font:inherit; color:inherit; background:#fff; }
+        textarea { min-height:90px; resize:vertical; }
+        input:focus, textarea:focus, select:focus { outline:2px solid var(--sage); border-color:transparent; }
+        .row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        @media (max-width:640px) { .row { grid-template-columns:1fr; gap:0; } .card { padding:18px; } }
+        button { font:inherit; cursor:pointer; border:none; border-radius:12px 0 12px 0; padding:9px 18px; background:var(--accent); color:#fff; transition:.2s; }
+        button:hover { background:var(--rose); }
+        button.ghost { background:var(--bg-rose); color:var(--accent); }
+        button.ghost:hover { background:var(--pink); }
+        button:disabled { opacity:.5; cursor:wait; }
+        .hint { font-size:.8rem; color:var(--sage); margin:4px 0 0; }
+        .block { border:1px solid var(--mint); border-radius:14px; padding:14px; margin-bottom:14px; background:#fafcf9; }
+        .block-bar { display:flex; gap:8px; align-items:center; margin-bottom:6px; }
+        .block-bar select { width:auto; }
+        .block-bar .sp { flex:1; }
+        .block-bar button { padding:5px 10px; }
+        #preview { max-width:100%; max-height:220px; border-radius:14px; margin-top:10px; display:none; }
+        #status { padding:14px 18px; border-radius:14px; margin-top:16px; display:none; }
+        #status.ok { background:var(--mint); } #status.err { background:var(--bg-rose); color:var(--accent); }
+        #login { max-width:380px; margin:12vh auto; }
+        #app { display:none; }
+        .actions { display:flex; gap:10px; flex-wrap:wrap; }
+    </style>
+</head>
+<body>
+<header><h1>Therapis · Blog admin</h1><button class="ghost" id="logout" style="display:none">Log out</button></header>
+<main>
+    <section class="card" id="login">
+        <h2>Login</h2>
+        <label for="pw">Password</label>
+        <input type="password" id="pw" autocomplete="current-password">
+        <p style="margin:16px 0 0"><button id="loginBtn">Enter</button></p>
+        <div id="loginErr" class="hint" style="color:var(--accent)"></div>
+    </section>
+
+    <div id="app">
+        <section class="card">
+            <h2>1. Basics</h2>
+            <div class="row">
+                <div><label>Title (English)</label><input type="text" id="title_en"></div>
+                <div><label>Title (Greek)</label><input type="text" id="title_el"></div>
+            </div>
+            <div class="row">
+                <div><label>Short summary (English) - shown on the blog card</label><textarea id="summary_en" style="min-height:70px"></textarea></div>
+                <div><label>Short summary (Greek)</label><textarea id="summary_el" style="min-height:70px"></textarea></div>
+            </div>
+            <div class="row">
+                <div><label>URL name (slug)</label><input type="text" id="slug" placeholder="back-pain-causes"><p class="hint">Lowercase letters, numbers, hyphens. Fills automatically from the English title.</p></div>
+                <div><label>Date</label><input type="date" id="date"></div>
+            </div>
+            <label>Hero / card image <span class="hint">(optional - without one a plain green banner is used)</span></label>
+            <input type="file" id="image" accept="image/jpeg,image/png,image/webp">
+            <button class="ghost" id="removeImage" style="display:none;margin-top:8px">Remove image</button>
+            <img id="preview" alt="">
+        </section>
+
+        <section class="card">
+            <h2>2. Article content</h2>
+            <p class="hint" style="margin-top:-8px">Every block needs English and Greek text. Use **double asterisks** for bold. In a bullet list, put one item per line.</p>
+            <div id="blocks"></div>
+            <div class="actions">
+                <button class="ghost" data-add="p">+ Paragraph</button>
+                <button class="ghost" data-add="h2">+ Heading</button>
+                <button class="ghost" data-add="h3">+ Subheading</button>
+                <button class="ghost" data-add="list">+ Bullet list</button>
+                <button class="ghost" data-add="tip">+ Highlight box</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>3. Publish</h2>
+            <label for="signature">Signature at the end of the article</label>
+            <select id="signature"><option value="marilena">Marilena Roukounaki</option><option value="chrysostomos">Chrysostomos Pazaridis</option><option value="none">No signature</option></select>
+            <p class="hint">Publishing commits the article to GitHub; the site updates within about a minute.</p>
+            <p><button id="publish">Publish article</button> <button class="ghost" id="clear">Clear form</button></p>
+            <div id="status"></div>
+        </section>
+
+        <section class="card">
+            <h2>4. Existing articles</h2>
+            <p class="hint" style="margin-top:-8px">Deleting removes the article page, its image, its card and its sitemap entry (one GitHub commit, which can be reverted).</p>
+            <div id="existing">Loading…</div>
+        </section>
+    </div>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const TYPES = { p: 'Paragraph', h2: 'Heading', h3: 'Subheading', list: 'Bullet list', tip: 'Highlight box' };
+let imageData = null;
+
+function safeStore(fn) { try { return fn(); } catch (e) { return null; } }
+const getPw = () => safeStore(() => sessionStorage.getItem('adminPw')) || '';
+
+// ---------- login ----------
+async function api(body) {
+    const r = await fetch('/api/publish', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-admin-password': getPw() }, body: JSON.stringify(body) });
+    let j = {}; try { j = await r.json(); } catch (e) {}
+    return { status: r.status, ...j };
+}
+function showApp() { $('login').style.display = 'none'; $('app').style.display = 'block'; $('logout').style.display = ''; loadExisting(); }
+async function login() {
+    safeStore(() => sessionStorage.setItem('adminPw', $('pw').value));
+    const r = await api({ check: true });
+    if (r.ok) { showApp(); loadDraft(); } else { $('loginErr').textContent = r.error || 'Login failed.'; safeStore(() => sessionStorage.removeItem('adminPw')); }
+}
+$('loginBtn').onclick = login;
+$('pw').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+$('logout').onclick = () => { safeStore(() => sessionStorage.removeItem('adminPw')); location.reload(); };
+if (getPw()) api({ check: true }).then(r => { if (r.ok) { showApp(); loadDraft(); } });
+
+// ---------- blocks ----------
+function addBlock(type, en = '', el = '', at = null) {
+    const d = document.createElement('div'); d.className = 'block';
+    d.innerHTML = `<div class="block-bar"><select>${Object.entries(TYPES).map(([k, v]) => `<option value="${k}">${v}</option>`).join('')}</select><span class="sp"></span>
+        <button class="ghost" data-act="up" title="Move up">↑</button><button class="ghost" data-act="down" title="Move down">↓</button><button class="ghost" data-act="del" title="Remove">✕</button></div>
+        <div class="row"><div><label>English</label><textarea class="en"></textarea></div><div><label>Greek</label><textarea class="el"></textarea></div></div>`;
+    d.querySelector('select').value = type; d.querySelector('.en').value = en; d.querySelector('.el').value = el;
+    $('blocks').appendChild(d);
+    d.scrollIntoView({ block: 'nearest' });
+    return d;
+}
+$('blocks').addEventListener('click', e => {
+    const act = e.target.dataset.act, b = e.target.closest('.block'); if (!act || !b) return;
+    if (act === 'del') b.remove();
+    if (act === 'up' && b.previousElementSibling) b.parentNode.insertBefore(b, b.previousElementSibling);
+    if (act === 'down' && b.nextElementSibling) b.parentNode.insertBefore(b.nextElementSibling, b);
+    saveDraft();
+});
+document.querySelectorAll('[data-add]').forEach(btn => btn.onclick = () => addBlock(btn.dataset.add));
+
+// ---------- slug ----------
+let slugTouched = false;
+$('slug').addEventListener('input', () => slugTouched = true);
+$('title_en').addEventListener('input', () => { if (!slugTouched) $('slug').value = $('title_en').value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60); });
+$('date').value = new Date().toISOString().slice(0, 10);
+
+// ---------- image: resize to max 1600px JPEG ----------
+$('image').addEventListener('change', e => {
+    const file = e.target.files[0]; if (!file) return;
+    const img = new Image();
+    img.onload = () => {
+        const s = Math.min(1, 1600 / img.width), c = document.createElement('canvas');
+        c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+        const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(img, 0, 0, c.width, c.height);
+        imageData = c.toDataURL('image/jpeg', 0.82);
+        $('preview').src = imageData; $('preview').style.display = 'block'; $('removeImage').style.display = '';
+        URL.revokeObjectURL(img.src);
+    };
+    img.src = URL.createObjectURL(file);
+});
+
+$('removeImage').onclick = () => { imageData = null; $('image').value = ''; $('preview').style.display = 'none'; $('removeImage').style.display = 'none'; };
+
+// ---------- existing articles / delete ----------
+const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+async function loadExisting() {
+    const box = $('existing');
+    try {
+        const posts = await (await fetch('/blog/posts.json?t=' + Date.now())).json();
+        posts.sort((a, b) => b.date.localeCompare(a.date));
+        box.innerHTML = posts.length ? '' : 'No articles yet.';
+        posts.forEach(p => {
+            const row = document.createElement('div'); row.className = 'block'; row.style.display = 'flex'; row.style.gap = '12px'; row.style.alignItems = 'center';
+            row.innerHTML = '<div style="flex:1"><strong>' + esc(p.title_en) + '</strong><br><span class="hint">' + esc(p.date) + ' · /blog/' + esc(p.slug) + '</span></div>' +
+                '<a class="hint" href="/blog/' + esc(p.slug) + '.html" target="_blank">view</a><button class="ghost" data-del="' + esc(p.slug) + '">Delete</button>';
+            box.appendChild(row);
+        });
+    } catch (e) { box.textContent = 'Could not load the list.'; }
+}
+$('existing').addEventListener('click', async e => {
+    const slug = e.target.dataset.del; if (!slug) return;
+    if (!confirm('Delete the article "' + slug + '" from the live site?\nThis removes its page, image, card and sitemap entry.')) return;
+    e.target.disabled = true;
+    const r = await api({ action: 'delete', slug });
+    if (r.ok) { say('Deleted "' + slug + '". The site updates in about a minute.', true); e.target.closest('.block').remove(); }
+    else { say(r.error || 'Could not delete (status ' + r.status + ').', false); e.target.disabled = false; }
+});
+
+// ---------- draft autosave (text only, in this browser) ----------
+const FIELDS = ['title_en', 'title_el', 'summary_en', 'summary_el', 'slug', 'date'];
+function collect() {
+    return {
+        ...Object.fromEntries(FIELDS.map(f => [f, $(f).value])),
+        signature: $('signature').value,
+        blocks: [...document.querySelectorAll('.block')].map(b => ({ type: b.querySelector('select').value, en: b.querySelector('.en').value, el: b.querySelector('.el').value }))
+    };
+}
+function saveDraft() { safeStore(() => localStorage.setItem('blogDraft', JSON.stringify(collect()))); }
+function loadDraft() {
+    const raw = safeStore(() => localStorage.getItem('blogDraft'));
+    if (raw) { try {
+        const d = JSON.parse(raw);
+        FIELDS.forEach(f => { if (d[f]) $(f).value = d[f]; });
+        slugTouched = !!d.slug; if (['marilena','chrysostomos','none'].includes(d.signature)) $('signature').value = d.signature;
+        (d.blocks || []).forEach(b => addBlock(b.type, b.en, b.el));
+    } catch (e) {} }
+    if (!document.querySelector('.block')) addBlock('p');
+}
+document.addEventListener('input', saveDraft);
+
+$('clear').onclick = () => {
+    if (!confirm('Clear the whole form?')) return;
+    safeStore(() => localStorage.removeItem('blogDraft')); location.reload();
+};
+
+// ---------- publish ----------
+function say(msg, ok) { const s = $('status'); s.className = ok ? 'ok' : 'err'; s.innerHTML = msg; s.style.display = 'block'; s.scrollIntoView({ block: 'nearest' }); }
+$('publish').onclick = async () => {
+    const d = collect();
+    if (!confirm('Publish "' + (d.title_en || 'this article') + '" to the live site?')) return;
+    $('publish').disabled = true; say('Publishing…', true);
+    const r = await api({ ...d, image: imageData || '' });
+    $('publish').disabled = false;
+    if (r.ok) {
+        safeStore(() => localStorage.removeItem('blogDraft'));
+        loadExisting();
+        say('Published! The site redeploys in about a minute, then the article is at <a href="' + r.url + '" target="_blank">' + location.origin + r.url + '</a>', true);
+    } else say(r.error || 'Something went wrong (status ' + r.status + ').', false);
+};
+</script>
+</body>
+</html>
