@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--
+  ARTICLE TEMPLATE  -  see /blog/README.md
+  1. Copy this file to /blog/<your-slug>.html   (e.g. back-pain-causes.html)
+  2. Search for "EDIT" below and replace every value
+  3. Add the article to /blog/posts.json and /sitemap.xml
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/Logo.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <script src="/script.js"></script>
+    <!-- EDIT: title (EN/GR) -->
+    <title data-en="Do you know what is pelvic floor?" data-el="Εσύ ξέρεις τι είναι το Πυελικό Έδαφος;">Do you know what is pelvic floor?</title>
+    <!-- EDIT: description (~150 chars, shown in Google) -->
+    <meta name="description" content="Incontinence and pelvic pain aren’t normal. Pelvic floor physiotherapy is the first-line treatment, with success rates of up to 80%. Regain control.">
+    <!-- EDIT: slug in the two URLs, and the image -->
+    <link rel="canonical" href="https://www.physiotherapis.gr/blog/pelvic_article.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Do you know what is pelvic floor?">
+    <meta property="og:description" content="Short description of the article.">
+    <meta property="og:url" content="https://www.physiotherapis.gr/blog/pelvic_article.html">
+    <meta property="og:image" content="https://www.physiotherapis.gr/blog/images/YOUR-SLUG.jpg">
+</head>
+<body>
+
+<header>
+
+<div class="logo-container"><a href="/index.html"><img src="/SecLogo.svg" alt="Therapis Logo"></a></div>
+
+<nav id="mainNav">
+    <ul>
+        <li class="has-dropdown">
+            <a href="#" data-en="Services & Techniques" data-el="Υπηρεσίες & Τεχνικές">Services & Techniques</a>
+            <ul class="dropdown">
+                <li><a href="/pelvic_index.html" data-en="Pelvic floor physiotherapy" data-el="Φυσικοθεραπεία πυελικού εδάφους">Pelvic floor physiotherapy</a></li>
+                <li><a href="/manual_therapy.html" data-en="Manual therapy" data-el="Χειροπρακτική / Manual therapy">Manual therapy</a></li>
+                <li><a href="/musc_physio.html" data-en="Musculoskeletal physiotherapy" data-el="Μυοσκελετική φυσικοθεραπεία">Musculoskeletal physiotherapy</a></li>
+                <li><a href="/sport_injuries.html" data-en="Sports injuries" data-el="Αθλητικές κακώσεις">Sports injuries</a></li>
+                <li><a href="/neuro_rehab.html" data-en="Neurological rehabilitation" data-el="Νευρολογική αποκατάσταση">Neurological rehabilitation</a></li>
+                <li><a href="/geriatric.html" data-en="Geriatric physiotherapy" data-el="Γηριατρική φυσικοθεραπεία">Geriatric physiotherapy</a></li>
+                <li><a href="/therapis_pro.html" data-en="Therapis pro (Prevention & physical wellness)" data-el="Therapis pro (Πρόληψη & σωματική Ευεξία)">Therapis pro (Prevention & physical wellness)</a></li>
+                <li><a href="/therap_massage.html" data-en="Therapeutic massage" data-el="Θεραπευτική μάλαξη">Therapeutic massage</a></li>
+                <li><a href="/techniques.html" data-en="Techniques" data-el="Τεχνικές">Techniques</a></li>
+            </ul>
+        </li>
+
+        <li class="has-dropdown">
+            <a href="#" data-en="Technological Equipment" data-el="Τεχνολογικός Εξοπλισμός">Technological Equipment</a>
+            <ul class="dropdown">
+                <li><a href="/fms.html" data-en="Magnetic Stimulator" data-el="Μαγνητικός Διεγέρτης (Magnetotherapy)">Magnetic Stimulator</a></li>
+                <li><a href="/pressotherapy.html" data-en="Pressotherapy" data-el="Πρεσσοθεραπεία">Pressotherapy</a></li>
+                <li><a href="/tecar-therapy.html" data-en="Tecar Therapy" data-el="Θεραπεία Tecar">Tecar Therapy</a></li>
+                <li><a href="/heat-ice.html" data-en="Heat Therapy and Ice Therapy" data-el="Θερμοθεραπεία & Παγοθεραπεία">Heat Therapy and Ice Therapy</a></li>
+                <li><a href="/electro-therap.html" data-en="Electrotherapy (TENS / Interference)" data-el="Ηλεκτροθεραπεία (TENS / Interferential)">Electrotherapy (TENS / Interference)</a></li>
+                <li><a href="/ultra-therap.html" data-en="Therapeutic Ultrasound" data-el="Θεραπευτικός Υπέρηχος">Therapeutic Ultrasound</a></li>
+            </ul>
+        </li>
+        <li class="has-dropdown">
+            <a href="/about.html" data-en="About us" data-el="Ποιοί είμαστε">About us</a>
+            <ul class="dropdown">
+                <li><a href="/about.html#center" data-en="Therapis Physiocenter" data-el="Therapis Physiocenter">Therapis Physiocenter</a></li>
+                <li class="has-sub-menu">
+                    <a href="/about.html#team" data-en="Physiotherapists ›" data-el="Φυσικοθεραπευτές ›">Physiotherapists ›</a>
+                    <ul class="sub-menu">
+                        <li><a href="/about.html#bio-marilena" data-en="Marilena Roukounaki" data-el="Μαριλένα Ρουκουνάκη">Marilena Roukounaki</a></li>
+                        <li><a href="/about.html#bio-chrysostomos" data-en="Chrysostomos Pazaridis" data-el="Χρυσόστομος Παζαρίδης">Chrysostomos Pazaridis</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="/blog/" data-en="Blog" data-el="Άρθρα">Blog</a></li>
+    </ul>
+</nav>
+
+<div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
+
+<div class="header-right">
+    <div class="lang-toggle" onclick="toggleLanguage()">EN | GR</div>
+    <a href="/contact_us.html" class="btn-main" data-en="Contact us" data-el="Επικοινωνία">Contact us</a>
+</div>
+
+</header>
+
+    <!-- EDIT: hero image (put the file in /blog/images/) and the H1 -->
+    <section class="sub-hero service-banner blog-hero hero-pattern">
+        <h1 style="font-size: 2.6rem;" data-en="Do you know what is pelvic floor?" data-el="Εσύ ξέρεις τι είναι το Πυελικό Έδαφος;">Do you know what is pelvic floor?</h1>
+    </section>
+
+    <section class="article-section">
+        <article class="article">
+            <a class="article-back" href="/blog/" data-en="← All articles" data-el="← Όλα τα άρθρα">← All articles</a>
+            <!-- EDIT: date (shown to readers) -->
+            <p class="blog-meta">15 October 2026</p>
+
+            <!--
+              BODY: each paragraph/heading is written twice, English in data-en and Greek in data-el.
+              Repeat the blocks below as needed. Use single quotes inside the text (class='bio-list')
+              and &quot; or typographic quotes for quotation marks.
+            -->
+            <p data-en="While we often focus on our musculoskeletal health, one critical system of our body remains on the sidelines of public discussion: the pelvic floor. It is a complex of muscles and ligaments at the base of the pelvis that acts like a “hammock,” supporting vital organs (bladder, bowel, uterus) and ensuring control of urination and sexual function. Despite the silence surrounding it, the problems related to it are extremely widespread." data-el="Ενώ συχνά εστιάζουμε στη μυοσκελετική μας υγεία, ένα κρίσιμο σύστημα του σώματός
+                μας παραμένει στο περιθώριο της δημόσιας συζήτησης, το πυελικό έδαφος. Είναι ένα
+                σύμπλεγμα μυών και συνδέσμων στη βάση της λεκάνης που λειτουργεί σαν «αιώρα»,
+                στηρίζοντας ζωτικά όργανα (κύστη, έντερο, μήτρα) και εξασφαλίζει τον έλεγχο της
+                ούρησης και της σεξουαλικής λειτουργίας. Παρά τη σιωπή που το περιβάλλει, τα
+                προβλήματα που σχετίζονται με αυτό είναι εξαιρετικά διαδεδομένα.">While we often focus on our musculoskeletal health, one critical system of our body remains on the sidelines of public discussion: the pelvic floor. It is a complex of muscles and ligaments at the base of the pelvis that acts like a “hammock,” supporting vital organs (bladder, bowel, uterus) and ensuring control of urination and sexual function. Despite the silence surrounding it, the problems related to it are extremely widespread.</p>
+
+            <h2 data-en="Physiotherapy as a 'Gold Standard'" data-el="Η Φυσικοθεραπεία ως «Χρυσός Κανόνας» (Gold Standard)">Physiotherapy as a "Gold Standard"</h2>
+            <p data-en="Many patients are mistakenly led to believe that the only solution is surgery or medication, while others believe that there is no solution and they must learn to live with it. However, the scientific community now has a different approach. In particular, the International Continence Society (ICS), which is the leading global scientific organization involved in the study, diagnosis and treatment of lower urinary tract dysfunctions, including incontinence, confirms through extensive studies that Pelvic Floor Physiotherapy should be the first-line treatment for stress incontinence and mild prolapse. Research shows that specialized muscle retraining through physical therapy has success rates approaching 80%, reducing the need for invasive methods. Specialized pelvic floor physiotherapy uses tools such as biofeedback and electrical stimulation, combined with a personalized exercise program, to restore function to the area." 
+            data-el="Πολλοί ασθενείς οδηγούνται λανθασμένα στο συμπέρασμα ότι η μόνη λύση είναι η χειρουργική επέμβαση ή η φαρμακευτική αγωγή, ενώ άλλοι πιστεύουν ότι δεν υπάρχει λύση και πρέπει να μάθουν να ζουν με αυτήν. Ωστόσο, η επιστημονική κοινότητα έχει πλέον διαφορετική προσέγγιση. Συγκεκριμένα, η Διεθνής Εταιρεία Εγκράτειας (ICS), η οποία είναι ο κορυφαίος παγκόσμιος επιστημονικός οργανισμός που ασχολείται με τη μελέτη, τη διάγνωση και τη θεραπεία δυσλειτουργιών του κατώτερου ουροποιητικού συστήματος, συμπεριλαμβανομένης της ακράτειας, επιβεβαιώνει μέσω εκτεταμένων μελετών ότι η Φυσικοθεραπεία Πυελικού Εδάφους θα πρέπει να αποτελεί τη θεραπεία πρώτης γραμμής για την ακράτεια από προσπάθεια και την ήπια πρόπτωση. Η έρευνα δείχνει ότι η εξειδικευμένη επανεκπαίδευση των μυών μέσω φυσικοθεραπείας έχει ποσοστά επιτυχίας που πλησιάζουν το 80%, μειώνοντας την ανάγκη για επεμβατικές μεθόδους. Η εξειδικευμένη φυσικοθεραπεία πυελικού εδάφους χρησιμοποιεί εργαλεία όπως η βιοανάδραση και η ηλεκτρική διέγερση, σε συνδυασμό με ένα εξατομικευμένο πρόγραμμα άσκησης, για την αποκατάσταση της λειτουργίας της περιοχής.">
+            Many patients are mistakenly led to believe that the only solution is surgery or medication, while others believe that there is no solution and they must learn to live with it. However, the scientific community now has a different approach. In particular, the International Continence Society (ICS), which is the leading global scientific organization involved in the study, diagnosis and treatment of lower urinary tract dysfunctions, including incontinence, confirms through extensive studies that Pelvic Floor Physiotherapy should be the first-line treatment for stress incontinence and mild prolapse. Research shows that specialized muscle retraining through physical therapy has success rates approaching 80%, reducing the need for invasive methods. Specialized pelvic floor physiotherapy uses tools such as biofeedback and electrical stimulation, combined with a personalized exercise program, to restore function to the area.</p>
+
+            <h2 data-en="The most common symptoms of 'stress incontinence'..." data-el="Τα πιο συχνά συμπτώματα της «ακράτειας από προσπάθεια»…">The most common symptoms of "stress incontinence"...</h2>
+            <p data-en="If you notice urine leaking when you cough, laugh, exercise, or lift weights, after pregnancy and childbirth, or if the hormonal changes of menopause have brought new challenges to your daily life, remember: you are not alone. These symptoms are extremely common, but they are not “normal” or something you should just accept. Get an expert’s advice. Don’t hesitate to break the silence and see a pelvic floor physiotherapist or your doctor for a personalized assessment. The message is clear: Incontinence and pain are not a “normal consequence” of aging or childbirth. They are treatable conditions. Early detection is the key to regaining control and confidence and the first step to a life of freedom and movement." 
+            data-el="Αν παρατηρήσετε διαρροή ούρων όταν βήχετε, γελάτε, ασκείστε ή σηκώνετε βάρη, μετά από εγκυμοσύνη και τοκετό ή αν οι ορμονικές αλλαγές της εμμηνόπαυσης έχουν φέρει νέες προκλήσεις στην καθημερινότητά σας, θυμηθείτε: δεν είστε οι μόνες. Αυτά τα συμπτώματα είναι εξαιρετικά συνηθισμένα, αλλά δεν είναι «φυσιολογικά» ή κάτι που πρέπει απλώς να αποδεχτείτε. Ζητήστε τη συμβουλή ενός ειδικού. Μη διστάσετε να σπάσετε τη σιωπή και να επισκεφθείτε έναν φυσιοθεραπευτή πυελικού εδάφους ή τον γιατρό σας για μια εξατομικευμένη αξιολόγηση. Το μήνυμα είναι σαφές: Η ακράτεια και ο πόνος δεν είναι «φυσιολογική συνέπεια» της γήρανσης ή του τοκετού. Είναι θεραπεύσιμες παθήσεις. Η έγκαιρη ανίχνευση είναι το κλειδί για την ανάκτηση του ελέγχου και της αυτοπεποίθησης και το πρώτο βήμα για μια ζωή ελευθερίας και κίνησης.">
+            If you notice urine leaking when you cough, laugh, exercise, or lift weights, after pregnancy and childbirth, or if the hormonal changes of menopause have brought new challenges to your daily life, remember: you are not alone. These symptoms are extremely common, but they are not “normal” or something you should just accept. Get an expert’s advice. Don’t hesitate to break the silence and see a pelvic floor physiotherapist or your doctor for a personalized assessment. The message is clear: Incontinence and pain are not a “normal consequence” of aging or childbirth. They are treatable conditions. Early detection is the key to regaining control and confidence and the first step to a life of freedom and movement.</p>
+
+            <h2 data-en="The message is clear:" data-el="Το μήνυμα είναι σαφές:">The message is clear:</h2>
+            <p data-en="Incontinence and pain are not a “normal consequence” of aging or childbirth. They are treatable conditions. Early detection is the key to regaining control and confidence and the first step to a life of freedom and movement." 
+            data-el="Η ακράτεια και ο πόνος δεν είναι «φυσιολογική συνέπεια» της γήρανσης ή του τοκετού. Είναι θεραπεύσιμες παθήσεις. Η έγκαιρη ανίχνευση είναι το κλειδί για την ανάκτηση του ελέγχου και της αυτοπεποίθησης και το πρώτο βήμα για μια ζωή ελευθερίας και κίνησης.">
+            Incontinence and pain are not a “normal consequence” of aging or childbirth. They are treatable conditions. Early detection is the key to regaining control and confidence and the first step to a life of freedom and movement.</p>
+
+            <!--<p data-en="A list:
+                <ul class='bio-list'>
+                    <li>Point one</li>
+                    <li>Point two</li>
+                </ul>"
+               data-el="Μια λίστα:
+                <ul class='bio-list'>
+                    <li>Σημείο ένα</li>
+                    <li>Σημείο δύο</li>
+                </ul>">A list:</p>  -->
+
+            <!-- Optional inline image: <img src="/blog/images/YOUR-SLUG-2.jpg" alt="Describe the image"> -->
+
+            <div class="article-signature">
+                <p><strong data-en="Marilena Roukounaki, PT - BSc" data-el="Ρουκουνάκη Μαριλένα PT - BSc">Marilena Roukounaki, PT - BSc</strong></p>
+                <p data-en="Specialisation in pelvic floor dysfunctions" data-el="Εξειδίκευση στις δυσλειτουργίες πυελικού εδάφους">Specialisation in pelvic floor dysfunctions</p>
+                <p data-en="Member of the PSF - Women's Health Physiotherapy Section" data-el="Μέλος του ΠΣΦ –ΕΤ Φυσικοθεραπεία στην υγεία των γυναικών">Member of the PSF - Women's Health Physiotherapy Section</p>
+                <p data-en="Co-founder of the Therapis physiotherapy centre" data-el="Συνιδρύτρια του κέντρου φυσικοθεραπείας Therapis">Co-founder of the Therapis physiotherapy centre</p>
+                <p data-en="Konstantinou Petraki 21, Moires" data-el="Κωνσταντίνου Πετράκη 21, Μοίρες">Konstantinou Petraki 21, Moires</p>
+                <p><a href="/pelvic_index.html">www.physiotherapis.gr/pelvic_index</a></p>
+                <p><a href="tel:+302892025362">2892025362</a> - <a href="tel:+306948772692">6948772692</a></p>
+            </div>
+
+            <div class="article-cta">
+                <p data-en="Need help with this? Book an appointment with our team." data-el="Χρειάζεστε βοήθεια; Κλείστε ραντεβού με την ομάδα μας.">Need help with this? Book an appointment with our team.</p>
+                <a href="/contact_us.html" class="btn-main" data-en="Contact us" data-el="Επικοινωνία">Contact us</a>
+            </div>
+        </article>
+    </section>
+
+    <a href="#" class="float-btn go-top"><i class="fas fa-chevron-up"></i></a>
+    <a href="tel:+306948772692" class="contact-float float-btn"><i class="fas fa-phone-alt"></i></a>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-block">
+            <div class="footer-logo"><a href="/index.html"><img src="/Logo.svg" alt="Therapis"></a></div>
+            <div class="footer-links">
+                <a href="/terms_conditions.html" data-en="Terms & Conditions" data-el="Όροι & Προϋποθέσεις">Terms & Conditions</a>
+                <a href="/privacy_policy.html" data-en="Privacy Policy" data-el="Πολιτική Απορρήτου">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-block">
+            <p><strong data-en="Location:" data-el="Τοποθεσία:">Location:</strong><span data-en=" Kon. Petraki 21, Mires 704 00" data-el=" Κων. Πετράκη 21, Μοίρες 704 00"> Kon. Petraki 21, Mires 704 00</span></p>
+            <p style="padding-bottom: 4%;"><strong data-en="Heraklion Crete" data-el="Ηράκλειο Κρήτης">Heraklion Crete</strong></p>
+            <div class="map-snippet">
+                <iframe width="95%" height="100%" frameborder="0" style="border:0" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.5624306464588!2d24.87317966964213!3d35.050495196190305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149b1f3542fbb0c3%3A0x564b942c73fc3b51!2zzprOrc69z4TPgc6_IM6mz4XPg865zrrOv864zrXPgc6xz4DOtc6vzrHPgiBUaGVyYXBpcyAtIFBoeXNpbyBDZW50ZXIgVGhlcmFwaXM!5e0!3m2!1sen!2sgr!4v1771498447259!5m2!1sen!2sgr" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="footer-block">
+            <p><strong data-en="Working Hours" data-el="Ωράριο Λειτουργίας">Working Hours</strong></p>
+            <p><strong data-en="(by appointment)" data-el="(κατόπιν ραντεβού)">(by appointment)</strong></p>
+            <table style="width:100%; margin-top: 15px; border-collapse: collapse;">
+                <tr><td data-en="Monday-Friday " data-el="Δευτέρα-Παρασκευή ">Monday-Friday </td><td> 08:00 - 21:30</td></tr>
+                <!-- <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Tuesday" data-el="Τρίτη">Tuesday</td><td>08:00 - 21:30</td></tr>
+                <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Wednesday" data-el="Τετάρτη">Wednesday</td><td>08:00 - 21:30</td></tr>
+                <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Thursday" data-el="Πέμπτη">Thursday</td><td>08:00 - 21:30</td></tr>
+                <tr style="border-bottom: 1px solid var(--dusty-pink);"><td data-en="Friday" data-el="Παρασκευή">Friday</td><td>08:00 - 21:30</td></tr> -->
+            </table>
+            <p style="margin-top: 10%;"><a href="tel:+306948772692" class="contact-link" data-en="Mobile Phone: +30 6948772692" data-el="Τηλέφωνο: +30 6948772692"> Phone: +30 6948772692</a></p>
+            <p><a href="tel:+302892025363" class="contact-link" data-en="Phone: +30 28920 25363" data-el="Σταθερό: +30 28920 25363">Phone: +30 28920 25363</a></p>
+            <p><a href="mailto:therapis.physiocenter@gmail.com" class="contact-link">therapis.physiocenter@gmail.com</a></p>
+        </div>
+        <div class="footer-block">
+            <p><strong data-en="Follow Us" data-el="Ακολουθήστε Μας">Follow Us</strong></p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/therapis.physiocenter/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/therapis.physiocenter/"><i class="fab fa-facebook-square"></i></a>
+                <a href="viber://contact?number=%2B306948772692"><i class="fab fa-viber"></i> </a>
+            </div>
+            <p></p>
+            
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
