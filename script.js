@@ -116,7 +116,7 @@ function initMobileMenu() {
 
                 // 2. Create Contact Button with translation attributes
                 const contactBtn = document.createElement('a');
-                contactBtn.href = "/contact_us.html";
+                contactBtn.href = "contact_us.html";
                 contactBtn.className = 'btn-mobile-contact';
                 // Set initial text
                 contactBtn.textContent = (typeof currentLang !== 'undefined' && currentLang === 'en') ? 'Contact us' : 'Επικοινωνία';
